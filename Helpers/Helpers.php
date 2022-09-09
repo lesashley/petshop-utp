@@ -29,6 +29,11 @@ function dep($data){
     return $format;
 }
 
+function getModal(string $nameModal,$data){
+    $view_modal = "Views/Template/Modals/{$nameModal}.php";
+    require_once $view_modal;
+}
+
 //Eliminar exceso de espacio entre palabras
 function strClean($strCadena){
     $string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''], $strCadena);
@@ -86,7 +91,8 @@ function token(){
     $token = $r1.'-'.$r2.'-'.$r3.'-'.$r4;
     return $token;
 }
-    function formatMoney($cantidad){
+
+  function formatMoney($cantidad){
         $cantidad = number_format($cantidad,2,SPD,SPM);
         return $cantidad;
     }

@@ -1,0 +1,16 @@
+.app-sidebar__user-avatar {
+    width: 50px;
+    background: gray;
+    padding: 6px;
+}
+
+.app-sidebar__toggle {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15pt;
+}
