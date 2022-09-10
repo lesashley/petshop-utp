@@ -63,5 +63,60 @@ document.addEventListener('DOMContentLoaded', function() {
 $('#tableRoles').DataTable();
 
 function openModal() {
-    $('#modalFormRol').modal('show');
+    document.querySelector('#idRol').value = ""; //limpia el campo idRol para evitar que se duplique el id y salga el modal de update
+    document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister"); //cambia el color del header del modal
+    document.querySelector('#btnActionForm').classList.replace("btn-info", "btn-primary"); //cambia el color del boton del modal
+    document.querySelector('#btnText').innerHTML = "Guardar"; //cambia el texto del boton del modal
+    document.querySelector('#titleModal').innerHTML = "Nuevo Rol de Usuario"; //cambia el titulo del modal
+    document.querySelector("#formRol").reset(); //limpia el formulario
+    $('#modalFormRol').modal('show'); //abre el modal
+}
+window.addEventListener('load', function() { //cuando se cargue la pagina se ejecuta la funcion fntEditRol 
+    fntEditRol();
+}, false);
+
+
+function fntEditRol() {
+    var btnEditRol = document.querySelectorAll(".btnEditRol");
+    btnEditRol.forEach(function(btnEditRol) {
+        btnEditRol.addEventListener('click', function() {
+
+            document.querySelector('#titleModal').innerHTML = "Actualizar Rol";
+            document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
+            document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
+            document.querySelector('#btnText').innerHTML = "Actualizar";
+
+            var idrol = this.getAttribute("rl");
+            var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+            var ajaxUrl = base_url + '/Roles/getRol/' + idrol;
+            request.open("GET", ajaxUrl, true);
+            request.send();
+
+            request.onreadystatechange = function() {
+                if (request.readyState == 4 && request.status == 200) {
+                    var objData = JSON.parse(request.responseText);
+                    if (objData.status) {
+                        document.querySelector("#idRol").value = objData.data.idrol;
+                        document.querySelector("#txtNombre").value = objData.data.nombrerol;
+                        document.querySelector("#txtDescripcion").value = objData.data.descripcion;
+
+                        if (objData.data.status == 1) {
+                            var optionSelect = '<option value="1" selected class="notBlock">Activo</option>';
+                        } else {
+                            var optionSelect = '<option value="2" selected class="notBlock">Inactivo</option>';
+                        }
+                        var htmlSelect = `${optionSelect}
+                                          <option value="1">Activo</option>
+                                          <option value="2">Inactivo</option>
+                                        `;
+                        document.querySelector("#listStatus").innerHTML = htmlSelect;
+                        $('#modalFormRol').modal('show');
+                    } else {
+                        swal("Error", objData.msg, "error");
+                    }
+                }
+            }
+
+        });
+    });
 }

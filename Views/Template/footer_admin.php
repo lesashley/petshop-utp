@@ -7,7 +7,7 @@
     <script src="<?=media();?>/js/bootstrap.min.js"></script>
 	<script src="<?=media();?>/js/main.js"></script>
     <script src="<?=media();?>/js/fontawesome.js"></script>
-	<script src="<?=media();?>/js/functions_admin.js"></script>
+	
 	
     <!-- The javascript plugin to display page loading on top-->
     <script src="<?=media();?>/js/plugins/pace.min.js"></script>
@@ -20,7 +20,7 @@
     <script type="text/javascript" src="<?=media();?>/js/plugins/dataTables.bootstrap.min.js"></script>
 	<script src="<?=media();?>/js/functions_roles.js"></script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       var data = {
       	labels: ["January", "February", "March", "April", "May"],
       	datasets: [
@@ -66,9 +66,9 @@
       
       var ctxp = $("#pieChartDemo").get(0).getContext("2d");
       var pieChart = new Chart(ctxp).Pie(pdata);
-    </script>
-    <!-- Google analytics script-->
-    <script type="text/javascript">
+    </script> -->
+
+    <!-- <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -77,7 +77,7 @@
       	ga('create', 'UA-72504830-1', 'auto');
       	ga('send', 'pageview');
       }
-    </script>
+    </script> -->
 		<script type="text/javascript" src="<?=media();?>/js/plugins/chart.js"></script>
   </body>
 </html>

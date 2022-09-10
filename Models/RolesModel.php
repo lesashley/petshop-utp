@@ -22,7 +22,7 @@
 
 		public function selectRol(int $idrol)
 		{
-			//BUSCAR ROLE
+			//BUSCAR ROLES POR ID
 			$this->intIdrol = $idrol;
 			$sql = "SELECT * FROM rol WHERE idrol = $this->intIdrol";
 			$request = $this->select($sql);
