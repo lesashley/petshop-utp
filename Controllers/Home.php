@@ -1,20 +1,20 @@
 <?php 
 
-class Home extends Controllers{
+	class Home extends Controllers{
+		public function __construct()
+		{
+			parent::__construct();
+		}
 
-    public function __construct()
-    {
-        parent::__construct(); //ejecuta el constructor de la clase padre
-    }
-    public function home($parems){
-        $this->views->getView($this,"home"); //carga la vista home del controlador home 
-    }
-    public function datos($params){
-        echo "Dato recibido: ".$params;
-    }
-    public function carrito($params){
-        $carrito = $this->model->getCarrito($params);
-        echo $carrito;
-    }
-}
-?>
+		public function home()
+		{
+			$data['page_id'] = 1;
+			$data['page_tag'] = "Home";
+			$data['page_title'] = "Página principal";
+			$data['page_name'] = "home";
+			$data['page_content'] = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, quis. Perspiciatis repellat perferendis accusamus, ea natus id omnis, ratione alias quo dolore tempore dicta cum aliquid corrupti enim deserunt voluptas.";
+			$this->views->getView($this,"home",$data);
+		}
+
+	}
+ ?>

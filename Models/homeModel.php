@@ -1,10 +1,10 @@
-<?php
- class homeModel{
-    
-    public function __construct()
-    {
-        // echo "Mensaje desde el modelo Home"; 
-    }
-    }
+<?php 
 
-?>
+	class HomeModel extends Mysql
+	{
+		public function __construct()
+		{
+			parent::__construct();
+		}	
+	}
+ ?>
