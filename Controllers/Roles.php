@@ -3,10 +3,13 @@
 	class Roles extends Controllers{
 		public function __construct()
 		{
+<<<<<<< HEAD
 			session_start();
 			if(empty($_SESSION['login'])){
 				header('Location: '.base_url().'/login');
 			}
+=======
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 			parent::__construct();
 		}
 
@@ -15,8 +18,12 @@
 			$data['page_id'] = 3;
 			$data['page_tag'] = "Roles Usuario";
 			$data['page_name'] = "rol_usuario";
+<<<<<<< HEAD
 			$data['page_title'] = "<div><b>Oh my Pet ! :</b></div>".'<i class="fas fa-user-tag"></i>'." ROLES DE USUARIO  ";
 			$data['page_functions_js'] = "functions_roles.js";
+=======
+			$data['page_title'] = "<div><b>Oh my Pet ! :</b></div>  Roles Usuario  ";
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 			$this->views->getView($this,"roles",$data);
 		}
 
@@ -34,15 +41,22 @@
 				}
 
 				$arrData[$i]['options'] = '<div class="text-center">
+<<<<<<< HEAD
 				<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>
 				<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>
 				<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['idrol'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+=======
+				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['idrol'].'" title="Permisos"><i class="fas fa-key"></i></button>
+				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['idrol'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['idrol'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 				</div>';
 			}
 			echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 			die();
 		}
 
+<<<<<<< HEAD
 		public function getSelectRoles()
 		{
 			$htmlOptions = "";
@@ -58,6 +72,8 @@
 			die();		
 		}
 
+=======
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 		public function getRol(int $idrol)
 		{
 			$intIdrol = intval(strClean($idrol));

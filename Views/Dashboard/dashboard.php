@@ -13,8 +13,11 @@
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">Create a beautiful dashboard</div>
+<<<<<<< HEAD
 
             <?php dep($_SESSION['userData']); ?>
+=======
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
           </div>
         </div>
       </div>

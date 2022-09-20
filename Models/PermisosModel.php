@@ -49,6 +49,7 @@
         	$request_insert = $this->insert($query_insert,$arrData);		
 	        return $request_insert;
 		}
+<<<<<<< HEAD
 
 		public function permisosModulo(int $idrol){
 			$this->intRolid = $idrol;
@@ -70,5 +71,7 @@
 			}
 			return $arrPermisos;
 		}
+=======
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 	}
  ?>

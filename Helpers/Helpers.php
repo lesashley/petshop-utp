@@ -33,6 +33,7 @@
         $view_modal = "Views/Template/Modals/{$nameModal}.php";
         require_once $view_modal;        
     }
+<<<<<<< HEAD
 
     //envio de correos
     function sendEmail($data,$template)
@@ -68,6 +69,8 @@
         $_SESSION['permisosMod'] = $permisosMod;
     }
 
+=======
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
     //Elimina exceso de espacios entre palabras
     function strClean($strCadena){
         $string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''], $strCadena);

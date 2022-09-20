@@ -24,6 +24,7 @@
 					}
 				}else{
 					for ($i=0; $i < count($arrModulos); $i++) {
+<<<<<<< HEAD
 						$arrPermisos = array('r' => 0, 'w' => 0, 'u' => 0, 'd' => 0);
 						if(isset($arrPermisosRol[$i])){
 							$arrPermisos = array('r' => $arrPermisosRol[$i]['r'], 
@@ -33,6 +34,18 @@
 												);
 						}
 						$arrModulos[$i]['permisos'] = $arrPermisos;
+=======
+
+						$arrPermisos = array('r' => $arrPermisosRol[$i]['r'], 
+											 'w' => $arrPermisosRol[$i]['w'], 
+											 'u' => $arrPermisosRol[$i]['u'], 
+											 'd' => $arrPermisosRol[$i]['d'] 
+											);
+						if($arrModulos[$i]['idmodulo'] == $arrPermisosRol[$i]['moduloid'])
+						{
+							$arrModulos[$i]['permisos'] = $arrPermisos;
+						}
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 					}
 				}
 				$arrPermisoRol['modulos'] = $arrModulos;

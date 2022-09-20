@@ -15470,7 +15470,11 @@ be a descendant of the grid when it is being dragged.
     display: block;
     padding: 15px;
     line-height: 20px;
+<<<<<<< HEAD
     color: #800040;
+=======
+    color: #fff;
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
     -webkit-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;

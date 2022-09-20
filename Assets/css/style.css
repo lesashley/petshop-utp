@@ -3,6 +3,7 @@
     background: gray;
     padding: 6px;
 }
+<<<<<<< HEAD
 
 .app-sidebar__toggle {
     display: -webkit-flex;
@@ -59,4 +60,29 @@
     color: red;
     font-size: 13pt;
     font-weight: bold;
+=======
+.app-sidebar__toggle{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15pt;
+}
+.app-sidebar__toggle::before{
+	display: none;
+}
+.headerRegister{
+	background: #009688;
+	color: #FFF;
+}
+.headerUpdate{
+	background: #007bff;
+	color: #FFF;
+}
+.notBlock{
+	display: none;
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 }

@@ -7,11 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Abel OSH">
     <meta name="theme-color" content="#009688">
+<<<<<<< HEAD
     <link rel="shortcut icon" href="<?= media();?>/images/favicon.ico">
     <title><?= $data['page_tag'] ?></title>
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/main.css">
     <link rel="stylesheet" type="text/css" href="<?= media();?>/css/bootstrap-select.min.css"> 
+=======
+    <link rel="shortcut icon" href="<?= media();?>/images/logo.jpeg">
+    <title><?= $data['page_tag'] ?></title>
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/main.css">
+>>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
     <link rel="stylesheet" type="text/css" href="<?= media(); ?>/css/style.css">
   </head>
   <body class="app sidebar-mini">
