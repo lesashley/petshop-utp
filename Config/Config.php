@@ -1,11 +1,7 @@
 <?php 
 	
 	//define("BASE_URL", "http://localhost/petshop/");
-<<<<<<< HEAD
 	const BASE_URL = "http://localhost/petshop-utp";
-=======
-	const BASE_URL = "http://localhost/petshop-utp/";
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 
 	//Zona horaria
 	date_default_timezone_set('America/Lima');
@@ -24,15 +20,13 @@
 	//Simbolo de moneda
 	const SMONEY = "S/. ";
 
-<<<<<<< HEAD
 	//Datos envios de correos
 	const NOMBRE_REMITENTE = "Oh my pet ! Petshop";
 	const EMAIL_REMITENTE = "no-reply@ohmypetpetshop.com";
-	const NOMBRE_EMPRESA = "Oh my pet ! Petshop";
+	const NOMBRE_EMPRESA = "Oh my pet!";
 	const WEB_EMPRESA = "www.ohmypetpetshop.com";
-=======
-	
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 
+	const CAT_SLIDER = "1,2,3"; //categorias que se van a mostrar en el slider
+	const CAT_BANNER = "1,2,3"; //categorias que se van a mostrar en el banner
 
  ?>

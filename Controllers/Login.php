@@ -3,13 +3,10 @@
 	class Login extends Controllers{
 		public function __construct()
 		{
-<<<<<<< HEAD
 			session_start();	
 			if(isset($_SESSION['login'])){
 				header('Location: '.base_url().'/dashboard');
 			}
-=======
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 			parent::__construct();
 		}
 
@@ -17,18 +14,12 @@
 		{
 			
 			$data['page_tag'] = "Login - Oh my Pet" ;
-<<<<<<< HEAD
 			$data['page_title'] = "Login - Oh my Pet";
 			$data['page_name'] = "Login - Oh my Pet";
-=======
-			$data['page_title'] = "Login";
-			$data['page_name'] = "login";
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
             $data['page_functions_js'] = "functions_login.js";
 			$this->views->getView($this,"login",$data);
 		}
 
-<<<<<<< HEAD
 		public function loginUser(){
 			//dep($_POST);
 			if($_POST){
@@ -45,8 +36,11 @@
 						if($arrData['status'] == 1){
 							$_SESSION['idUser'] = $arrData['idpersona'];
 							$_SESSION['login'] = true;
+							$_SESSION['timeout'] = true;
+							$_SESSION['inicio'] = time();
+							
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);
-							$arrData['userData'] = $arrData;
+							// $arrData['userData'] = $arrData;
 							sessionUser($_SESSION['idUser']);							
 							$arrResponse = array('status' => true, 'msg' => 'ok');
 						}else{
@@ -176,7 +170,5 @@
 			die();
 		}
 
-=======
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 	}
  ?>

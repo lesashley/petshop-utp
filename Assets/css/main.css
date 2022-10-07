@@ -29,7 +29,7 @@
     --white: #FFF;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #7409a5;
+    --primary: #735db2;
     --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
@@ -180,13 +180,13 @@ sup {
 }
 
 a {
-    color: #800040;
+    color: #735db2;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover {
-    color: #800040;
+    color: #735db2;
     text-decoration: underline;
 }
 
@@ -2764,14 +2764,14 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #FFF;
-    background-color: #f8cc09;
-    border-color: #f8cc09;
+    background-color: #fcd47c;
+    border-color: #fcd47c;
 }
 
 .btn-primary:hover {
     color: #FFF;
-    background-color: #800040;
-    border-color: #800040;
+    background-color: #735db2;
+    border-color: #735db2;
 }
 
 .btn-primary:focus,
@@ -5480,8 +5480,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
     z-index: 1;
     color: white;
-    background-color: #f8cc09;
-    border-color: #f8cc09;
+    background-color: #fcd47c;
+    border-color: #fcd47c;
 }
 
 .page-item.disabled .page-link {
@@ -15371,7 +15371,7 @@ be a descendant of the grid when it is being dragged.
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #f8cc09;
+    background-color: #fcd47c;
     z-index: 1030;
     padding-right: 15px;
 }
@@ -15408,7 +15408,7 @@ be a descendant of the grid when it is being dragged.
         flex: 0 0 auto;
         display: block;
         width: 230px;
-        background-color: #800040;
+        background-color: #735db2;
     }
 }
 
@@ -15421,7 +15421,7 @@ be a descendant of the grid when it is being dragged.
 .app-sidebar__toggle {
     padding: 0 15px;
     font-family: fontAwesome;
-    color: #800040;
+    color: #735db2;
     line-height: 2.4;
     -webkit-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
@@ -15444,7 +15444,7 @@ be a descendant of the grid when it is being dragged.
 .app-sidebar__toggle:focus,
 .app-sidebar__toggle:hover {
     color: #fff;
-    background-color: #f8cc09;
+    background-color: #fcd47c;
     text-decoration: none;
 }
 
@@ -15470,11 +15470,7 @@ be a descendant of the grid when it is being dragged.
     display: block;
     padding: 15px;
     line-height: 20px;
-<<<<<<< HEAD
-    color: #800040;
-=======
-    color: #fff;
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
+    color: #735db2;
     -webkit-transition: background-color 0.3s ease;
     -o-transition: background-color 0.3s ease;
     transition: background-color 0.3s ease;
@@ -15617,7 +15613,7 @@ be a descendant of the grid when it is being dragged.
     width: 230px;
     overflow: auto;
     z-index: 10;
-    background-color: #800040;
+    background-color: #735db2;
     -webkit-box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
     -webkit-transition: left 0.3s ease, width 0.3s ease;
@@ -15709,7 +15705,7 @@ be a descendant of the grid when it is being dragged.
 .app-menu__item:hover,
 .app-menu__item:focus {
     background: #0d1214;
-    border-left-color: #f8cc09;
+    border-left-color: #fcd47c;
     text-decoration: none;
     color: #fff;
 }
@@ -15729,7 +15725,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .treeview.is-expanded [data-toggle='treeview'] {
-    border-left-color: #f8cc09;
+    border-left-color: #fcd47c;
     background: #0d1214;
 }
 
@@ -15749,7 +15745,7 @@ be a descendant of the grid when it is being dragged.
     -webkit-transition: max-height 0.3s ease;
     -o-transition: max-height 0.3s ease;
     transition: max-height 0.3s ease;
-    background: #f8cc09;
+    background: #fcd47c;
 }
 
 .treeview-item {
@@ -16352,7 +16348,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .material-half-bg .cover {
-    background-color: #800040;
+    background-color: #735db2;
     height: 50vh;
 }
 

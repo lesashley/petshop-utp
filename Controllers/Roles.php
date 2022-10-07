@@ -3,60 +3,71 @@
 	class Roles extends Controllers{
 		public function __construct()
 		{
-<<<<<<< HEAD
+			parent::__construct();
 			session_start();
+			session_regenerate_id(true); //para que no se repita el id de sesion
 			if(empty($_SESSION['login'])){
 				header('Location: '.base_url().'/login');
 			}
-=======
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
-			parent::__construct();
+			getPermisos(2);  //para que solo puedan entrar los usuarios con permisos 2
 		}
 
 		public function Roles()
 		{
+
+			if(empty($_SESSION['permisosMod']['r'])){
+				header("Location:".base_url().'/dashboard');
+			}
 			$data['page_id'] = 3;
 			$data['page_tag'] = "Roles Usuario";
 			$data['page_name'] = "rol_usuario";
-<<<<<<< HEAD
-			$data['page_title'] = "<div><b>Oh my Pet ! :</b></div>".'<i class="fas fa-user-tag"></i>'." ROLES DE USUARIO  ";
+			$data['page_title'] = '<i class="fas fa-user-tag"></i>'." ROLES ";
 			$data['page_functions_js'] = "functions_roles.js";
-=======
-			$data['page_title'] = "<div><b>Oh my Pet ! :</b></div>  Roles Usuario  ";
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 			$this->views->getView($this,"roles",$data);
 		}
 
 		public function getRoles()
 		{
-			$arrData = $this->model->selectRoles();
 
-			for ($i=0; $i < count($arrData); $i++) {
+			if($_SESSION['permisosMod']['r']){
+				$btnView = '';
+				$btnEdit = '';
+				$btnDelete = '';
 
-				if($arrData[$i]['status'] == 1)
-				{
-					$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
-				}else{
-					$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+				$arrData = $this->model->selectRoles();
+				
+				for ($i=0; $i < count($arrData); $i++) {
+
+					if($arrData[$i]['status'] == 1)
+					{
+						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
+					}else{
+						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+					}
+
+					// if($_SESSION['permisosMod']['r']){
+					// 	$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>';
+					// }
+
+					if($_SESSION['permisosMod']['u']){
+						$btnView = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>';
+						$btnEdit = '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+					}
+					
+					if($_SESSION['permisosMod']['d']){
+						$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['idrol'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
+					}
+
+					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
+					
+					
+				
 				}
-
-				$arrData[$i]['options'] = '<div class="text-center">
-<<<<<<< HEAD
-				<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos('.$arrData[$i]['idrol'].')" title="Permisos"><i class="fas fa-key"></i></button>
-				<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol('.$arrData[$i]['idrol'].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-				<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol('.$arrData[$i]['idrol'].')" title="Eliminar"><i class="far fa-trash-alt"></i></button>
-=======
-				<button class="btn btn-secondary btn-sm btnPermisosRol" rl="'.$arrData[$i]['idrol'].'" title="Permisos"><i class="fas fa-key"></i></button>
-				<button class="btn btn-primary btn-sm btnEditRol" rl="'.$arrData[$i]['idrol'].'" title="Editar"><i class="fas fa-pencil-alt"></i></button>
-				<button class="btn btn-danger btn-sm btnDelRol" rl="'.$arrData[$i]['idrol'].'" title="Eliminar"><i class="far fa-trash-alt"></i></button>
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
-				</div>';
+				echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 			}
-			echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 			die();
 		}
 
-<<<<<<< HEAD
 		public function getSelectRoles()
 		{
 			$htmlOptions = "";
@@ -72,64 +83,68 @@
 			die();		
 		}
 
-=======
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 		public function getRol(int $idrol)
 		{
-			$intIdrol = intval(strClean($idrol));
-			if($intIdrol > 0)
-			{
-				$arrData = $this->model->selectRol($intIdrol);
-				if(empty($arrData))
+			if($_SESSION['permisosMod']['r']){
+				$intIdrol = intval(strClean($idrol));
+				if($intIdrol > 0)
 				{
-					$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
-				}else{
-					$arrResponse = array('status' => true, 'data' => $arrData);
+					$arrData = $this->model->selectRol($intIdrol);
+					if(empty($arrData))
+					{
+						$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
+					}else{
+						$arrResponse = array('status' => true, 'data' => $arrData);
+					}
+					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 				}
-				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
-			die();
+				die();
 		}
 
 		public function setRol(){
-			
-			$intIdrol = intval($_POST['idRol']);
-			$strRol =  strClean($_POST['txtNombre']);
-			$strDescipcion = strClean($_POST['txtDescripcion']);
-			$intStatus = intval($_POST['listStatus']);
+			if($_SESSION['permisosMod']['w']){
 
-			if($intIdrol == 0)
-			{
-				//Crear
-				$request_rol = $this->model->insertRol($strRol, $strDescipcion,$intStatus);
-				$option = 1;
-			}else{
-				//Actualizar
-				$request_rol = $this->model->updateRol($intIdrol, $strRol, $strDescipcion, $intStatus);
-				$option = 2;
-			}
+				$intIdrol = intval($_POST['idRol']);
+				$strRol =  strClean($_POST['txtNombre']);
+				$strDescipcion = strClean($_POST['txtDescripcion']);
+				$intStatus = intval($_POST['listStatus']);
 
-			if($request_rol > 0 )
-			{
-				if($option == 1)
+				if($intIdrol == 0)
 				{
-					$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
+					//Crear
+					$request_rol = $this->model->insertRol($strRol, $strDescipcion,$intStatus);
+					$option = 1;
 				}else{
-					$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
+					//Actualizar
+					$request_rol = $this->model->updateRol($intIdrol, $strRol, $strDescipcion, $intStatus);
+					$option = 2;
 				}
-			}else if($request_rol == 'exist'){
-				
-				$arrResponse = array('status' => false, 'msg' => '¡Atención! El Rol ya existe.');
-			}else{
-				$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+
+				if($request_rol > 0 )
+				{
+					if($option == 1)
+					{
+						$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
+					}else{
+						$arrResponse = array('status' => true, 'msg' => 'Datos Actualizados correctamente.');
+					}
+				}else if($request_rol == 'exist'){
+					
+					$arrResponse = array('status' => false, 'msg' => '¡Atención! El Rol ya existe.');
+				}else{
+					$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+				}
+				// sleep(3);
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
-			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-			die();
+				die();
 		}
 
 		public function delRol()
 		{
 			if($_POST){
+			if($_SESSION['permisosMod']['r']){	
 				$intIdrol = intval($_POST['idrol']);
 				$requestDelete = $this->model->deleteRol($intIdrol);
 				if($requestDelete == 'ok')
@@ -141,6 +156,7 @@
 					$arrResponse = array('status' => false, 'msg' => 'Error al eliminar el Rol.');
 				}
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+			}
 			}
 			die();
 		}

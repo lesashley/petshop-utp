@@ -5,46 +5,33 @@
 		{
 			parent::__construct();
 			session_start();
-<<<<<<< HEAD
+			session_regenerate_id(true); //para que no se repita el id de sesion
 			if(empty($_SESSION['login'])){
 				header('Location: '.base_url().'/login');
 			}
 
 			getPermisos(2);  //para que solo puedan entrar los usuarios con permisos 2 
-=======
-			session_regenerate_id(true);
-			if(empty($_SESSION['login']))
-			{
-				header('Location: '.base_url().'/login');
-			}
-			getPermisos(2);
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 		}
 
 		public function Usuarios()
 		{
-<<<<<<< HEAD
-			$data['page_tag'] = "Usuarios";
-			$data['page_title'] = "<div><b>Oh my Pet ! :</b></div>".'<i class="fas fa-user-tag"></i>'." USUARIOS  ";
-=======
-			if(empty($_SESSION['permisosMod']['r'])){
-				header("Location:".base_url().'/dashboard');
+
+			if(empty($_SESSION['permisosMod']['r'])){//si no tiene permisos de lectura
+				header("Location:".base_url().'/dashboard'); //redirecciona al dashboard, si quieren otra pagina, se escribe el nombre del controlador
 			}
 			$data['page_tag'] = "Usuarios";
-			$data['page_title'] = "USUARIOS <small>Oh my Pet !</small>";
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
+			$data['page_title'] = '<i class="fas fa-user-tag"></i>'." USUARIOS ";
 			$data['page_name'] = "usuarios";
 			$data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->getView($this,"usuarios",$data);
+
+
+
 		}
 
 		public function setUsuario(){
-<<<<<<< HEAD
 			if($_POST){
 				
-=======
-			if($_POST){			
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 				if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['listRolid']) || empty($_POST['listStatus']) )
 				{
 					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
@@ -57,16 +44,12 @@
 					$strEmail = strtolower(strClean($_POST['txtEmail']));
 					$intTipoId = intval(strClean($_POST['listRolid']));
 					$intStatus = intval(strClean($_POST['listStatus']));
-<<<<<<< HEAD
-
-=======
 					$request_user = "";
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 					if($idUsuario == 0)
 					{
 						$option = 1;
 						$strPassword =  empty($_POST['txtPassword']) ? hash("SHA256",passGenerator()) : hash("SHA256",$_POST['txtPassword']);
-<<<<<<< HEAD
+						if($_SESSION['permisosMod']['w']){
 						$request_user = $this->model->insertUsuario($strIdentificacion,
 																			$strNombre, 
 																			$strApellido, 
@@ -75,9 +58,11 @@
 																			$strPassword, 
 																			$intTipoId, 
 																			$intStatus );
+						}
 					}else{
 						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
+						if($_SESSION['permisosMod']['u']){
 						$request_user = $this->model->updateUsuario($idUsuario,
 																	$strIdentificacion, 
 																	$strNombre,
@@ -87,33 +72,7 @@
 																	$strPassword, 
 																	$intTipoId, 
 																	$intStatus);
-=======
-
-						if($_SESSION['permisosMod']['w']){
-							$request_user = $this->model->insertUsuario($strIdentificacion,
-																				$strNombre, 
-																				$strApellido, 
-																				$intTelefono, 
-																				$strEmail,
-																				$strPassword, 
-																				$intTipoId, 
-																				$intStatus );
 						}
-					}else{
-						$option = 2;
-						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
-						if($_SESSION['permisosMod']['u']){
-							$request_user = $this->model->updateUsuario($idUsuario,
-																		$strIdentificacion, 
-																		$strNombre,
-																		$strApellido, 
-																		$intTelefono, 
-																		$strEmail,
-																		$strPassword, 
-																		$intTipoId, 
-																		$intStatus);
-						}
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 
 					}
 
@@ -130,6 +89,7 @@
 						$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
 					}
 				}
+				// sleep(3);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
@@ -137,9 +97,16 @@
 
 		public function getUsuarios()
 		{
-<<<<<<< HEAD
+
+			if($_SESSION['permisosMod']['r']){
+
+			
 			$arrData = $this->model->selectUsuarios();
 			for ($i=0; $i < count($arrData); $i++) {
+				$btnView = ''; //boton ver
+				$btnEdit = ''; //boton editar
+				$btnDelete = ''; //boton eliminar
+
 
 				if($arrData[$i]['status'] == 1)
 				{
@@ -148,18 +115,44 @@
 					$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
 				}
 
-				$arrData[$i]['options'] = '<div class="text-center">
-				<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="far fa-eye"></i></button>
-				<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario('.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>
-				<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>
-				</div>';
+				if($_SESSION['permisosMod']['r']) // si la variable r es verdadero o 1
+				{
+					$btnView= '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
+				}
+				
+				if($_SESSION['permisosMod']['u']) // si la variable u es verdadero o 1
+				{
+					if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol']==1) ||
+					 ($_SESSION['userData']['idrol']==1 and $arrData[$i]['idrol'] != 1 )){
+						$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,'.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
+					}else{
+
+					$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" disabled><i class="fas fa-pencil-alt"></i></button>';
+				}
+			}
+				if($_SESSION['permisosMod']['d']) // si la variable d es verdadero o 1
+				{
+					if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol']==1) ||
+					 ($_SESSION['userData']['idrol']==1 and $arrData[$i]['idrol'] != 1 )
+					 and ($_SESSION['userData']['idpersona'] != $arrData[$i]['idpersona'])){
+					
+					$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
+				}else{
+					$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" disabled><i class="far fa-trash-alt"></i></button>';
+				}
+			}
+
+				$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>'; //concatenar los botones en una sola variable
+
 			}
 			echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
+		}
 			die();
 		}
 
-		public function getUsuario(int $idpersona){
+		public function getUsuario($idpersona){
 			
+			if($_SESSION['permisosMod']['r']){
 			$idusuario = intval($idpersona);
 			if($idusuario > 0)
 			{
@@ -171,64 +164,7 @@
 					$arrResponse = array('status' => true, 'data' => $arrData);
 				}
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-=======
-			if($_SESSION['permisosMod']['r']){
-				$arrData = $this->model->selectUsuarios();
-				for ($i=0; $i < count($arrData); $i++) {
-					$btnView = '';
-					$btnEdit = '';
-					$btnDelete = '';
-
-					if($arrData[$i]['status'] == 1)
-					{
-						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
-					}else{
-						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
-					}
-
-					if($_SESSION['permisosMod']['r']){
-						$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario('.$arrData[$i]['idpersona'].')" title="Ver usuario"><i class="far fa-eye"></i></button>';
-					}
-					if($_SESSION['permisosMod']['u']){
-						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] == 1) ||
-							($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] != 1) ){
-							$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,'.$arrData[$i]['idpersona'].')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
-						}else{
-							$btnEdit = '<button class="btn btn-secondary btn-sm" disabled ><i class="fas fa-pencil-alt"></i></button>';
-						}
-					}
-					if($_SESSION['permisosMod']['d']){
-						if(($_SESSION['idUser'] == 1 and $_SESSION['userData']['idrol'] == 1) ||
-							($_SESSION['userData']['idrol'] == 1 and $arrData[$i]['idrol'] != 1) and
-							($_SESSION['userData']['idpersona'] != $arrData[$i]['idpersona'] )
-							 ){
-							$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario('.$arrData[$i]['idpersona'].')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
-						}else{
-							$btnDelete = '<button class="btn btn-secondary btn-sm" disabled ><i class="far fa-trash-alt"></i></button>';
-						}
-					}
-					$arrData[$i]['options'] = '<div class="text-center">'.$btnView.' '.$btnEdit.' '.$btnDelete.'</div>';
-				}
-				echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 			}
-			die();
-		}
-
-		public function getUsuario($idpersona){
-			if($_SESSION['permisosMod']['r']){
-				$idusuario = intval($idpersona);
-				if($idusuario > 0)
-				{
-					$arrData = $this->model->selectUsuario($idusuario);
-					if(empty($arrData))
-					{
-						$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
-					}else{
-						$arrResponse = array('status' => true, 'data' => $arrData);
-					}
-					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
-				}
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 			}
 			die();
 		}
@@ -236,7 +172,7 @@
 		public function delUsuario()
 		{
 			if($_POST){
-<<<<<<< HEAD
+				if($_SESSION['permisosMod']['d']){
 				$intIdpersona = intval($_POST['idUsuario']);
 				$requestDelete = $this->model->deleteUsuario($intIdpersona);
 				if($requestDelete)
@@ -244,30 +180,23 @@
 					$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el usuario');
 				}else{
 					$arrResponse = array('status' => false, 'msg' => 'Error al eliminar el usuario.');
-=======
-				if($_SESSION['permisosMod']['d']){
-					$intIdpersona = intval($_POST['idUsuario']);
-					$requestDelete = $this->model->deleteUsuario($intIdpersona);
-					if($requestDelete)
-					{
-						$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el usuario');
-					}else{
-						$arrResponse = array('status' => false, 'msg' => 'Error al eliminar el usuario.');
-					}
-					echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+				}
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 				}
 			}
 			die();
 		}
 
-		public function perfil(){
+		public function perfil()
+		{
 			$data['page_tag'] = "Perfil";
-			$data['page_title'] = "Perfil de usuario";
+			$data['page_title'] = "PERFIL <small>Usuario</small>";
 			$data['page_name'] = "perfil";
 			$data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->getView($this,"perfil",$data);
 		}
 
+		
 		public function putPerfil(){
 			if($_POST){
 				if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) )
@@ -275,7 +204,7 @@
 					$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 				}else{
 					$idUsuario = $_SESSION['idUser'];
-					$strIdentificacion = strClean($_POST['txtIdentificacion']);
+					$strIdentificacion = strClean($_POST['txtIdentificacion']); //intval para numeros enteros
 					$strNombre = strClean($_POST['txtNombre']);
 					$strApellido = strClean($_POST['txtApellido']);
 					$intTelefono = intval(strClean($_POST['txtTelefono']));
@@ -297,11 +226,11 @@
 						$arrResponse = array("status" => false, "msg" => 'No es posible actualizar los datos.');
 					}
 				}
+				sleep(3);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
-
 		public function putDFical(){
 			if($_POST){
 				if(empty($_POST['txtNit']) || empty($_POST['txtNombreFiscal']) || empty($_POST['txtDirFiscal']) )
@@ -323,12 +252,11 @@
 					}else{
 						$arrResponse = array("status" => false, "msg" => 'No es posible actualizar los datos.');
 					}
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
 				}
+				sleep(3);
 				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 			}
 			die();
 		}
 
 	}
- ?>

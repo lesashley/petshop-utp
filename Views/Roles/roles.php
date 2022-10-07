@@ -6,12 +6,10 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-<<<<<<< HEAD
             <h1><?= $data['page_title'] ?>
-=======
-            <h1><?= $data['page_title'] ?> <i class="fas fa-user-tag" style="color: #800040;"></i>
->>>>>>> 53043e51952068c63933cf6cbef907f4a88d6834
+            <?php if($_SESSION['permisosMod']['w']){ ?>
                 <button class="btn btn-primary" type="button" onclick="openModal();" ><i class="fas fa-plus-circle"></i> Nuevo</button>
+            <?php } ?>
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
