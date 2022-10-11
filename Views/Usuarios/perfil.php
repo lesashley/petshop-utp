@@ -64,7 +64,7 @@
             <form id="formDataFiscal" name="formDataFiscal">
               <div class="row mb-4">
                 <div class="col-md-6">
-                  <label>Identificación Tributaria</label>
+                  <label>R.U.C.</label>
                   <input class="form-control" type="text" id="txtNit" name="txtNit" value="<?= $_SESSION['userData']['nit']; ?>">
                 </div>
                 <div class="col-md-6">

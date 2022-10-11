@@ -61,6 +61,11 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Salir 
 						</a>
+
+						<a href="<?= base_url(); ?>/login" class="flex-c-m trans-04 p-lr-25">
+							Iniciar Sesion 
+						</a>
+
 					</div>
 				</div>
 			</div>
@@ -76,7 +81,7 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li class=""><!-- active-menu-->
 								<a href="<?= base_url()?>">Inicio</a>
 								<!--<ul class="sub-menu">
 									<li><a href="index.html">Homepage 1</a></li>
@@ -135,7 +140,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="3">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 
@@ -143,6 +148,11 @@
 						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a> -->
+						
+						
+
+
+
 					</div>
 				</nav>
 			</div>	

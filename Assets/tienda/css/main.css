@@ -1153,6 +1153,13 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     position: relative;
 }
 
+/*//////////////////////////////////////////////////////////////////*/
+.shareproduct{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+}
 
 /*------------------------------------------------------------------
 [ in select ]*/
@@ -1282,8 +1289,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Slick1 ]*/
 
 .wrap-slick1 {
-    position: relative;
-    padding-top: 70px;
+    position: relative;  /*espacionbanner*/
 }
 
 .item-slick1 {
@@ -1304,6 +1310,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 @media (max-width: 991px) {
     .item-slick1 {
         height: calc(100vh - 70px) !important;
+    }
+
+    .wrap-slick1 {
+        position: relative;  /*espacionbanner*/
+        padding-top: 70px;
     }
 }
 
@@ -2747,6 +2758,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .size-204 {
     width: calc(100% - 105px);
+    justify-content: center;
 }
 
 .size-205 {
@@ -3753,6 +3765,7 @@ input.num-product::-webkit-inner-spin-button {
     }
     .respon6-next {
         width: calc(100% - 65px);
+        justify-content: center; /***prueba****/
     }
     /*---------------------------------------------*/
     .respon7 {

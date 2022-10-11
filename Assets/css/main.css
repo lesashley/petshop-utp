@@ -2764,8 +2764,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #FFF;
-    background-color: #fcd47c;
-    border-color: #fcd47c;
+    background-color: #F0BB58;
+    border-color: #F0BB58;
 }
 
 .btn-primary:hover {
@@ -5480,8 +5480,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
     z-index: 1;
     color: white;
-    background-color: #fcd47c;
-    border-color: #fcd47c;
+    background-color: #F0BB58;
+    border-color: #F0BB58;
 }
 
 .page-item.disabled .page-link {
@@ -15311,7 +15311,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-content {
     min-height: calc(100vh - 50px);
-    margin-top: 50px;
+    margin-top: 70px;
     padding: 30px;
     background-color: #E5E5E5;
     -webkit-transition: margin-left 0.3s ease;
@@ -15327,7 +15327,7 @@ be a descendant of the grid when it is being dragged.
 
 @media (max-width: 767px) {
     .app-content {
-        margin-top: 50px;
+        margin-top: 70px;
         min-width: 100%;
     }
 }
@@ -15371,9 +15371,11 @@ be a descendant of the grid when it is being dragged.
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    background-color: #fcd47c;
+    background-color: #F0BB58;
     z-index: 1030;
     padding-right: 15px;
+    height: 70px;
+    align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -15388,17 +15390,24 @@ be a descendant of the grid when it is being dragged.
     }
 }
 
+.logo{
+    display: flex;
+    align-items: center;
+    height: 65%;
+}
+
 .app-header__logo {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
+    flex: 1 0 auto;    
+    padding: 0 15px;
+    /*font-size: 26px;
     color: #fff;
     text-align: center;
     font-family: 'Niconne';
-    padding: 0 15px;
-    font-size: 26px;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 50px;*/
+    height: 60px;
 }
 
 @media (min-width: 768px) {
@@ -15408,8 +15417,20 @@ be a descendant of the grid when it is being dragged.
         flex: 0 0 auto;
         display: block;
         width: 230px;
-        background-color: #735db2;
+        background-color: #F0BB58;
     }
+
+    .login_logo{
+        width: 230px;
+    }
+}
+
+.login_logo{
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        display: block;
+        width: 330px;
 }
 
 .app-header__logo:focus,
@@ -15444,7 +15465,7 @@ be a descendant of the grid when it is being dragged.
 .app-sidebar__toggle:focus,
 .app-sidebar__toggle:hover {
     color: #fff;
-    background-color: #fcd47c;
+    background-color: #F0BB58;
     text-decoration: none;
 }
 
@@ -15705,7 +15726,7 @@ be a descendant of the grid when it is being dragged.
 .app-menu__item:hover,
 .app-menu__item:focus {
     background: #0d1214;
-    border-left-color: #fcd47c;
+    border-left-color: #F0BB58;
     text-decoration: none;
     color: #fff;
 }
@@ -15725,7 +15746,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .treeview.is-expanded [data-toggle='treeview'] {
-    border-left-color: #fcd47c;
+    border-left-color: #F0BB58;
     background: #0d1214;
 }
 
@@ -15745,7 +15766,7 @@ be a descendant of the grid when it is being dragged.
     -webkit-transition: max-height 0.3s ease;
     -o-transition: max-height 0.3s ease;
     transition: max-height 0.3s ease;
-    background: #fcd47c;
+    background: #F0BB58;
 }
 
 .treeview-item {
@@ -16348,7 +16369,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .material-half-bg .cover {
-    background-color: #735db2;
+    background-color: #f0bb58;
     height: 50vh;
 }
 

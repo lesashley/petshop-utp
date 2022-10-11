@@ -54,7 +54,9 @@ $arrProductos = $data['productos'];
 		<div class="container">
 			<div class="row">
 
-					<?php for ($j=0 ; $j < count($arrBanner) ; $j++) {		
+					<?php
+					
+					for ($j=0 ; $j < count($arrBanner) ; $j++) {		
 						$ruta=$arrBanner[$j]['ruta'];
 						?>
 					<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
