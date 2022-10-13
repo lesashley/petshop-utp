@@ -61,6 +61,10 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
 							<?= $arrProducto['nombre']; ?>
 						</h4>
+						<span class="mtext-107 cl2 dis-block">
+							SKU:
+							<?= $arrProducto['codigo']; ?>
+						</span>
 						<span class="mtext-106 cl2">
 							<?= SMONEY.formatMoney($arrProducto['precio']); ?>
 						</span>
@@ -90,13 +94,14 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 						</div>
 						<!--  -->
 						<div class="flex-w shareproduct">
-							<div class="flex-m bor9 p-r-10 m-r-11">
+							<!-- <div class="flex-m bor9 p-r-10 m-r-11">
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 									<i class="zmdi zmdi-favorite"></i>
 								</a>
-							</div>
+							</div> -->
 
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+							<!-- Pendiente correccion -->
+							<a href="https://www.facebook.com/sharer/sharer.php?display=popup&u=' + $base_url '" data-layout="button_count" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
 
@@ -104,8 +109,8 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 								<i class="fa fa-twitter"></i>
 							</a>
 
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-								<i class="fa fa-google-plus"></i>
+							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Whatsapp">
+								<i class="fa fa-whatsapp"></i>
 							</a>
 						</div>
 					</div>
