@@ -2,7 +2,6 @@
 	
 	//define("BASE_URL", "http://localhost/petshop/");
 	const BASE_URL = "http://localhost/petshop-utp";
-	// const BASE_URL = "http://localhost:8080/petshop-utp";
 
 	//Zona horaria
 	date_default_timezone_set('America/Lima');
@@ -30,4 +29,11 @@
 	const CAT_SLIDER = "1,2,3"; //categorias que se van a mostrar en el slider
 	const CAT_BANNER = "1,2,3"; //categorias que se van a mostrar en el banner
 
+	//Datos para Encriptar / Desencriptar
+	const KEY = 'abelosh';
+	const METHODENCRIPT = "AES-128-ECB";
+
+	//Envío
+	const COSTOENVIO = 50;
+	
  ?>
