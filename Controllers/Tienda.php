@@ -241,6 +241,40 @@ require_once("Models/LoginModel.php");
 			die();
 		}
 
+		public function contacto(){
+			if($_POST){
+				
+				$nombre=ucwords(strtolower(strClean($_POST['nombreContacto'])));
+				$email=strtolower(strClean($_POST['emailContacto']));
+				$mensaje=strClean($_POST['mensaje']);
+
+				$useragent=$_SERVER['HTTP_USER_AGENT'];
+				$ip=$_SERVER['REMOTE_ADDR'];
+				$dispositivo="PC";
+
+				if(preg_match("/Android/i",$useragent)){
+					$dispositivo="Móvil";
+				}else if(preg_match("/tablet/i",$useragent)){
+					$dispositivo="Tablet";
+				}else if(preg_match("/iPhone/i",$useragent)){
+					$dispositivo="Iphone";
+				}else if(preg_match("/IPad/i",$useragent)){
+					$dispositivo="Ipad";
+				}
+
+				$userContact=$this->setContacto($nombre,$email,$mensaje,$ip,$dispositivo,$useragent);
+				if($userContact>0){
+					$arrResponse=array("status"=>true,"msg"=>"¡Gracias por contactarnos!");
+				}else{
+					$arrResponse=array("status"=>false,"msg"=>"No es posible enviar el mensaje.");
+				}
+				
+				sleep(2);
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+			}
+			die();
+		}
+		
 	}
 
 	

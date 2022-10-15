@@ -13,6 +13,15 @@
 	const DB_PASSWORD = "";
 	const DB_CHARSET = "charset=utf8";
 
+	//Datos Empresa
+
+	const DIRECCION = "DIRECCION DE EJEMPLO";
+	const TELEFONOEMPRESA = "123456789";
+	const WHATSAPP = "51902216601";
+	const EMAIL_EMPRESA = "ohmypet@gmail.com";
+	const EMAIL_PEDIDOS= "ohmypetpedidos@gmail.com";
+	const EMAIL_SUSCRIPCION="ohmypet@gmail.com";
+
 	//Deliminadores decimal y millar Ej. 24,1989.00
 	const SPD = ".";
 	const SPM = ",";
