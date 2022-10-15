@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2022 a las 09:40:29
+-- Tiempo de generación: 15-10-2022 a las 08:08:23
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -90,7 +90,8 @@ INSERT INTO `detalle_temp` (`id`, `personaid`, `productoid`, `precio`, `cantidad
 (17, 1, 10, '15.00', 2, 'ujklfmmjpgnohppscotou872ra'),
 (22, 1, 8, '60.00', 6, 'l5emk1fndmne2vjr17frcqokqv'),
 (23, 24, 10, '15.00', 1, 'l5emk1fndmne2vjr17frcqokqv'),
-(24, 25, 10, '15.00', 8, 'l5emk1fndmne2vjr17frcqokqv');
+(24, 25, 10, '15.00', 8, 'l5emk1fndmne2vjr17frcqokqv'),
+(26, 1, 8, '60.00', 5, 'ki0b2l4jlq6hr1apeh17959s2i');
 
 -- --------------------------------------------------------
 
@@ -452,7 +453,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
