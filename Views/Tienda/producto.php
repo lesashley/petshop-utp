@@ -4,6 +4,7 @@ $arrProducto = $data['producto'];
 $arrProductos = $data['productos'];
 $arrImages = $arrProducto['images']; 
 $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
+$link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
  ?>
 <br><br><br>
 <hr>
@@ -61,6 +62,10 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
 							<?= $arrProducto['nombre']; ?>
 						</h4>
+						<span class="mtext-107 cl2 dis-block">
+							SKU:
+							<?= $arrProducto['codigo']; ?>
+						</span>
 						<span class="mtext-106 cl2">
 							<?= SMONEY.formatMoney($arrProducto['precio']); ?>
 						</span>
@@ -96,7 +101,7 @@ $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 								</a>
 							</div>
 
-							<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+							<a href="<?='https://www.facebook.com/sharer/sharer.php?display=popup&u='.$link; ?>" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 								<i class="fa fa-facebook"></i>
 							</a>
 

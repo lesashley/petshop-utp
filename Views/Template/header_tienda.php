@@ -310,7 +310,7 @@
 		<!-- Cart -->
 		<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
+		<div class="header-cart flex-col-l p-l-25 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
 				<span class="mtext-103 cl2">
 					Tu carrito
