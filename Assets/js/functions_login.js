@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (request.status == 200) {
                         var objData = JSON.parse(request.responseText);
                         if (objData.status) {
-                            window.location = base_url + '/dashboard';
+                            window.location.reload(false);
+                            // window.location = base_url + '/dashboard';
                         } else {
                             swal("Atención", objData.msg, "error");
                             document.querySelector('#txtPassword').value = "";

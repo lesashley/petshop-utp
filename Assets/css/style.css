@@ -42,8 +42,8 @@
     text-align: left;
 }
 
-.bootstrap-select .dropdown-toggle {
-    border: 1px solid #ced4da;
+.bootstrap-select>.dropdown-toggle {
+    border: 1px solid #CCC;
 }
 
 
@@ -74,7 +74,7 @@
 }
 
 
-/* estilo portada categoria */
+/* style portada categoría */
 
 .prevPhoto {
     display: flex;
@@ -212,4 +212,28 @@
 #celFotos img {
     width: 150px;
     margin: 10px;
+}
+
+
+/* TIENDA VIRTUAL */
+
+.divmetodpago label, #divCondiciones {
+    width: 100%;
+    display: flex;
+}
+
+.divmetodpago label input, #divCondiciones input {
+    margin-right: 15px;
+}
+
+#divCondiciones a{
+    margin-left: 5px;
+}
+
+#divCondiciones label{
+    margin-bottom: 0;
+}
+
+.modal {
+    z-index: 9999;
 }

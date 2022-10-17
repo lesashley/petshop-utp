@@ -41,7 +41,7 @@ CREATE TABLE `archivo` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `categoria` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `cupon` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO, U:USO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `grupo_usuario` (
   `nombre_grupo` varchar(100) DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `modulo_usuario` (
   `titulo` varchar(50) DEFAULT NULL,
   `descripcion` char(100) DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE `pedido` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO, P:DEVUELTO PARCIAL, T:DEVOLUCION TOTAL'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,7 @@ CREATE TABLE `pedido_detalle` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO, D: DEVUELTO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE `permiso_usuario` (
   `w` int(11) DEFAULT NULL,
   `u` int(11) DEFAULT NULL,
   `d` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -184,7 +184,7 @@ CREATE TABLE `producto` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO, D:DESPERFECTO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -201,7 +201,7 @@ CREATE TABLE `producto_archivo` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -225,7 +225,7 @@ CREATE TABLE `promocion` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -244,7 +244,7 @@ CREATE TABLE `proveedor` (
   `usuario_mod` varchar(80) DEFAULT NULL,
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -265,7 +265,7 @@ CREATE TABLE `usuario` (
   `fecha_mod` datetime DEFAULT NULL,
   `estado` char(1) DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO, X:ANULADO',
   `token` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Índices para tablas volcadas

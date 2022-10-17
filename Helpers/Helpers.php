@@ -50,7 +50,13 @@
         $view_modal = "Views/Template/Modals/{$nameModal}.php";
         require_once $view_modal;        
     }
-
+    function getFile(string $url, $data)
+    {
+        ob_start();
+        require_once("Views/{$url}.php");
+        $file = ob_get_clean();
+        return $file;        
+    }
     //envio de correos
     function sendEmail($data,$template)
     {
@@ -58,10 +64,12 @@
         $emailDestino = $data['email'];
         $empresa = NOMBRE_REMITENTE;
         $remitente = EMAIL_REMITENTE;
+        $emailCopia = !empty($data['emailCopia']) ? $data['emailCopia'] : "";
         //ENVIO DE CORREO
         $de = "MIME-Version: 1.0\r\n";
         $de .= "Content-type: text/html; charset=UTF-8\r\n";
         $de .= "From: {$empresa} <{$remitente}>\r\n";
+        $de .= "Bcc: $emailCopia\r\n";
         ob_start();
         require_once("Views/Template/Email/".$template.".php");
         $mensaje = ob_get_clean();

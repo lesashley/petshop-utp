@@ -3,12 +3,13 @@
 	require_once("Models/TProducto.php");
 
 	class Home extends Controllers{
-		use TCategorias,//traer los metodos del trait TCategorias 
+		use TCategoria,//traer los metodos del trait TCategorias 
 		TProducto;//traer los metodos del trait TProducto 
 		
 		public function __construct()
 		{
 			parent::__construct();
+			session_start();
 		}
 
 		public function home()
