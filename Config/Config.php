@@ -1,7 +1,7 @@
 <?php 
 	
 	//define("BASE_URL", "http://localhost/petshop/");
-	const BASE_URL = "http://localhost:8090/petshop-utp";
+	const BASE_URL = "http://localhost/petshop-utp";
 
 	//Zona horaria
 	date_default_timezone_set('America/Lima');
@@ -49,5 +49,15 @@
 	const CLIENT_ID_PRUEBA = "AZcYe702r7DtTvTf6-a82gVKrz0WYh0SXeiYVJ3qVUH328bbUAdBYWbebQo0thE9K1oIC_wubjxuTaE3";
 	const CLIENT_ID_PRODUCCION = "ASNt8KMY0cuN70GQ7Du5vbtu2CBa-WKX2zDXgUSkVfob7uFx0WOu0MorqWkvIj8c_IfPScwpCLiugglK";
 	const CURRENCY = "USD";
-	//Email Prueba: sb-yofmr21494532@personal.example.com	|	password: 12345678
+	/*
+		Correo Paypal Pruebas
+			Email: sb-yofmr21494532@personal.example.com
+			password: 12345678
+	    
+		Tarjeta Paypal Pruebas
+			Card Type: Visa
+			Card Number: 4032036437141037
+			Expiration Date: 08/2024
+			CVV: 137
+	*/
  ?>

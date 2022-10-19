@@ -314,11 +314,11 @@ require_once("Models/LoginModel.php");
 
 							$infoOrden = $this->getPedido($request_pedido);
 							$dataEmailOrden = array('asunto' => "Se ha creado la orden No.".$request_pedido,
-													'email' => "brunelovelasquezvilchez@gmail.com",//$_SESSION['userData']['email_user'], 
+													'email' => $_SESSION['userData']['email_user'], 
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 
-							sendEmail($dataEmailOrden,"email_notificacion_orden");
+							//sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 							$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 							$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
@@ -364,11 +364,11 @@ require_once("Models/LoginModel.php");
 
 									$infoOrden = $this->getPedido($request_pedido);
 									$dataEmailOrden = array('asunto' => "Se ha creado la orden No.".$request_pedido,
-													'email' => "brunelovelasquezvilchez@gmail.com",//$_SESSION['userData']['email_user'], 
+													'email' => $_SESSION['userData']['email_user'], 
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 
-									sendEmail($dataEmailOrden,"email_notificacion_orden");
+									//sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 									$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 									$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
