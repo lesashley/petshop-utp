@@ -23,24 +23,19 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 	</li>
 <?php } ?>
 </ul>
-<div class="w-full container">
-	<div class="row">
-		<div class="header-cart-total col-sm-6">
-			Total
-		</div>
-		<div class="header-cart-total text-right col-sm-6">
-			<?= SMONEY.formatMoney($total); ?>
-		</div>
-	
-		<div class="header-cart-buttons flex-w w-full p-t-40">
-			<a href="<?= base_url() ?>/carrito" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-				Ver carrito
-			</a>
-	
-			<a href="<?= base_url() ?>/carrito/procesarpago" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-				Procesar pago
-			</a>
-		</div>
+<div class="w-full">
+	<div class="header-cart-total w-full p-tb-40">
+		Total: <?= SMONEY.formatMoney($total); ?>
+	</div>
+
+	<div class="header-cart-buttons flex-w w-full">
+		<a href="<?= base_url() ?>/carrito" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+			Ver carrito
+		</a>
+
+		<a href="<?= base_url() ?>/carrito/procesarpago" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+			Procesar pago
+		</a>
 	</div>
 </div>
 <?php 

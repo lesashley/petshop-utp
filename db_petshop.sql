@@ -168,10 +168,15 @@ INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
 
 CREATE TABLE `pedido` (
   `idpedido` bigint(20) NOT NULL,
+  `referenciacobro` varchar(255) NULL,
+  `idtransaccionpaypal` varchar(255) NULL,
+  `datospaypal` text NULL,
   `personaid` bigint(20) NOT NULL,
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
+  `costoenvio` decimal(10,2) NOT NULL DEFAULT '0.00',
   `monto` decimal(11,2) NOT NULL,
   `tipopagoid` bigint(20) NOT NULL,
+  `direccionenvio` text NULL,
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 

@@ -217,11 +217,23 @@
 
 /* TIENDA VIRTUAL */
 
-.divmetodpago label {
+.divmetodpago label, #divCondiciones {
     width: 100%;
     display: flex;
 }
 
-.divmetodpago label input {
+.divmetodpago label input, #divCondiciones input {
     margin-right: 15px;
+}
+
+#divCondiciones a{
+    margin-left: 5px;
+}
+
+#divCondiciones label{
+    margin-bottom: 0;
+}
+
+.modal {
+    z-index: 9999;
 }
