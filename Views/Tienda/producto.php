@@ -5,12 +5,10 @@ $arrProductos = $data['productos'];
 $arrImages = $arrProducto['images']; 
 $rutacategoria = $arrProducto['categoriaid'].'/'.$arrProducto['ruta_categoria'];
 $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
- ?>
-<br><br><br>
-<hr>
-	<!-- breadcrumb -->
+?>
+   	<!-- breadcrumb -->
 	<div class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
 			<a href="<?= base_url(); ?>" class="stext-109 cl8 hov-cl1 trans-04">
 				Inicio
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
@@ -25,7 +23,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		</div>
 	</div>
 	<!-- Product Detail -->
-	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+	<section class="sec-product-detail bg0 p-t-30 p-b-60">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-lg-7 p-b-30">
@@ -73,7 +71,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 						<?= $arrProducto['descripcion']; ?>
 						<!--  -->
 						<div class="p-t-33">
-							<div class="flex-w flex-r-m p-b-10">
+							<div class="flex-w p-b-10" style="justify-content: center; align-items: center;">
 								<div class="size-204 flex-w flex-m respon6-next">
 									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
 										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -94,7 +92,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 							</div>	
 						</div>
 						<!--  -->
-						<div class="flex-w flex-m p-l-100 p-t-40 respon7">
+						<div class="flex-w shareproduct">
 							<div class="flex-m bor9 p-r-10 m-r-11">
 								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
 									<i class="zmdi zmdi-favorite"></i>
@@ -118,14 +116,16 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 			</div>
 		</div>
 
-		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<h3>Productos Relacionados</h3>
-		</div>
 	</section>
 
 	<!-- Related Products -->
-	<section class="sec-relate-product bg0 p-t-45 p-b-105">
-		<div class="container">
+	<section class="sec-relate-product bg0 p-t-30 p-b-105">
+	<div class="bg6 flex-c-m flex-w size-302 m-t-10 m-b-30 p-tb-15">
+				<h3 class="ltext-106 cl5 txt-center">
+					Productos relacionados
+				</h3>
+			</div>
+		<div class="container">			
 			<!-- Slide2 -->
 			<div class="wrap-slick2">
 				<div class="slick2">

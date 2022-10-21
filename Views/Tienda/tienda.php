@@ -6,8 +6,9 @@ $arrProductos = $data['productos'];
 // dep($arrProductos);
 
 ?>
-<!-- <hr> -->
-<div class="bg0 m-t-23 p-b-140 p-t-80">
+<!-- <hr> 
+<div class="bg0 m-t-23 p-b-140 p-t-80">-->
+<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
