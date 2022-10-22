@@ -264,7 +264,15 @@ require_once("Models/LoginModel.php");
 
 				$userContact=$this->setContacto($nombre,$email,$mensaje,$ip,$dispositivo,$useragent);
 				if($userContact>0){
-					$arrResponse=array("status"=>true,"msg"=>"¡Gracias por contactarnos!");
+					$arrResponse=array("status"=>true,"msg"=>"¡Mensaje enviado a la administracion de Oh my Pet!");
+					//enviar correo
+					$dataUsuario=array('asunto'=>'Contacto desde la tienda en línea',
+										'email'=> EMAIL_EMPRESA,
+										'nombreContacto'=>$nombre,
+										'emailContacto'=>$email,
+										'mensaje'=>$mensaje);
+					//sendEmail($dataUsuario,'email_contacto');			
+
 				}else{
 					$arrResponse=array("status"=>false,"msg"=>"No es posible enviar el mensaje.");
 				}
