@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2022 a las 05:32:07
+-- Tiempo de generación: 25-10-2022 a las 04:53:53
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -125,7 +125,10 @@ INSERT INTO `detalle_temp` (`id`, `personaid`, `productoid`, `precio`, `cantidad
 (49, 27, 1, '100.00', 1, '9r3dc6nd3v6livep6ogt1i6l6u'),
 (50, 1, 9, '23.00', 1, '7me4i7gla77opr6n9u091bf1et'),
 (51, 1, 10, '15.00', 1, 'qfnbout3g55bnc6ck9d65ihuis'),
-(53, 1, 31, '30.00', 4, 'khv4lng41gtnp8cukngg1kibiq');
+(54, 1, 31, '30.00', 1, 'khv4lng41gtnp8cukngg1kibiq'),
+(55, 1, 30, '60.00', 2, 'ml9ugsrle316tn2j6hoplrengq'),
+(56, 1, 32, '60.00', 2, 'ml9ugsrle316tn2j6hoplrengq'),
+(57, 1, 19, '30.00', 1, 'iv8cmfoc9q5374no23ehgmljrn');
 
 -- --------------------------------------------------------
 
@@ -225,7 +228,10 @@ INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
 (3, 'Clientes', 'Clientes de tienda', 1),
 (4, 'Productos', 'Todos los productos', 1),
 (5, 'Pedidos', 'Pedidos', 1),
-(6, 'Caterogías', 'Caterogías Productos', 1);
+(6, 'Caterogías', 'Caterogías Productos', 1),
+(7, 'Suscriptores', 'Suscriptores del sitio web', 1),
+(8, 'Contactos', 'Mensajes del formulario contacto', 1),
+(11, 'Paginas', 'Páginas del sitio web', 1);
 
 -- --------------------------------------------------------
 
@@ -293,12 +299,15 @@ INSERT INTO `permisos` (`idpermiso`, `rolid`, `moduloid`, `r`, `w`, `u`, `d`) VA
 (353, 2, 4, 1, 0, 0, 0),
 (354, 2, 5, 1, 0, 0, 0),
 (355, 2, 6, 1, 0, 0, 0),
-(482, 1, 1, 1, 1, 1, 1),
-(483, 1, 2, 1, 1, 1, 1),
-(484, 1, 3, 1, 1, 1, 1),
-(485, 1, 4, 1, 1, 1, 1),
-(486, 1, 5, 1, 1, 1, 1),
-(487, 1, 6, 1, 1, 1, 1);
+(517, 1, 1, 1, 1, 1, 1),
+(518, 1, 2, 1, 1, 1, 1),
+(519, 1, 3, 1, 1, 1, 1),
+(520, 1, 4, 1, 1, 1, 1),
+(521, 1, 5, 1, 1, 1, 1),
+(522, 1, 6, 1, 1, 1, 1),
+(523, 1, 7, 1, 1, 1, 1),
+(524, 1, 8, 1, 1, 1, 1),
+(525, 1, 11, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -549,7 +558,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
@@ -561,7 +570,7 @@ ALTER TABLE `imagen`
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
-  MODIFY `idmodulo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idmodulo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -573,7 +582,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=488;
+  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=526;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
