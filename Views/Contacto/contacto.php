@@ -1,13 +1,18 @@
 <?php 
   headerTienda($data);
+  $banner = $data['page']['portada'];
+  $idpagina = $data['page']['idpost'];
 ?>
     <!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('Assets/images/uploads/img_7fc2fe8dfa8a355f53ca5bf4a74ad663.jpg');">
 		<h2 class="ltext-105 cl0 txt-center">
-			Contact
+			Contacto
 		</h2>
 	</section>	
-
+	<?php
+	if(viewPage($idpagina)){
+	
+ 	 ?>
 
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
@@ -106,10 +111,16 @@
 		</div>
 	</section>	
 	
-	
-	<!-- Map -->
-	<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.6509201177596!2d-77.03783328455768!3d-12.067522145574099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8eb73a4c50f%3A0x61219792de12a71c!2sUniversidad%20Tecnol%C3%B3gica%20Del%20Per%C3%BA%20-%20Informes!5e0!3m2!1ses-419!2spe!4v1665807845742!5m2!1ses-419!2spe" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    		<!-- <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div> -->
+	<?php 
+		echo $data['page']['contenido'];
+	}else{
+		?>
+		<div>
+	<div class="container-fluid py-5 text-center" >
+		<img src="<?= media() ?>/images/construction.png" alt="En construcción">
+		<h3>Estamos trabajando para usted.</h3>
 	</div>
-    <?php footerTienda($data); ?>
+</div>
+
+	<?php }
+	 footerTienda($data); ?>

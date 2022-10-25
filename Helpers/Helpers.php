@@ -81,18 +81,19 @@
     function getPermisos(int $idmodulo){
         require_once ("Models/PermisosModel.php");
         $objPermisos = new PermisosModel();
-        $idrol = $_SESSION['userData']['idrol'];
-        $arrPermisos = $objPermisos->permisosModulo($idrol);
-        $permisos = '';
-        $permisosMod = '';
-        if(count($arrPermisos) > 0 ){
-            $permisos = $arrPermisos;
-            $permisosMod = isset($arrPermisos[$idmodulo]) ? $arrPermisos[$idmodulo] : "";
+        if(!empty($_SESSION['userData'])){
+            $idrol = $_SESSION['userData']['idrol'];
+            $arrPermisos = $objPermisos->permisosModulo($idrol);
+            $permisos = '';
+            $permisosMod = '';
+            if(count($arrPermisos) > 0 ){
+                $permisos = $arrPermisos;
+                $permisosMod = isset($arrPermisos[$idmodulo]) ? $arrPermisos[$idmodulo] : "";
+            }
+            $_SESSION['permisos'] = $permisos;
+            $_SESSION['permisosMod'] = $permisosMod;
         }
-        $_SESSION['permisos'] = $permisos;
-        $_SESSION['permisosMod'] = $permisosMod;
     }
-
     function sessionUser(int $idpersona){ //obtener datos de usuario
         require_once ("Models/LoginModel.php"); //llamamos al modelo
         $objLogin = new LoginModel(); //instanciamos el modelo
@@ -240,6 +241,17 @@
         return $request;
     }
     
+    function getPageRout(string $ruta){
+        require_once("Libraries/Core/Mysql.php");
+        $con = new Mysql();
+        $sql = "SELECT * FROM post WHERE ruta = '$ruta' AND status != 0 ";
+        $request = $con->select($sql);
+        if(!empty($request)){
+            $request['portada'] = $request['portada'] != "" ? media()."/images/uploads/".$request['portada'] : "";
+        }
+        return $request;
+    }
+
     function viewPage(int $idpagina){
         require_once("Libraries/Core/Mysql.php");
         $con = new Mysql();
@@ -252,15 +264,5 @@
         }
     }
 
-    function getPageRout(string $ruta){
-        require_once("Libraries/Core/Mysql.php");
-        $con = new Mysql();
-        $sql = "SELECT * FROM post WHERE ruta = '$ruta' AND status != 0 ";
-        $request = $con->select($sql);
-        if(!empty($request)){
-            $request['portada'] = $request['portada'] != "" ? media()."/images/uploads/".$request['portada'] : "";
-        }
-        return $request;
-    }
-
+ 
  ?>

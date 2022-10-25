@@ -5,7 +5,14 @@
                         $cantCarrito += $product['cantidad'];
                 }
         }
+
+		$tituloPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['titulo'] : "";
+		$infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['contenido'] : "";
  ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,6 +52,27 @@
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
+	<!-- Modal preguntas frecuentes -->
+	<div class="modal fade" id="modalAyuda" tabindex="-1" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title"><?= $tituloPreguntas ?></h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      		<div class="page-content">
+	        		<?= $infoPreguntas; ?>
+	      		</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<div id="divLoading" >
       <div>
         <img src="<?= media(); ?>/images/loading.svg" alt="Loading">
@@ -63,8 +91,8 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							¿Cómo comprar? Y Preguntas Frecuentes
+						<a href="#" class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#modalAyuda" >
+							Help & FAQs
 						</a>
 
 						<a href="#" class="flex-c-m trans-04 p-lr-25">

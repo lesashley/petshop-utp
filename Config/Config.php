@@ -51,8 +51,19 @@
 	const MDCONTACTOS=8;
 	const MDPAGINAS=11;
 
-	//paginas
+
+	//paginas, id de la bd
+	const PINICIO=6;
+	const PTIENDA=2;
+	const PCARRITO=3;
 	const PNOSOTROS = 1;
+	//const PCONTACTO=5;
+	const PPREGUNTAS=4;
+	const PTERMINOS=5;
+	const PERROR=7;
+
+
+
 
 	//Pasarela de pagos Paypal
 	const CLIENT_ID_PRUEBA = "AZcYe702r7DtTvTf6-a82gVKrz0WYh0SXeiYVJ3qVUH328bbUAdBYWbebQo0thE9K1oIC_wubjxuTaE3";

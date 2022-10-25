@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2022 a las 04:53:53
+-- Tiempo de generación: 25-10-2022 a las 21:15:31
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -128,7 +128,8 @@ INSERT INTO `detalle_temp` (`id`, `personaid`, `productoid`, `precio`, `cantidad
 (54, 1, 31, '30.00', 1, 'khv4lng41gtnp8cukngg1kibiq'),
 (55, 1, 30, '60.00', 2, 'ml9ugsrle316tn2j6hoplrengq'),
 (56, 1, 32, '60.00', 2, 'ml9ugsrle316tn2j6hoplrengq'),
-(57, 1, 19, '30.00', 1, 'iv8cmfoc9q5374no23ehgmljrn');
+(57, 1, 19, '30.00', 1, 'iv8cmfoc9q5374no23ehgmljrn'),
+(60, 1, 13, '32.00', 2, 's3ho27oc41i8g2tr10v99jb8uq');
 
 -- --------------------------------------------------------
 
@@ -299,15 +300,15 @@ INSERT INTO `permisos` (`idpermiso`, `rolid`, `moduloid`, `r`, `w`, `u`, `d`) VA
 (353, 2, 4, 1, 0, 0, 0),
 (354, 2, 5, 1, 0, 0, 0),
 (355, 2, 6, 1, 0, 0, 0),
-(517, 1, 1, 1, 1, 1, 1),
-(518, 1, 2, 1, 1, 1, 1),
-(519, 1, 3, 1, 1, 1, 1),
-(520, 1, 4, 1, 1, 1, 1),
-(521, 1, 5, 1, 1, 1, 1),
-(522, 1, 6, 1, 1, 1, 1),
-(523, 1, 7, 1, 1, 1, 1),
-(524, 1, 8, 1, 1, 1, 1),
-(525, 1, 11, 1, 1, 1, 1);
+(526, 1, 1, 1, 1, 1, 1),
+(527, 1, 2, 1, 1, 1, 1),
+(528, 1, 3, 1, 1, 1, 1),
+(529, 1, 4, 1, 1, 1, 1),
+(530, 1, 5, 1, 1, 1, 1),
+(531, 1, 6, 1, 1, 1, 1),
+(532, 1, 7, 1, 1, 1, 1),
+(533, 1, 8, 1, 1, 1, 1),
+(534, 1, 11, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -558,7 +559,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
@@ -582,7 +583,7 @@ ALTER TABLE `pedido`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=526;
+  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=535;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
