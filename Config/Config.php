@@ -49,6 +49,10 @@
 	//MODULOS (constantes de la bd)
 
 	const MDCONTACTOS=8;
+	const MDPAGINAS=11;
+
+	//paginas
+	const PNOSOTROS = 1;
 
 	//Pasarela de pagos Paypal
 	const CLIENT_ID_PRUEBA = "AZcYe702r7DtTvTf6-a82gVKrz0WYh0SXeiYVJ3qVUH328bbUAdBYWbebQo0thE9K1oIC_wubjxuTaE3";

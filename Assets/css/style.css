@@ -91,6 +91,15 @@
     margin: auto;
 }
 
+
+/* subir portada */
+
+.prevPortada {
+    width: 100%;
+    min-width: 200px;
+    background: none;
+}
+
 .prevPhoto label {
     cursor: pointer;
     width: 100%;
@@ -217,20 +226,22 @@
 
 /* TIENDA VIRTUAL */
 
-.divmetodpago label, #divCondiciones {
+.divmetodpago label,
+#divCondiciones {
     width: 100%;
     display: flex;
 }
 
-.divmetodpago label input, #divCondiciones input {
+.divmetodpago label input,
+#divCondiciones input {
     margin-right: 15px;
 }
 
-#divCondiciones a{
+#divCondiciones a {
     margin-left: 5px;
 }
 
-#divCondiciones label{
+#divCondiciones label {
     margin-bottom: 0;
 }
 

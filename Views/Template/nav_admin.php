@@ -73,6 +73,16 @@
         </li>
         <?php } ?>
 
+        
+        <?php if(!empty($_SESSION['permisos'][MDPAGINAS]['r'])){ ?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/paginas">
+                <i class="app-menu__icon fa fa-file-alt" aria-hidden="true"></i>
+                <span class="app-menu__label">Páginas</span>
+            </a>
+        </li>
+        <?php } ?>
+
         <li>
             <a class="app-menu__item" href="<?= base_url(); ?>/logout">
                 <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>
