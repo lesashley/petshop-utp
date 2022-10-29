@@ -50,17 +50,23 @@
 
 	const MDCONTACTOS=8;
 	const MDPAGINAS=11;
+	//Modulos
+	const MCLIENTES = 3;
+	const MPEDIDOS = 5;
+	const RADMINISTRADOR = 1;
+	const RCLIENTES = 7;
+	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente');
 
 
 	//paginas, id de la bd
-	const PINICIO=6;
+	const PINICIO=1;
 	const PTIENDA=2;
 	const PCARRITO=3;
-	const PNOSOTROS = 1;
-	//const PCONTACTO=5;
-	const PPREGUNTAS=4;
-	const PTERMINOS=5;
-	const PERROR=7;
+	const PNOSOTROS = 4;
+	const PCONTACTO=5;
+	const PPREGUNTAS=6;
+	const PTERMINOS=7;
+	const PERROR=8;
 
 
 
@@ -69,6 +75,8 @@
 	const CLIENT_ID_PRUEBA = "AZcYe702r7DtTvTf6-a82gVKrz0WYh0SXeiYVJ3qVUH328bbUAdBYWbebQo0thE9K1oIC_wubjxuTaE3";
 	const CLIENT_ID_PRODUCCION = "ASNt8KMY0cuN70GQ7Du5vbtu2CBa-WKX2zDXgUSkVfob7uFx0WOu0MorqWkvIj8c_IfPScwpCLiugglK";
 	const CURRENCY = "USD";
+	const SECRET = "ENfB22-uxJNhxRLunp1I5uwtrbcXoMfIZrMVjODx2oFp5RN9QE2eolW7kgDIirHm25GhnlAWipDpitr-";
+	/* const SECRET ="EGCI6c5dN4SHimd2-_MhHEsXIlosnuGUDFOiznkmfxIm9Xjgzfk7SqHfxJb-7U_nYGK2n5cjhJebsPx-"; */
 	/*
 		Correo Paypal Pruebas
 			Email: sb-yofmr21494532@personal.example.com
@@ -80,5 +88,7 @@
 			Expiration Date: 08/2024
 			CVV: 137
 	*/
-	
+	//SANDBOX PAYPAL
+	const URLPAYPAL = "https://api-m.sandbox.paypal.com";
+/* 	const URLPAYPAL= "api-m.paypal.com"*/
  ?>

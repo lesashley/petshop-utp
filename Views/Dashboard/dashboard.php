@@ -14,7 +14,12 @@
           <div class="tile">
             <div class="tile-body">Create a beautiful dashboard</div>
 
-            <?php dep($_SESSION['userData']); ?>
+            <?php 
+            echo getTokenPaypal();
+
+            $requestApi = CurlConnectionGet("https://api.sandbox.paypal.com/v2/checkout/orders/81F60199BV343413N","application/json",getTokenPaypal());
+            dep($requestApi);
+            dep($_SESSION['userData']); ?>
           </div>
         </div>
       </div>
