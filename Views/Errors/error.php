@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Pagina no encontrada</title>
-</head>
-<body>
-	<h1>Pagina no encontrada</h1>
-</body>
-</html>
+<?php 
+    headerTienda($data);
+?>
+<!-- <script>
+  document.querySelector('header').classList.add('header-v4');
+</script> -->
+<br><br><br>
+<div class="container text-center">
+	<main class="app-content">
+      <div class="page-error tile">
+        <?= $data['page']['contenido']; ?>
+        <p><a class="btn btn-warning" href="javascript:window.history.back();">Regresar</a></p>
+      </div>
+    </main>
+</div>
+<?php footerTienda($data); ?>
+

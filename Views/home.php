@@ -5,8 +5,11 @@ headerTienda($data);
 $arrSlider = $data['slider'];
 $arrBanner = $data['banner'];
 $arrProductos = $data['productos'];
-
-
+//para obtener el contenido de la pagina de inicio de la bd paso 3
+$contentPage = "";
+if(!empty($data['page'])){
+	$contentPage = $data['page']['contenido'];
+}
 
 ?>
 	<!-- El carrito esta en views/templates/modals/ -->
@@ -147,6 +150,12 @@ $arrProductos = $data['productos'];
 					Productos para tus mascotas
 				</h3>
 			</div>
+			<div >
+			<?= $contentPage ?>
+			</div>
+
+
+
 			<hr>
 
 			<div class="flex-w flex-sb-m p-b-52">
@@ -437,6 +446,11 @@ $arrProductos = $data['productos'];
 				</a>
 			</div>
 		</div>
+
+		<!-- <div class="container text-center p-t-80">
+			<hr>
+					
+		</div> -->
 	</section>
 
 
