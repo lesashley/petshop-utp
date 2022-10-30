@@ -298,3 +298,43 @@
     min-height: calc(100vh- 110px);
     margin-bottom: 0;
 }
+
+
+/* dashboard */
+
+.linkw {
+    text-decoration: none;
+}
+
+.linkw:hover {
+    text-decoration: none;
+}
+
+
+/* calendario */
+
+.container-title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container-title input {
+    border: 1px solid #F0BB58;
+    padding: 4px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.dflex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/* para que no se muestren los dias */
+
+.ui-datepicker-calendar {
+    display: none;
+}

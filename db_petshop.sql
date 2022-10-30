@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2022 a las 05:55:49
+-- Tiempo de generación: 30-10-2022 a las 19:39:36
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -95,7 +95,10 @@ INSERT INTO `detalle_pedido` (`id`, `pedidoid`, `productoid`, `precio`, `cantida
 (3, 3, 9, '23.00', 7),
 (4, 3, 5, '30.00', 9),
 (5, 4, 11, '35.00', 1),
-(6, 5, 11, '35.00', 2);
+(6, 5, 11, '35.00', 2),
+(7, 6, 1, '100.00', 2),
+(8, 7, 8, '60.00', 1),
+(9, 8, 11, '35.00', 1);
 
 -- --------------------------------------------------------
 
@@ -133,7 +136,10 @@ INSERT INTO `detalle_temp` (`id`, `personaid`, `productoid`, `precio`, `cantidad
 (29, 26, 9, '23.00', 7, '6fcb5u6tkm7q8n778qbfbhdbfr'),
 (30, 26, 5, '30.00', 9, '6fcb5u6tkm7q8n778qbfbhdbfr'),
 (31, 1, 11, '35.00', 1, '2grk20ph4q7burtn7avmk225lo'),
-(32, 1, 11, '35.00', 2, '2hg20s382nloojeud4sat9smsr');
+(32, 1, 11, '35.00', 2, '2hg20s382nloojeud4sat9smsr'),
+(33, 1, 1, '100.00', 2, '4e9d231jm5nv3hmeoho2nagfn7'),
+(34, 1, 8, '60.00', 1, 'st2ci37a1a9326tl5bi83lt6j3'),
+(35, 23, 11, '35.00', 1, '7c6ig7rjh4grnruv2eq3sump4e');
 
 -- --------------------------------------------------------
 
@@ -235,7 +241,10 @@ INSERT INTO `pedido` (`idpedido`, `referenciacobro`, `idtransaccionpaypal`, `dat
 (2, NULL, '752052324J031942B', '{\"id\":\"0FW7817733040044W\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"752052324J031942B\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T04:19:16Z\",\"update_time\":\"2022-10-26T04:19:16Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T04:19:09Z\",\"update_time\":\"2022-10-26T04:19:16Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/0FW7817733040044W\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-25 23:19:17', '50.00', '65.00', 1, 'Av Petit Thoars, 1033, lima', 'Reembolsado'),
 (3, NULL, '7T944553GH762964F', '{\"id\":\"8W693966BY063330A\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"7T944553GH762964F\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T07:55:30Z\",\"update_time\":\"2022-10-26T07:55:30Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T07:55:17Z\",\"update_time\":\"2022-10-26T07:55:30Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/8W693966BY063330A\",\"rel\":\"self\",\"method\":\"GET\"}]}', 26, '2022-10-26 02:55:31', '50.00', '481.00', 1, 'Petit Thoars 1033, lima', 'Completo'),
 (4, NULL, '4GJ29750YX1746930', '{\"id\":\"67H86399K7911713E\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"4GJ29750YX1746930\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-29T03:51:49Z\",\"update_time\":\"2022-10-29T03:51:49Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-29T03:51:25Z\",\"update_time\":\"2022-10-29T03:51:49Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/67H86399K7911713E\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-28 22:51:51', '50.00', '85.00', 1, 'LIMA, LIMA', 'Reembolsado'),
-(5, 'hgjhgjk', '', NULL, 1, '2022-10-28 22:54:07', '50.00', '120.00', 5, 'LIMA, LIMA', 'Pendiente');
+(5, 'hgjhgjk', '', NULL, 1, '2022-10-28 22:54:07', '50.00', '120.00', 5, 'LIMA, LIMA', 'Completo'),
+(6, 'OHMYPET002', '', NULL, 1, '2022-10-30 12:52:05', '50.00', '250.00', 2, 'VES, VES', 'Completo'),
+(7, 'OHMYPET001', '', NULL, 1, '2022-10-30 12:52:54', '50.00', '110.00', 6, 'VES, VES', 'Completo'),
+(8, 'OHMYPET003', '', NULL, 23, '2022-10-30 13:09:14', '50.00', '85.00', 5, 'LIMA, LIMA', 'Completo');
 
 -- --------------------------------------------------------
 
@@ -264,22 +273,26 @@ INSERT INTO `permisos` (`idpermiso`, `rolid`, `moduloid`, `r`, `w`, `u`, `d`) VA
 (353, 2, 4, 1, 0, 0, 0),
 (354, 2, 5, 1, 0, 0, 0),
 (355, 2, 6, 1, 0, 0, 0),
-(494, 7, 1, 0, 0, 0, 0),
-(495, 7, 2, 0, 0, 0, 0),
-(496, 7, 3, 0, 0, 0, 0),
-(497, 7, 4, 0, 0, 0, 0),
-(498, 7, 5, 1, 0, 0, 0),
-(499, 7, 6, 0, 0, 0, 0),
-(500, 1, 1, 1, 1, 1, 1),
-(501, 1, 2, 1, 1, 1, 1),
-(502, 1, 3, 1, 1, 1, 1),
-(503, 1, 4, 1, 1, 1, 1),
-(504, 1, 5, 1, 1, 1, 1),
-(505, 1, 6, 1, 1, 1, 1),
-(506, 1, 7, 1, 1, 1, 1),
-(507, 1, 8, 1, 1, 1, 1),
-(508, 1, 11, 1, 1, 1, 1),
-(509, 1, 12, 1, 1, 1, 1);
+(520, 1, 1, 1, 1, 1, 1),
+(521, 1, 2, 1, 1, 1, 1),
+(522, 1, 3, 1, 1, 1, 1),
+(523, 1, 4, 1, 1, 1, 1),
+(524, 1, 5, 1, 1, 1, 1),
+(525, 1, 6, 1, 1, 1, 1),
+(526, 1, 7, 1, 1, 1, 1),
+(527, 1, 8, 1, 1, 1, 1),
+(528, 1, 11, 1, 1, 1, 1),
+(529, 1, 12, 1, 1, 1, 1),
+(530, 7, 1, 1, 0, 0, 0),
+(531, 7, 2, 0, 0, 0, 0),
+(532, 7, 3, 0, 0, 0, 0),
+(533, 7, 4, 0, 0, 0, 0),
+(534, 7, 5, 1, 0, 0, 0),
+(535, 7, 6, 0, 0, 0, 0),
+(536, 7, 7, 0, 0, 0, 0),
+(537, 7, 8, 0, 0, 0, 0),
+(538, 7, 11, 0, 0, 0, 0),
+(539, 7, 12, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -331,7 +344,7 @@ INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `t
 (20, '', 'Asdasd', 'Asdas', 13123123, 'adasd@gmail.com', '47756fa283b7dcf363ae29c451eeec6a1634e3c93f1acd2fea9478c6e56dc14b', '', '', '', '', 7, '2022-10-11 15:38:04', 1),
 (21, '', 'Hjhjhjj', 'Hjhjh', 65457657567, 'jkjk@gmail.com', '4918864a627976364081a2dc65758bc3c1ec906bace5bcd241fe205658868eee', '', '', '', '', 7, '2022-10-11 15:39:01', 1),
 (22, '1233424', 'Algo', 'Algosss', 546987458, 'dasdsa@gmail.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', '', '', '', '', 3, '2022-10-12 00:14:57', 1),
-(23, '88888888', 'Ocho', 'Ocho', 854745574, 'ocholl@gmail.com', 'a5b810a3190a39033de4d82052fdf6f4c9765516d6b7eeb0c496adf8a3d3efc9', '45454545454545', 'ocho', 'ocho', '', 7, '2022-10-12 00:16:25', 1),
+(23, '88888888', 'Ocho', 'Ocho', 854745574, 'ocholl@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '45454545454545', 'ocho', 'ocho', '', 7, '2022-10-12 00:16:25', 1),
 (24, '', 'Lol', 'Lol', 456465645, 'lol@gmail.com', '491906f44fa5b12a891e4663353a893a37604783f101757bee46f81d6d9fa253', '', '', '', '', 7, '2022-10-12 02:32:02', 1),
 (25, '', 'Xd', 'Xd', 569874456, 'xd@gmail.com', '686c75c1073846e498145bfaa61ecc712c7f33d9f669b1f6312942e85a4f83a1', '', '', '', '', 7, '2022-10-12 02:37:47', 1),
 (26, '565645', 'Javier', 'Sanchez Corro', 123456789, 'sanchez.jsebastian99@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '', '', '', '', 7, '2022-10-26 02:51:10', 1);
@@ -598,13 +611,13 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
@@ -622,13 +635,13 @@ ALTER TABLE `modulo`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `idpedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idpedido` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=510;
+  MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=540;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`

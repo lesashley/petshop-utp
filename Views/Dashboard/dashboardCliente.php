@@ -98,13 +98,35 @@
         <div class="col-md-6">
           <div class="tile">
             <div class="container-title">
-              <h3 class="tile-title">Tipo de pagos por mes</h3>
-              <div class="dflex">
-                <input class="date-picker pagoMes" name="pagoMes" placeholder="Mes y Año">
-                <button  type="button" class="btnTipoVentaMes btn btn-info btn-sm" onclick="fntSearchPagos()"> <i class="fas fa-search"></i> </button>
-              </div>
+              <h3 class="tile-title">Últimos Productos</h3>
+              <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Producto</th>
+                  <th>Monto</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php 
+                    if(count($data['productosTen']) > 0 ){
+                      foreach ($data['productosTen'] as $producto) {
+                 ?>
+                <tr>
+                  <td><?= $producto['idproducto'] ?></td>
+                  <td><?= $producto['nombre'] ?></td>
+                  <td><?= SMONEY. formatMoney($producto['precio']) ?></td>
+                  <td><a href="<?= base_url() ?>/tienda/producto/<?= $producto['idproducto'].'/'.$producto['ruta'] ?>" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                </tr>
+                <?php } 
+                  } ?>
+
+              </tbody>
+            </table>
+              
             </div>
-            <div id="pagosMesAnio"></div>
+            
           </div>
         </div>
       </div>
@@ -122,66 +144,13 @@
             <div id="graficaMes"></div>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="container-title">
-              <h3 class="tile-title">Ventas por año</h3>
-              <div class="dflex">
-                <input class="ventasAnio" name="ventasAnio" placeholder="Año" minlength="4" maxlength="4" onkeypress="return controlTag(event);">
-                <button type="button" class="btnVentasAnio btn btn-info btn-sm" onclick="fntSearchVAnio()"> <i class="fas fa-search"></i> </button>
-              </div>
-            </div>
-            <div id="graficaAnio"></div>
-          </div>
-        </div>
+        
       </div>
 
     </main>
 <?php footerAdmin($data); ?>
 
 <script>
-
-  Highcharts.chart('pagosMesAnio', {    
-    chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-      },
-      title: {
-          text: 'Ventas por tipo pago, <?= $data['pagosMes']['mes'].' '.$data['pagosMes']['anio'] ?>'
-      },
-      tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-      },
-      accessibility: {
-          point: {
-              valueSuffix: '%'
-          }
-      },
-      plotOptions: {
-          pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-                  enabled: true,
-                  format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-              }
-          }
-      },
-      series: [{
-           name: 'Brands',
-          colorByPoint: true,
-          data: [
-          <?php 
-            foreach ($data['pagosMes']['tipospago'] as $pagos) {
-              echo "{name:'".$pagos['tipopago']."',y:".$pagos['total']."},";
-            }
-           ?>
-          ]
-      }]
-  });
-
 
   Highcharts.chart('graficaMes', {
       chart: {
@@ -224,62 +193,6 @@
                 }
             ?>
           ]
-      }]
-  });
-  
-  Highcharts.chart('graficaAnio', {
-      chart: {
-          type: 'column'
-      },
-      title: {
-          text: 'Ventas del año <?= $data['ventasAnio']['anio'] ?> '
-      },
-      subtitle: {
-          text: 'Esdística de ventas por mes'
-      },
-      xAxis: {
-          type: 'Mes',
-          labels: {
-              rotation: -45,
-              style: {
-                  fontSize: '13px',
-                  fontFamily: 'Verdana, sans-serif'
-              }
-          }
-      },
-      yAxis: {
-          min: 0,
-          title: {
-              text: ''
-          }
-      },
-      legend: {
-          enabled: false
-      },
-      tooltip: {
-        pointFormat: 'Monto de Ventas : <b>{point.y:.1f} Soles </b>'
-      },
-      series: [{
-          name: 'Monto',
-          data: [
-            <?php 
-              foreach ($data['ventasAnio']['meses'] as $mes) {
-                echo "['".$mes['mes']."',".$mes['venta']."],";
-              }
-             ?>                 
-          ],
-          dataLabels: {
-              enabled: true,
-              rotation: -90,
-              color: '#FFFFFF',
-              align: 'right',
-              format: '{point.y:.1f}', // one decimal
-              y: 10, // 10 pixels down from the top
-              style: {
-                  fontSize: '13px',
-                  fontFamily: 'Verdana, sans-serif'
-              }
-          }
       }]
   });
 
