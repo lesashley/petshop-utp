@@ -3712,3 +3712,13 @@ iframe {border: none;}
 .pointer-none {
 	pointer-events: none;
 }
+
+.btn-ver-productos a{
+	background-color: #705db2;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 20px;
+    font-family: Poppins-Medium;
+	margin-top: 30px;
+}

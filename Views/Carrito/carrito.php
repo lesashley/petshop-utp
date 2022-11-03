@@ -146,12 +146,13 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 	</form>
 	
 <?php }else{ ?>
-			<p style="padding-right: 15px;">No hay productos en el carrito <a href="<?= base_url() ?>/tienda">Ver productos</a></p>
+			<!-- <p style="padding-right: 15px;">No hay productos en el carrito <a href="<?= base_url() ?>/tienda">Ver productos</a></p> -->
 			<div style="display: flex; justify-content: center;">
 				<img src="<?=media() ?>/tienda/images/img/EmptyCart.svg" style="min-height:5%; min-width:5%; height:auto; width:auto; max-height:100%; max-width:100%;" alt="Oh my pet-Petshop">
 			</div>
-			<div style="display: flex; justify-content: center; padding-bottom: 50vh;">
+			<div style="display: flex; justify-content: center; padding-bottom: 20vh; flex-flow: column;">
 				<h2 style="font-family: Poppins-Medium; font-size: 35px; text-align: center; color: #8c8e8f;">Carrito vacío</h2>
+				<button class="btn-ver-productos"><a href="<?= base_url() ?>/tienda">Ver productos</a></button>
 			</div>
 		</div>
 	</div>
