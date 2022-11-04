@@ -123,7 +123,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class=""><!-- active-menu-->
-								<a href="<?= base_url()?>">Inicio</a>
+							<a href="<?= base_url() ?>" data-section="header_tienda" data-value="navbar-inicio">Inicio</a>
 								<!--<ul class="sub-menu">
 									<li><a href="index.html">Homepage 1</a></li>
 									<li><a href="home-02.html">Homepage 2</a></li>
@@ -132,7 +132,7 @@
 							</li>
 
 							<li class="">
-								<a href="<?= base_url()?>/tienda">Tienda</a>
+							<a href="<?= base_url() ?>/tienda"data-section="header_tienda" data-value="navbar-tienda">Tienda</a>
 								<!-- <ul class="sub-menu">
 									<li><a href="#">Comida para perros</a></li>
 									<li><a href="#">Juguetes para perros</a></li>
@@ -164,17 +164,17 @@
 							</li> -->
 						
 							<li class="label1" data-label1="<?= $cantCarrito; ?> ">
-								<a href="<?= base_url()?>/carrito">Carrito</a>
+							<a href="<?= base_url() ?>/carrito"data-section="header_tienda" data-value="navbar-carrito">Carrito</a>
 							</li>
 
 							<li class="label1" data-label1="Sale">
-								<a href="shoping-cart.html">Ofertas</a>
+							<a href="shoping-cart.html" data-section="header_tienda" data-value="navbar-ofertas">Ofertas</a>
 							</li>
                             <li>
-                                <a href="<?= base_url()?>/nosotros">Nosotros</a>
+							<a href="<?= base_url() ?>/nosotros" data-section="header_tienda" data-value="navbar-nosotros">Nosotros</a>
                             </li>
                             <li>
-                                <a href="<?= base_url()?>/contacto">Contacto</a>
+							<a href="<?= base_url() ?>/contacto"data-section="header_tienda" data-value="navbar-contacto">Contacto</a>
                             </li>
 						</ul>
 					</div>	
@@ -190,6 +190,14 @@
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 						<?php } ?>
+						<div id="flags" class="flex-w flex-r-m">
+							<div class="cl2  trans-04 p-l-22 p-r-11 flags__item" data-language="en">
+								English <img src="<?= media() ?>/images/us.svg" alt="usa">
+							</div>
+							<div class="cl2 trans-04 p-l-22 p-r-11 flags__item" data-language="es">
+								Español <img src="<?= media() ?>/images/es.svg" alt="españa">
+							</div>
+						</div>
 
                         <!-- icono de corzon/favoritos -->
 						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
