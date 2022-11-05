@@ -1,0 +1,43 @@
+{   
+    "header_tienda":{
+        "navbar-inicio":"Home",
+        "navbar-tienda":"Shop",
+        "navbar-carrito":"Cart",
+        "navbar-ofertas":"On sale",
+        "navbar-nosotros":"About us",
+        "navbar-contacto":"Contact us"
+    },
+    "pagina-inicio":{
+        "descripcion-slider-perros" : "All for your dog",
+        "descripcion-slider-gatos" : "All for your cat",
+        "descripcion-slider-otros" : "All for your other mascots",
+        "nombre-slider-perros" : "Dogs",
+        "nombre-slider-gatos" : "Cats",
+        "nombre-slider-otros" : "Other mascots",
+        "boton-slider" : "See products",
+        "boton-compra" : "Buy now",
+        "txt-cupon" : "Products for your mascots",
+        "filtrado-1" : "All our products",
+        "filtrado-2" : "Dogs products",
+        "filtrado-3" : "Cats products",
+        "filtrado-4" : "Other productos",
+        "filtrado-5" : "On sale",
+        "boton-ver-mas" : "See more"
+    },
+
+    "footer_tienda":{
+        "categorias-titulo" : "Categories",
+        "categorias-nombre-footer-perros" : "Dogs",
+        "categorias-nombre-footer-gatos" : "Cats",
+        "categorias-nombre-footer-otros" :"Other mascots",
+        "soporte-titulo": "Support",
+        "soporte-preguntas":"Frecuently asked questions",
+        "soporte-politicas":"Policies",
+        "soporte-envios":"Shipments",
+        "soporte-como" :"How to buy",
+        "contacto-titulo":"Contact",
+        "contacto-pregunta":"Do you have a problem with your purchase? Contact us via email at Ohmypetshop@mail.com or call us at (+51) 966 716 687",
+        "ofertas-titulo":"Receive incredible offers",
+        "suscribete-boton":"Suscribe"
+    }
+}
