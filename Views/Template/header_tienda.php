@@ -349,7 +349,20 @@
 				</div>
 			</div>
 			<div id="productosCarrito" class="header-cart-content flex-w js-pscroll">
-				<?php getModal('modalCarrito',$data); ?>
+				<?php if($cantCarrito == 0){ ?>
+					<div class="text-empty-cart">
+						Agrega productos y da el primer paso para iniciar tu compra.
+					</div>
+					<div class="img-empty-cart">
+						<img src="<?=media() ?>/tienda/images/img/EmptyCart.svg" alt="Oh my pet-Petshop">
+					</div>
+					<div class="box-empty-cart">
+						<h2>Carrito vacío</h2>
+						<button class="btn-ver-productos"><a href="<?= base_url() ?>/tienda">Ver productos</a></button>
+					</div>
+				<?php }else{ ?><div class="cart-les">
+					<?php  getModal('modalCarrito',$data);
+				}?></div>
 			</div>
 		</div>
 	</div>
