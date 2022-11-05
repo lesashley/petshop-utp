@@ -25,12 +25,10 @@ if (!empty($data['page'])) {
 				if ($i == 1) {
 					$descripcion =  "descripcion-slider-gatos";
 					$nombre = "nombre-slider-gatos";
-				}
-				if ($i == 2) {
+				}  if ($i == 2) {
 					$descripcion = "descripcion-slider-perros";
 					$nombre = "nombre-slider-perros";
-				}
-				if ($i == 0) {
+				}  if ($i == 0) {
 					$descripcion = "descripcion-slider-otros";
 					$nombre = "nombre-slider-otros";
 				}
@@ -51,7 +49,7 @@ if (!empty($data['page'])) {
 							</div>
 
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-							<a href="<?= base_url() . '/tienda/categoria/' . $arrSlider[$i]['idcategoria'] . '/' . $ruta; ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="<?= base_url() . '/tienda/categoria/' . $arrSlider[$i]['idcategoria'] . '/' . $ruta; ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Ver productos
 								</a>
 							</div>
@@ -76,14 +74,14 @@ if (!empty($data['page'])) {
 			for ($j = 0; $j < count($arrBanner); $j++) {
 				$ruta = $arrBanner[$j]['ruta'];
 				if ($j == 1) {
-					$nombre2 =  "descripcion-slider-gatos";
-					$descripcion2 = "nombre-slider-gatos";
-				} else if ($j == 2) {
-					$nombre2 = "descripcion-slider-perros";
-					$descripcion2 = "nombre-slider-perros";
-				} else if ($j == 0) {
-					$nombre2 = "descripcion-slider-otros";
-					$descripcion2 = "nombre-slider-otros";
+					$descripcion2 =  "descripcion-slider-gatos";
+					$nombre2 = "nombre-slider-gatos";
+				}  if ($j == 2) {
+					$descripcion2 = "descripcion-slider-perros";
+					$nombre2 = "nombre-slider-perros";
+				}  if ($j == 0) {
+					$descripcion2 = "descripcion-slider-otros";
+					$nombre2 = "nombre-slider-otros";
 				}
 			?>
 				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
@@ -93,17 +91,17 @@ if (!empty($data['page'])) {
 
 						<a href="<?= base_url() . '/tienda/categoria/' . $arrBanner[$j]['idcategoria'] . '/' . $ruta; ?>" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8" data-section="pagina-inicio" data-value="<?= $nombre2 ?>">
+								<span class="block1-name ltext-102 trans-04 p-b-8" data-section="pagina-inicio" data-value="<?= $nombre2 ?>">
 									<?= $arrSlider[$j]['nombre'] ?>
 								</span>
 
-								<span class="block1-info stext-102 trans-04" data-section="pagina-inicio" data-value="<?= $descripcion2 ?>>">
+								<span class="block1-info stext-102 trans-04" data-section="pagina-inicio" data-value="<?= $descripcion2 ?>">
 									<?= $arrSlider[$j]['descripcion'] ?>
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09" data-section="pagina-inicio" data-value="boton-compra">
+								<div class="block1-link stext-101 cl0 trans-09" data-section="pagina-inicio" data-value="boton-compra">
 									Compra ahora
 								</div>
 							</div>
@@ -170,7 +168,7 @@ if (!empty($data['page'])) {
 <section class="bg0 p-t-23 p-b-140">
 	<div class="container">
 		<div class="p-b-10">
-		<h3 class="ltext-103 cl5" data-section="pagina-inicio" data-value="txt-cupon">
+			<h3 class="ltext-103 cl5" data-section="pagina-inicio" data-value="txt-cupon">
 				Productos para tus mascotas
 			</h3>
 		</div>
@@ -184,7 +182,7 @@ if (!empty($data['page'])) {
 
 		<div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-			<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*" data-section="pagina-inicio" data-value="filtrado-1">
+				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*" data-section="pagina-inicio" data-value="filtrado-1">
 					Todos los productos
 				</button>
 
@@ -465,7 +463,7 @@ if (!empty($data['page'])) {
 		</div>
 		<!-- Load more -->
 		<div class="flex-c-m flex-w w-full p-t-45">
-		<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" data-section="pagina-inicio" data-value="boton-ver-mas">
+			<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04" data-section="pagina-inicio" data-value="boton-ver-mas">
 				Ver más
 			</a>
 		</div>
