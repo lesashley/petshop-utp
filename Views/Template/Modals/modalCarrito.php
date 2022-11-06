@@ -25,7 +25,7 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 </ul>
 <div class="w-full">
 	<div class="header-cart-total w-full p-tb-40">
-		Total: <?= SMONEY.formatMoney($total); ?>
+		<span>Total </span><span><?= SMONEY.formatMoney($total); ?></span>
 	</div>
 
 	<div class="header-cart-buttons flex-w w-full">

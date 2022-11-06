@@ -3725,6 +3725,7 @@ iframe {border: none;}
 /* Estilos empty cart */
 .text-empty-cart {
 	text-align: center;
+	font-family: 'Poppins-Regular';
 }
 .header-cart-content .img-empty-cart {
 	display: flex;
