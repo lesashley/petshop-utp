@@ -186,10 +186,12 @@ if (document.querySelector(".methodpago")) {
                 document.querySelector("#msgpaypal").classList.remove("notblock");
                 document.querySelector("#divtipopago").classList.add("notblock");
                 document.querySelector("#btnComprar").classList.add("notblock");
+                document.querySelector("#hrComprar").classList.add("notblock");
             } else {
                 document.querySelector("#msgpaypal").classList.add("notblock");
                 document.querySelector("#divtipopago").classList.remove("notblock");
                 document.querySelector("#btnComprar").classList.remove("notblock");
+                document.querySelector("#hrComprar").classList.remove("notblock");
             }
         });
     });
@@ -327,6 +329,7 @@ if(document.querySelector("#btnComprar")){
 		let dir = document.querySelector("#txtDireccion").value;
 	    let ciudad = document.querySelector("#txtCiudad").value;
 	    let inttipopago = document.querySelector("#listtipopago").value;
+        let idcupon = document.querySelector("#hdIdCupon").value;
         if (inttipopago == "") {
             swal("", "Seleccione tipo de pago" , "info");
 			return;
@@ -344,6 +347,8 @@ if(document.querySelector("#btnComprar")){
 		    formData.append('direccion', dir);    
 		   	formData.append('ciudad', ciudad);
 			formData.append('inttipopago', inttipopago);
+            formData.append('total', total);
+            formData.append('idCupon', idcupon);
 		   	request.open("POST",ajaxUrl,true);
 		    request.send(formData);
 		    request.onreadystatechange = function(){
@@ -373,4 +378,82 @@ if(document.querySelector("#condiciones")){
 			document.querySelector('#optMetodoPago').classList.add("notblock");
 		}
 	});
+}
+
+if (document.querySelector("#btnValidarCupon")) {
+
+    let btnValidarCupon = document.querySelector("#btnValidarCupon");
+    btnValidarCupon.addEventListener('click', function () {
+
+        let cupon = document.getElementById("txtCupon").value;
+        let spanTotal = document.getElementById("totalCompra");
+        let spanTotalCupon = document.getElementById("totalCupon");
+        let dsctoCupon = 0;
+        
+        if (cupon.trim() == '') {
+            swal("Advertencia!", 'Ingresar cupón', "info");
+            return;
+        }
+        
+        let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url + '/Cupon/validar/' + cupon;
+        request.open("GET", ajaxUrl, true);
+        request.send();
+        request.onreadystatechange = function () {
+
+            if (request.readyState == 4 && request.status == 200) {
+
+                let objData = JSON.parse(request.responseText);
+                
+                if (objData.status) {
+                    
+                    if(document.querySelector("#hdIdCupon").value == objData.data.id_cupon){
+                        swal("Advertencia!", 'Cupón ingresado ya se encuentra aplicado en su pedido', "info");
+                        return;
+                    }
+                    
+                    dsctoCupon = (total * (objData.data.porcentaje_dscto / 100)).toFixed(2);
+                    total = (total - dsctoCupon).toFixed(2);
+
+                    document.querySelector("#hdIdCupon").value = objData.data.id_cupon;
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon;
+                    document.querySelector("#totalCupon").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
+
+                    spanTotal.style.display = "none";
+                    spanTotalCupon.style.display = "block";
+                    swal("Correcto!", objData.msg, "success");
+
+                } else {
+
+                    total = totalPedido;
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
+                    document.querySelector("#hdIdCupon").value = "0";
+                    spanTotal.style.display = "block";
+                    spanTotalCupon.style.display = "none";
+                    swal("Advertencia!", objData.msg, "info");
+
+                }
+            }
+        }
+    }, false);
+}
+
+if (document.querySelector("#btnRetirarCupon")) {
+
+    let spanTotal = document.getElementById("totalCompra");
+    let spanTotalCupon = document.getElementById("totalCupon");
+    let btnValidarCupon = document.querySelector("#btnRetirarCupon");
+
+    btnValidarCupon.addEventListener('click', function () {
+
+        document.querySelector("#txtCupon").value = '';
+        document.querySelector("#hdIdCupon").value = '0';
+        document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
+        total = totalPedido;
+        spanTotal.style.display = "block";
+        spanTotalCupon.style.display = "none";
+        swal("Correcto!", "Cupón retirado correctamente", "success");
+
+    }, false);  
+
 }

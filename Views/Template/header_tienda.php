@@ -163,12 +163,12 @@
 								</ul>
 							</li> -->
 						
-							<li class="label1" data-label1="<?= $cantCarrito; ?> ">
+							<!-- <li class="label1" data-label1="<?= $cantCarrito; ?> ">
 								<a href="<?= base_url()?>/carrito">Carrito</a>
-							</li>
+							</li> -->
 
 							<li class="label1" data-label1="Sale">
-								<a href="shoping-cart.html">Ofertas</a>
+								<a href="<?= base_url()?>/promocion">Ofertas</a>
 							</li>
                             <li>
                                 <a href="<?= base_url()?>/nosotros">Nosotros</a>

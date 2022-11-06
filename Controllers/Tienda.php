@@ -288,22 +288,24 @@ require_once("Models/LoginModel.php");
 				$idtransaccionpaypal = '';
 				$datospaypal = NULL;
 				$personaid = $_SESSION['idUser'];
-				$monto = 0;
+				$monto =  floatval($_POST['total']);
 				$tipopagoid = intval($_POST['inttipopago']);
 				$direccionenvio = strClean($_POST['direccion']).', '.strClean($_POST['ciudad']);
 				$status = "Pendiente";
-				$subtotal = 0;
+				//$subtotal = 0;
 				$costo_envio = COSTOENVIO;
+				$id_cupon = intval($_POST['idCupon']);
 
 				if(!empty($_SESSION['arrCarrito'])){
-					foreach ($_SESSION['arrCarrito'] as $pro) {
-						$subtotal += $pro['cantidad'] * $pro['precio']; 
-					}
-					$monto = $subtotal + COSTOENVIO;
+					// foreach ($_SESSION['arrCarrito'] as $pro) {
+					// 	$subtotal += $pro['cantidad'] * $pro['precio']; 
+					// }
+					// $monto = $subtotal + COSTOENVIO;
 					
 					if(empty($_POST['datapay'])){
 						
-						$request_pedido = $this->insertPedido($idtransaccionpaypal, 
+						$request_pedido = $this->insertPedido($idtransaccionpaypal,
+															$id_cupon,
 															$datospaypal, 
 															$personaid,
 															$costo_envio,
@@ -312,6 +314,7 @@ require_once("Models/LoginModel.php");
 															$direccionenvio, 
 															$status);
 						if($request_pedido > 0 ){
+							
 							
 							foreach ($_SESSION['arrCarrito'] as $producto) {
 								$productoid = $producto['idproducto'];
@@ -340,6 +343,9 @@ require_once("Models/LoginModel.php");
 							unset($_SESSION['arrCarrito']);
 							session_regenerate_id(true);
 						}
+						if($request_pedido == -7){
+							$arrResponse = array("status" => false, "msg" => 'El cupón ingresado no es válido.');
+						}
 					}else{
 						$jsonPaypal = $_POST['datapay'];
 						$objPaypal = json_decode($jsonPaypal);
@@ -354,6 +360,7 @@ require_once("Models/LoginModel.php");
 								}
 								
 								$request_pedido = $this->insertPedido($idtransaccionpaypal, 
+																	$id_cupon,
 																	$datospaypal, 
 																	$personaid,
 																	$costo_envio,
@@ -390,7 +397,13 @@ require_once("Models/LoginModel.php");
 									unset($_SESSION['arrCarrito']);
 									session_regenerate_id(true);
 								}else{
-									$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
+
+									if($request_pedido == -7){
+										$arrResponse = array("status" => false, "msg" => 'El cupón ingresado no es válido.');
+									}
+									else{
+										$arrResponse = array("status" => false, "msg" => 'No es posible procesar el pedido.');
+									}
 								}
 							}else{
 								$arrResponse = array("status" => false, "msg" => 'No es posible completar el pago con PayPal.');

@@ -119,7 +119,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 
 						<div class="size-209">
 							<span id="subTotalCompra" class="mtext-110 cl2">
-								<?= SMONEY.formatMoney($subtotal) ?>
+								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney($subtotal) ?>
 							</span>
 						</div>
 
@@ -131,7 +131,19 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 
 						<div class="size-209">
 							<span class="mtext-110 cl2">
-								<?= SMONEY.formatMoney(COSTOENVIO) ?>
+								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney(COSTOENVIO) ?>
+							</span>
+						</div>
+
+						<div class="size-208">
+							<span class="stext-110 cl2">
+								Dscto Cupón:
+							</span>
+						</div>
+
+						<div class="size-209">
+							<span id="dsctoCupon" class="mtext-110 cl2">
+							    - S/. 0.00
 							</span>
 						</div>
 					</div>
@@ -144,14 +156,29 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 
 						<div class="size-209 p-t-1">
 							<span id="totalCompra" class="mtext-110 cl2">
-								<?= SMONEY.formatMoney($total) ?>
+								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney($total) ?>
+							</span>
+
+							<span id="totalCupon" class="mtext-110 cl2">
 							</span>
 						</div>
-					</div>
-					<hr>
 <?php 
 	if(isset($_SESSION['login'])){
 ?>
+						<div class="flex-w flex-t p-t-27 d-flex justify-content-center">
+						    <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5 w-50 text-uppercase" type="text" name="txtCupon" id="txtCupon" placeholder="Código Cupón" autocomplete="off">
+							<button type="button" id="btnValidarCupon" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer w-25">
+							  Validar
+						    </button>
+							&nbsp;
+							<button type="button" id="btnRetirarCupon" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" style="width: 5%;">
+							  X
+						    </button>
+							<input type="hidden" id="hdIdCupon" value="0">
+						</div>
+					</div>
+					<hr>
+
 					<div id="divMetodoPago">
 						<div id="divCondiciones">
 							<input type="checkbox" id="condiciones">
@@ -162,7 +189,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 							<hr>
 							<h4 class="mtext-109 cl2 p-b-30">
 								Método de pago
-						</h4>
+							</h4>
 							<div class="divmetodpago">
 								<div>
 								<label for="paypal">
@@ -198,16 +225,18 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 									<p>Para completar la transacción, te enviaremos a los servidores seguros de PayPal.</p>
 									<div id="paypal-btn-container"></div>
 									<script>
-										let total = <?= $total ?>;
+										var total = <?= $total ?>;
+										var totalPedido = <?= $total ?>;
 									</script>
 								</div>
 							</div>
+
+							<hr id="hrComprar">
+							<br>
+					
+							<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer notblock">Pagar</button>
 						</div>
 					</div>
-					<hr>
-					<br>
-					
-					<button type="submit" id="btnComprar" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer notblock">Pagar</button>
 <?php } ?>
 				</div>
 			</div>

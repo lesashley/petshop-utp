@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2022 a las 19:39:36
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 01-11-2022 a las 22:39:44
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -70,6 +69,43 @@ CREATE TABLE `contacto` (
 
 INSERT INTO `contacto` (`id`, `nombre`, `email`, `mensaje`, `ip`, `dispositivo`, `useragent`, `datecreated`) VALUES
 (1, 'Asdasd', 'sergius16ht@gmail.com', 'sadasd', '::1', 'PC', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', '2022-10-28 06:21:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupon`
+--
+
+CREATE TABLE `cupon` (
+  `id_cupon` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `porcentaje_dscto` decimal(3,1) DEFAULT NULL,
+  `fecha_inicio` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `cantidad_uso` int(11) DEFAULT 0,
+  `total` int(11) DEFAULT 0,
+  `personaid` bigint(20) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `personaid_mod`  bigint(20) NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `estado` char(1) COLLATE utf8mb4_swedish_ci DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `cupon`
+--
+
+INSERT INTO `cupon` (`id_cupon`, `descripcion`, `porcentaje_dscto`, `fecha_inicio`, `fecha_fin`, `total`, `personaid`, `estado`) VALUES
+(1, 'OHMYPET10', '5.0', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 3, 1, 'A'),
+(2, 'OHMYPET11', '2.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 2, 1, 'A'),
+(3, 'OHMYPET12', '4.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 4, 1, 'A'),
+(4, 'OHMYPET13', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 10, 1, 'A'),
+(5, 'OHMYPET14', '3.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 15, 1, 'A'),
+(6, 'OHMYPET15', '5.0', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 6, 1, 'A'),
+(7, 'OHMYPET16', '2.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 8, 1, 'A'),
+(8, 'OHMYPET17', '4.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 17, 1, 'A'),
+(9, 'OHMYPET18', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 25, 1, 'A'),
+(10, 'OHMYPET19', '3.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 10, 1, 'A');
 
 -- --------------------------------------------------------
 
@@ -220,6 +256,7 @@ INSERT INTO `modulo` (`idmodulo`, `titulo`, `descripcion`, `status`) VALUES
 
 CREATE TABLE `pedido` (
   `idpedido` bigint(20) NOT NULL,
+  `id_cupon` int(11) DEFAULT NULL,
   `referenciacobro` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `idtransaccionpaypal` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `datospaypal` text COLLATE utf8mb4_swedish_ci DEFAULT NULL,
@@ -236,15 +273,15 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`idpedido`, `referenciacobro`, `idtransaccionpaypal`, `datospaypal`, `personaid`, `fecha`, `costoenvio`, `monto`, `tipopagoid`, `direccionenvio`, `status`) VALUES
-(1, NULL, '36981674D71696318', '{\"id\":\"2AC26857LD1317626\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"155.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"36981674D71696318\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"155.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T04:15:09Z\",\"update_time\":\"2022-10-26T04:15:09Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T04:14:53Z\",\"update_time\":\"2022-10-26T04:15:09Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/2AC26857LD1317626\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-25 23:15:11', '50.00', '155.00', 1, 'Av Petit Thoars, 1033, lima', 'Completo'),
-(2, NULL, '752052324J031942B', '{\"id\":\"0FW7817733040044W\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"752052324J031942B\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T04:19:16Z\",\"update_time\":\"2022-10-26T04:19:16Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T04:19:09Z\",\"update_time\":\"2022-10-26T04:19:16Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/0FW7817733040044W\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-25 23:19:17', '50.00', '65.00', 1, 'Av Petit Thoars, 1033, lima', 'Reembolsado'),
-(3, NULL, '7T944553GH762964F', '{\"id\":\"8W693966BY063330A\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"7T944553GH762964F\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T07:55:30Z\",\"update_time\":\"2022-10-26T07:55:30Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T07:55:17Z\",\"update_time\":\"2022-10-26T07:55:30Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/8W693966BY063330A\",\"rel\":\"self\",\"method\":\"GET\"}]}', 26, '2022-10-26 02:55:31', '50.00', '481.00', 1, 'Petit Thoars 1033, lima', 'Completo'),
-(4, NULL, '4GJ29750YX1746930', '{\"id\":\"67H86399K7911713E\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"4GJ29750YX1746930\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-29T03:51:49Z\",\"update_time\":\"2022-10-29T03:51:49Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-29T03:51:25Z\",\"update_time\":\"2022-10-29T03:51:49Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/67H86399K7911713E\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-28 22:51:51', '50.00', '85.00', 1, 'LIMA, LIMA', 'Reembolsado'),
-(5, 'hgjhgjk', '', NULL, 1, '2022-10-28 22:54:07', '50.00', '120.00', 5, 'LIMA, LIMA', 'Completo'),
-(6, 'OHMYPET002', '', NULL, 1, '2022-10-30 12:52:05', '50.00', '250.00', 2, 'VES, VES', 'Completo'),
-(7, 'OHMYPET001', '', NULL, 1, '2022-10-30 12:52:54', '50.00', '110.00', 6, 'VES, VES', 'Completo'),
-(8, 'OHMYPET003', '', NULL, 23, '2022-10-30 13:09:14', '50.00', '85.00', 5, 'LIMA, LIMA', 'Completo');
+INSERT INTO `pedido` (`idpedido`, `referenciacobro`, `idtransaccionpaypal`, `datospaypal`, `personaid`, `fecha`, `costoenvio`, `monto`, `tipopagoid`, `direccionenvio`, `status`, `id_cupon`) VALUES
+(1, NULL, '36981674D71696318', '{\"id\":\"2AC26857LD1317626\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"155.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"36981674D71696318\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"155.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T04:15:09Z\",\"update_time\":\"2022-10-26T04:15:09Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T04:14:53Z\",\"update_time\":\"2022-10-26T04:15:09Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/2AC26857LD1317626\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-25 23:15:11', '50.00', '155.00', 1, 'Av Petit Thoars, 1033, lima', 'Completo', NULL),
+(2, NULL, '752052324J031942B', '{\"id\":\"0FW7817733040044W\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"752052324J031942B\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"65.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T04:19:16Z\",\"update_time\":\"2022-10-26T04:19:16Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T04:19:09Z\",\"update_time\":\"2022-10-26T04:19:16Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/0FW7817733040044W\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-25 23:19:17', '50.00', '65.00', 1, 'Av Petit Thoars, 1033, lima', 'Reembolsado', NULL),
+(3, NULL, '7T944553GH762964F', '{\"id\":\"8W693966BY063330A\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"7T944553GH762964F\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"481.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-26T07:55:30Z\",\"update_time\":\"2022-10-26T07:55:30Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-26T07:55:17Z\",\"update_time\":\"2022-10-26T07:55:30Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/8W693966BY063330A\",\"rel\":\"self\",\"method\":\"GET\"}]}', 26, '2022-10-26 02:55:31', '50.00', '481.00', 1, 'Petit Thoars 1033, lima', 'Completo', NULL),
+(4, NULL, '4GJ29750YX1746930', '{\"id\":\"67H86399K7911713E\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"4GJ29750YX1746930\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"85.00\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-10-29T03:51:49Z\",\"update_time\":\"2022-10-29T03:51:49Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-10-29T03:51:25Z\",\"update_time\":\"2022-10-29T03:51:49Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/67H86399K7911713E\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-10-28 22:51:51', '50.00', '85.00', 1, 'LIMA, LIMA', 'Reembolsado', NULL),
+(5, 'hgjhgjk', '', NULL, 1, '2022-10-28 22:54:07', '50.00', '120.00', 5, 'LIMA, LIMA', 'Completo', NULL),
+(6, 'OHMYPET002', '', NULL, 1, '2022-10-30 12:52:05', '50.00', '250.00', 2, 'VES, VES', 'Completo', NULL),
+(7, 'OHMYPET001', '', NULL, 1, '2022-10-30 12:52:54', '50.00', '110.00', 6, 'VES, VES', 'Completo', NULL),
+(8, 'OHMYPET003', '', NULL, 23, '2022-10-30 13:09:14', '50.00', '85.00', 5, 'LIMA, LIMA', 'Completo', NULL);
 
 -- --------------------------------------------------------
 
@@ -377,7 +414,8 @@ INSERT INTO `post` (`idpost`, `titulo`, `contenido`, `portada`, `datecreate`, `r
 (5, 'Contacto', '<div class=\"map\"><iframe style=\"border: 0;\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.685802352331!2d-90.73646108521129!3d14.559951589828378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85890e74b3771e19%3A0x68ec9eeea79fd9a7!2sEl%20Arco%20de%20Santa%20Catalina!5e0!3m2!1ses!2sgt!4v1624005005655!5m2!1ses!2sgt\" width=\"100%\" height=\"600\" allowfullscreen=\"allowfullscreen\" loading=\"lazy\"></iframe></div>', '', '2022-10-28 01:14:32', 'contacto', 1),
 (6, 'Preguntas frecuentes', '<ol> <li><strong>&iquest;Cu&aacute;l es el tiempo de entrega de los producto? </strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</li> <li><strong>&iquest;C&oacute;mo es la forma de env&iacute;o de los productos?</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur.</li> <li><strong>&iquest;Cu&aacute;l es el tiempo m&aacute;ximo para solicitar un reembolso?</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt!</li> </ol> <p>&nbsp;</p> <p>Otras preguntas</p> <ul> <li><strong>&iquest;Qu&eacute; formas de pago aceptan? </strong><span style=\"color: #666666; font-family: Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</span></li> </ul>', '', '2022-10-28 01:15:21', 'preguntas-frecuentes', 1),
 (7, 'Terminos y condiciones', '<p>A continuaci&oacute;n se describen los t&eacute;rmino y condiciones de la Tienda Virtual!</p> <ol> <li>Pol&iacute;tica uno</li> <li>Termino dos</li> <li>Condici&oacute;n tres</li> </ol> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</p>', '', '2022-10-28 01:16:42', 'terminos-y-condiciones', 1),
-(8, 'Not Found', '<h1>Error 404: P&aacute;gina no encontrada</h1> <p>No se encuentra la p&aacute;gina que ha solicitado.</p>', '', '2022-10-28 01:17:36', 'not-found', 1);
+(8, 'Not Found', '<h1>Error 404: P&aacute;gina no encontrada</h1> <p>No se encuentra la p&aacute;gina que ha solicitado.</p>', '', '2022-10-28 01:17:36', 'not-found', 1),
+(9, 'Promocion', '<p>Contenido</p>', '', '2022-10-28 01:13:21', 'promocion', 1);
 
 -- --------------------------------------------------------
 
@@ -508,6 +546,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cupon`
+--
+ALTER TABLE `cupon`
+  ADD PRIMARY KEY (`id_cupon`);
+
+--
 -- Indices de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
@@ -542,7 +586,8 @@ ALTER TABLE `modulo`
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`idpedido`),
   ADD KEY `personaid` (`personaid`),
-  ADD KEY `tipopagoid` (`tipopagoid`);
+  ADD KEY `tipopagoid` (`tipopagoid`),
+  ADD KEY `id_cupon` (`id_cupon`);
 
 --
 -- Indices de la tabla `permisos`
@@ -707,7 +752,8 @@ ALTER TABLE `imagen`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`personaid`) REFERENCES `persona` (`idpersona`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`tipopagoid`) REFERENCES `tipopago` (`idtipopago`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`tipopagoid`) REFERENCES `tipopago` (`idtipopago`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pedido_ibfk_3` FOREIGN KEY (`id_cupon`) REFERENCES `cupon` (`id_cupon`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `permisos`

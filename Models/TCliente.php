@@ -11,6 +11,7 @@ trait TCliente{
 	private $strToken;
 	private $intTipoId;
 	private $intIdTransaccion;
+	private $idcupon;
 
 	public function insertCliente(string $nombre, string $apellido, int $telefono, string $email, string $password, int $tipoid){
 		$this->con = new Mysql();
@@ -110,21 +111,66 @@ trait TCliente{
 
 	}
 
-	public function insertPedido(string $idtransaccionpaypal = NULL, string $datospaypal = NULL, int $personaid, float $costo_envio, string $monto, int $tipopagoid, string $direccionenvio, string $status){
+	public function insertPedido(string $idtransaccionpaypal = NULL, int $idcupon, string $datospaypal = NULL, int $personaid, float $costo_envio, string $monto, int $tipopagoid, string $direccionenvio, string $status){
 		$this->con = new Mysql();
-		$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,datospaypal,personaid,costoenvio,monto,tipopagoid,direccionenvio,status) 
-							  VALUES(?,?,?,?,?,?,?,?)";
+		$this->idcupon = $idcupon;
+
+		if($idcupon > 0){
+
+			$sql = "SELECT COUNT(1) AS cantidad FROM `cupon` WHERE cantidad_uso < total AND fecha_inicio < NOW() AND fecha_fin > NOW() AND estado = 'A' AND id_cupon = $this->idcupon";
+			$request = $this->con->select_all($sql);
+
+		if($request[0]['cantidad'] > 0){
+
+			$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,id_cupon,datospaypal,personaid,costoenvio,monto,tipopagoid,direccionenvio,status) 
+							  VALUES(?,?,?,?,?,?,?,?,?)";
+			$arrData = array($idtransaccionpaypal,
+								$idcupon,
+								$datospaypal,
+								$personaid,
+								$costo_envio,
+								$monto,
+								$tipopagoid,
+								$direccionenvio,
+								$status
+							);
+			$request_insert = $this->con->insert($query_insert,$arrData);
+			$return = $request_insert;
+
+			if($return > 0){
+
+			$sql = "UPDATE cupon SET cantidad_uso = cantidad_uso + 1 WHERE id_cupon = $this->idcupon";
+			$arrData = [];
+			$this->con->update($sql,$arrData);
+
+			}
+
+		}
+		else{
+
+			$return = -7;
+
+		}
+	}
+	else{
+
+		$query_insert  = "INSERT INTO pedido(idtransaccionpaypal,id_cupon,datospaypal,personaid,costoenvio,monto,tipopagoid,direccionenvio,status) 
+		VALUES(?,?,?,?,?,?,?,?,?)";
 		$arrData = array($idtransaccionpaypal,
-    						$datospaypal,
-    						$personaid,
-    						$costo_envio,
-    						$monto,
-    						$tipopagoid,
-    						$direccionenvio,
-    						$status
-    					);
+				null,
+				$datospaypal,
+				$personaid,
+				$costo_envio,
+				$monto,
+				$tipopagoid,
+				$direccionenvio,
+				$status
+			);
 		$request_insert = $this->con->insert($query_insert,$arrData);
-	    $return = $request_insert;
+		$return = $request_insert;
+
+	}
+
 	    return $return;
 	}
 
