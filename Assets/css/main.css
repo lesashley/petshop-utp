@@ -2104,7 +2104,7 @@ pre code {
 .table-responsive {
     display: block;
     width: 100%;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     -webkit-overflow-scrolling: touch;
 }
 
@@ -2123,7 +2123,7 @@ pre code {
     color: #495057;
     background-color: #FFF;
     background-clip: padding-box;
-    border: 2px solid #ced4da;
+    border: 1px solid #ced4da;
     border-radius: 4px;
     -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -15976,6 +15976,10 @@ be a descendant of the grid when it is being dragged.
     font-style: italic;
 }
 
+.app-title h1 button {
+    margin: 0 10px;
+  }
+
 @media (max-width: 480px) {
     .app-title p {
         display: none;
@@ -17211,4 +17215,8 @@ be a descendant of the grid when it is being dragged.
 
 .user .user-settings label {
     color: #666;
+}
+
+.page-header img{
+    width: 25%;
 }

@@ -1,11 +1,15 @@
 <?php 
 headerTienda($data);
-?>
- <br><br><br>
-<hr>
+?> <!--main-->
 	<!-- breadcrumb -->
-	<div class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92 " style="background-image: url('Assets/images/uploads/img_7fc2fe8dfa8a355f53ca5bf4a74ad663.jpg');">
+		<h2 class="ltext-105 cl0 txt-center">
+			Carrito de compras
+		</h2>
+	</section>
+
+	<div class="p-l-25 p-r-15 p-t-20">
+		<div class="container">
 			<a href="<?= base_url() ?>" class="stext-109 cl8 hov-cl1 trans-04">
 				Inicio
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
@@ -13,13 +17,14 @@ headerTienda($data);
 			<span class="stext-109 cl4">
 				<?= $data['page_title'] ?>
 			</span>
-		</div>
-	</div>
 <?php 
 $subtotal = 0;
 $total = 0;
 if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){ 
- ?>		
+?>		
+		</div>
+	</div>
+
 	<!-- Shoping Cart -->
 	<form class="bg0 p-t-75 p-b-85">
 		<div class="container">
@@ -139,12 +144,18 @@ if(isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0){
 			</div>
 		</div>
 	</form>
+	
 <?php }else{ ?>
-<br>
-<div class="container">
-	<p>No hay producto en el carrito <a href="<?= base_url() ?>/tienda"> Ver productos</a></p>
-</div>
-<br>
+			<!-- <p style="padding-right: 15px;">No hay productos en el carrito <a href="<?= base_url() ?>/tienda">Ver productos</a></p> -->
+			<div style="display: flex; justify-content: center;">
+				<img src="<?=media() ?>/tienda/images/img/EmptyCart.svg" style="min-height:5%; min-width:5%; height:auto; width:auto; max-height:100%; max-width:100%;" alt="Oh my pet-Petshop">
+			</div>
+			<div style="display: flex; justify-content: center; padding-bottom: 20vh; flex-flow: column;">
+				<h2 style="font-family: Poppins-Medium; font-size: 35px; text-align: center; color: #8c8e8f;">Carrito vacío</h2>
+				<button class="btn-ver-productos"><a href="<?= base_url() ?>/tienda">Ver productos</a></button>
+			</div>
+		</div>
+	</div>
 <?php 
 	}
 	footerTienda($data);

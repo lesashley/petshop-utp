@@ -217,7 +217,12 @@ function fntdelItem(element) {
                 let objData = JSON.parse(request.responseText);
                 if (objData.status) {
                     if (option == 1) {
-                        document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
+                        if (objData.cantCarrito == 0) {
+                            let $base_url = base_url + '/tienda';
+                            document.querySelector("#productosCarrito").innerHTML = '<div class="text-empty-cart"><div class="text-empty-cart">Agrega productos y da el primer paso para iniciar tu compra.</div><div class="img-empty-cart"><img src="/petshop-utp/Assets/tienda/images/img/EmptyCart.svg" alt="Oh my pet-Petshop"></div><div class="box-empty-cart"><h2>Carrito vacío</h2><button class="btn-ver-productos"><a href="'+$base_url+'">Ver productos</a></button></div></div>';
+                        } else {
+                            document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
+                        }
                         const cants = document.querySelectorAll(".cantCarrito");
                         cants.forEach(element => {
                             element.setAttribute("data-notify", objData.cantCarrito)

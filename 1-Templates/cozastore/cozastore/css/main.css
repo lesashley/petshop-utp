@@ -2818,7 +2818,8 @@ input.num-product::-webkit-inner-spin-button {
 
   display: block;
   position: absolute;
-  top: 3px;
+  top: 15px;
+  /* top: 3px; */
   right: -9px;
   height: 15px;
   min-width: 32px;
