@@ -9,9 +9,10 @@
         public function selectPedido(int $idpedido, $idpersona = null)
     {
         $busqueda = "";
-        if ($idpersona != null) {
-            $busqueda = " AND p.personaid =" . $idpersona;
-        }
+        // if ($idpersona != null) {
+        //     $busqueda = " AND p.personaid =" . $idpersona;
+        // }
+        //El pedido debe listar por el id pedido
         $request = array();
         $sql = "SELECT p.idpedido,
                                 p.referenciacobro,
@@ -27,7 +28,7 @@
                         FROM pedido as p
                         INNER JOIN tipopago t
                         ON p.tipopagoid = t.idtipopago
-                        WHERE p.idpedido =  $idpedido " . $busqueda;
+                        WHERE p.idpedido =  $idpedido "; //. $busqueda;
         $requestPedido = $this->select($sql);
         if (!empty($requestPedido)) {
             $idpersona = $requestPedido['personaid'];

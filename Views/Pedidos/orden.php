@@ -82,7 +82,7 @@ headerAdmin($data);
                           <td><?= $producto['producto']?></td>
                           <td class="text-right"><?= SMONEY.''.formatMoney($producto['precio']) ?></td>
                           <td class="text-center"><?=$producto['cantidad'] ?></td>
-                          <td class="text-right"><?=SMONEY.''.formatMoney($producto['precio'] * $producto['precio']) ?></td>
+                          <td class="text-right"><?=SMONEY.''.formatMoney($producto['cantidad'] * $producto['precio']) ?></td>
                         </tr>
 
                     <?php }
