@@ -11,6 +11,13 @@ if (!empty($data['page'])) {
 	$contentPage = $data['page']['contenido'];
 }
 
+
+
+
+
+
+
+
 ?>
 <!-- El carrito esta en views/templates/modals/ -->
 <!-- Slider -->
@@ -25,10 +32,12 @@ if (!empty($data['page'])) {
 				if ($i == 1) {
 					$descripcion =  "descripcion-slider-gatos";
 					$nombre = "nombre-slider-gatos";
-				}  if ($i == 2) {
+				}
+				if ($i == 2) {
 					$descripcion = "descripcion-slider-perros";
 					$nombre = "nombre-slider-perros";
-				}  if ($i == 0) {
+				}
+				if ($i == 0) {
 					$descripcion = "descripcion-slider-otros";
 					$nombre = "nombre-slider-otros";
 				}
@@ -76,10 +85,12 @@ if (!empty($data['page'])) {
 				if ($j == 1) {
 					$descripcion2 =  "descripcion-slider-gatos";
 					$nombre2 = "nombre-slider-gatos";
-				}  if ($j == 2) {
+				}
+				if ($j == 2) {
 					$descripcion2 = "descripcion-slider-perros";
 					$nombre2 = "nombre-slider-perros";
-				}  if ($j == 0) {
+				}
+				if ($j == 0) {
 					$descripcion2 = "descripcion-slider-otros";
 					$nombre2 = "nombre-slider-otros";
 				}
@@ -168,47 +179,32 @@ if (!empty($data['page'])) {
 <section class="bg0 p-t-23 p-b-140">
 	<div class="container">
 		<div class="p-b-10">
-			<h3 class="ltext-103 cl5" data-section="pagina-inicio" data-value="txt-cupon">
+			<h3 class="ltext-103 cl5">
 				Productos para tus mascotas
 			</h3>
 		</div>
-		<div>
-			<?= $contentPage ?>
-		</div>
-
-
-
 		<hr>
 
 		<div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*" data-section="pagina-inicio" data-value="filtrado-1">
+				<button id="Cattodos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
 					Todos los productos
 				</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women" data-section="pagina-inicio" data-value="filtrado-2">
+				<button id="Catperros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria3">
 					Productos para perros
 				</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".men" data-section="pagina-inicio" data-value="filtrado-3">
+				<button id="Catgatos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria2">
 					Productos para gatos
 				</button>
 
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".bag"data-section="pagina-inicio" data-value="filtrado-4">
+				<button id="Catotros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria1">
 					Productos para otras mascotas
-				</button>
-
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".shoes"data-section="pagina-inicio" data-value="filtrado-5">
-					Ofertas
 				</button>
 			</div>
 
 			<div class="flex-w flex-c-m m-tb-10">
-				<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-					<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-					<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-					Filtrar
-				</div>
 
 				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 					<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
@@ -224,201 +220,32 @@ if (!empty($data['page'])) {
 						<i class="zmdi zmdi-search"></i>
 					</button>
 
-					<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+					<input class="mtext-107 cl2 size-114 plh2 p-r-15" id="searchP" type="text" name="search-product" placeholder="Search">
 				</div>
 			</div>
 
 			<!-- Filter -->
-			<div class="dis-none panel-filter w-full p-t-10">
+
+			<form method="post" class="dis-none panel-filter w-full p-t-10">
 				<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+
 					<div class="filter-col1 p-r-15 p-b-27">
 						<div class="mtext-102 cl2 p-b-15">
 							Ordenar por
 						</div>
 
-						<ul>
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Defecto
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Agregados recientemente
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Average rating
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-									Novedad
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Precio: Menor a Mayor
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Precio: Mayor a Menor
-								</a>
-							</li>
+						<ul class="filter-order-group-buttons">
+							<select name="precio" id="" class="filter-link stext-106 trans-04">
+								<option value="asc">Precio: Menor a Mayor</option>
+								<option value="des">Precio: Mayor a Menor</option>
+							</select>
 						</ul>
-					</div>
-
-					<div class="filter-col2 p-r-15 p-b-27">
-						<div class="mtext-102 cl2 p-b-15">
-							Precio
-						</div>
-
-						<ul>
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-									Mostrar todos
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$0.00 - $50.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$50.00 - $100.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$100.00 - $150.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$150.00 - $200.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$200.00+
-								</a>
-							</li>
-						</ul>
-					</div>
-
-					<div class="filter-col3 p-r-15 p-b-27">
-						<div class="mtext-102 cl2 p-b-15">
-							Color
-						</div>
-
-						<ul>
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04">
-									Negro
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-									Azul
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04">
-									Gris
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04">
-									Verde
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04">
-									Rojo
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-									<i class="zmdi zmdi-circle-o"></i>
-								</span>
-
-								<a href="#" class="filter-link stext-106 trans-04">
-									Blanco
-								</a>
-							</li>
-						</ul>
-					</div>
-
-					<div class="filter-col4 p-b-27">
-						<div class="mtext-102 cl2 p-b-15">
-							Etiquetas
-						</div>
-
-						<div class="flex-w p-t-4 m-r--5">
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Fashion
-							</a>
-
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Lifestyle
-							</a>
-
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Denim
-							</a>
-
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Streetstyle
-							</a>
-
-							<a href="#" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-								Crafts
-							</a>
-						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 
-		<div class="row isotope-grid">
+		<div id="productos" class="row">
 			<?php
 			for ($p = 0; $p < count($arrProductos); $p++) {
 				$ruta = $arrProductos[$p]['ruta'];
@@ -428,7 +255,7 @@ if (!empty($data['page'])) {
 					$portada = media() . '/images/uploads/product.png';
 				}
 			?>
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 categoria<?= $arrProductos[$p]['categoriaid'] ?> producto">
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
@@ -474,6 +301,7 @@ if (!empty($data['page'])) {
 					
 		</div> -->
 </section>
+
 
 
 

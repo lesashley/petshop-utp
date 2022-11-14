@@ -284,6 +284,41 @@
         $('.js-modal1').removeClass('show-modal1');
     });
 
+/*==================================================================
+    [ Cambiar color Filtros Avanzados ]*/
 
+    $("#Cattodos").on('click',function () {
+        $("#productos .producto").filter(function() {
+            $(this).removeClass('d-none');
+        });
+    });
+    $("#Catperros").on('click',function () {
+        var value = ".categoria3";
+        $("#productos .producto").filter(function() {
+            $(this).addClass('d-none');
+            $(value).removeClass('d-none');
+        });
+    });
+    $("#Catgatos").on('click',function () {
+        var value = ".categoria2";
+        $("#productos .producto").filter(function() {
+            $(this).addClass('d-none');
+            $(value).removeClass('d-none');
+        });
+    });
+    $("#Catotros").on('click',function () {
+        var value = ".categoria1";
+        $("#productos .producto").filter(function() {
+            $(this).addClass('d-none');
+            $(value).removeClass('d-none');
+        });
+    });
+
+    $("#searchP").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#productos .producto").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
 
 })(jQuery);
