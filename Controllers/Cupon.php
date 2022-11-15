@@ -5,11 +5,41 @@ class Cupon extends Controllers
     {
         parent::__construct();
         session_start();
-        if (empty($_SESSION['login'])) {
-            header('Location: ' . base_url() . '/login');
-            die();
+        session_regenerate_id(true);
+        if(empty($_SESSION['login']))
+        {
+            header('Location: '.base_url().'/login');
         }
+        getPermisos(14);
     }
+    public function Cupon()
+    {
+        if(empty($_SESSION['permisosMod']['r'])){
+            header("Location:".base_url().'/dashboard');
+        }
+        $data['page_tag'] = "Cupones";
+        $data['page_title'] = '<i class="fas fa-user-tag"></i>'." CUPONES";
+        $data['page_name'] = "cupones";
+        $data['page_functions_js'] = "functions_cupones.js";
+        $this->views->getView($this,"cupones",$data);
+    }
+
+
+public function getCupones(){
+    if($_SESSION['permisosMod']['r']){
+        $arrData = $this->model->selectCupones();
+         
+        for ($i=0; $i < count($arrData) ; $i++) { 
+            $btnView = '';
+            if($_SESSION['permisosMod']['r']){
+                $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo('.$arrData[$i]['id'].')" title="Ver Cupon"><i class="far fa-eye"></i></button>';
+            }
+            $arrData[$i]['options'] = '<div class="text-center">'.$btnView.'</div>';
+        }
+         echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
+    }
+    die();
+}
 
     public function validar($cupon)
     {
@@ -26,4 +56,6 @@ class Cupon extends Controllers
 
         die();
     }
+
 }
+?>

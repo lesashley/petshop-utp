@@ -1914,7 +1914,8 @@ footer>.container {
 
 .filter-link {
     color: #aaa;
-    border-bottom: 1px solid transparent;
+    border: 1px solid transparent !important;
+    background-color: transparent;
 }
 
 .filter-link:hover {
@@ -3884,3 +3885,4 @@ input.num-product::-webkit-inner-spin-button {
     -o-transform: rotate(-90deg);
     cursor: pointer;
 }
+

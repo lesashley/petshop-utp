@@ -1,43 +1,44 @@
-{   
-    "header_tienda":{
-        "navbar-inicio":"Inicio",
-        "navbar-tienda":"Tienda",
-        "navbar-carrito":"Carrito",
-        "navbar-ofertas":"Ofertas",
-        "navbar-nosotros":"Nostros",
-        "navbar-contacto":"Contacto"
+{
+    "header_tienda": {
+        "navbar-inicio": "Inicio",
+        "navbar-tienda": "Tienda",
+        "navbar-carrito": "Carrito",
+        "navbar-ofertas": "Ofertas",
+        "navbar-nosotros": "Nostros",
+        "navbar-contacto": "Contacto"
     },
-    "pagina-inicio":{
-        "descripcion-slider-perros" : "Todo para tu perro",
-        "descripcion-slider-gatos" : "Todo para tu gato",
-        "descripcion-slider-otros" : "Todo para tus otras mascotas",
-        "nombre-slider-perros" : "Perros",
-        "nombre-slider-gatos" : "Gatos",
-        "nombre-slider-otros" : "Otras mascotas",
-        "boton-slider" : "Ver productos",
-        "boton-compra" : "Compra ahora",
-        "txt-cupon" : "Productos para tus mascotas",
-        "filtrado-1" : "Todos los productos",
-        "filtrado-2" : "Productos para perros",
-        "filtrado-3" : "Productos para gatos",
-        "filtrado-4" : "Productos para otras mascotas",
-        "filtrado-5" : "Ofertas",
-        "boton-ver-mas" : "Ver mas"
+    "pagina-inicio": {
+        "descripcion-slider-perros": "Todo para tu perro",
+        "descripcion-slider-gatos": "Todo para tu gato",
+        "descripcion-slider-otros": "Todo para tus otras mascotas",
+        "nombre-slider-perros": "Perros",
+        "nombre-slider-gatos": "Gatos",
+        "nombre-slider-otros": "Otras mascotas",
+        "boton-slider": "Ver productos",
+        "boton-compra": "Compra ahora",
+        "txt-cupon": "Productos para tus mascotas",
+        "filtrado-1": "Todos los productos",
+        "filtrado-2": "Productos para perros",
+        "filtrado-3": "Productos para gatos",
+        "filtrado-4": "Productos para otras mascotas",
+        "filtrado-5": "Ofertas",
+        "boton-ver-mas": "Ver mas"
     },
 
-    "footer_tienda":{
-        "categorias-titulo" : "Categorías",
-        "categorias-nombre-footer-perros" : "Perros",
-        "categorias-nombre-footer-gatos" : "Gatos",
-        "categorias-nombre-footer-otros" : "Otras mascotas",
+    "footer_tienda": {
+        "categorias-titulo": "Categorías",
+        "categorias-nombre-footer-perros": "Perros",
+        "categorias-nombre-footer-gatos": "Gatos",
+        "categorias-nombre-footer-otros": "Otras mascotas",
         "soporte-titulo": "Soporte",
-        "soporte-preguntas":"Preguntas frecuentes",
-        "soporte-politicas":"Politicas",
-        "soporte-envios":"Envios",
-        "soporte-como" :"Como comprar",
-        "contacto-titulo":"Contacto",
-        "contacto-pregunta":"¿Tienes algún problema con tu compra? Contacta con nosotros vía email a Ohmypetshop@mail.com o llámanos al (+51) 966 716 687",
-        "ofertas-titulo":"Recibe ofertas increibles",
-        "suscribete-boton":"Suscríbete"
+        "soporte-preguntas": "Preguntas frecuentes",
+        "soporte-politicas": "Politicas",
+        "soporte-envios": "Envios",
+        "soporte-como": "Como comprar",
+        "contacto-titulo": "Contacto",
+        "contacto-pregunta": "¿Tienes algún problema con tu compra? Contacta con nosotros vía email a Ohmypetshop@mail.com o llámanos al (+51) 966 716 687",
+        "ofertas-titulo": "Recibe ofertas increibles",
+        "suscribete-boton": "Suscríbete",
+        "soporte-libroreclamaciones": "Libro de reclamaciones"
     }
 }

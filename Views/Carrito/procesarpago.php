@@ -200,7 +200,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 								<div>
 									<label for="contraentrega">
 									<input type="radio" id="contraentrega" class="methodpago" name="payment-method" value="CT">
-									<span>Contra Entrega</span>
+									<span>Recoger en Tienda</span>
 									</label>
 								</div>
 								<div id="divtipopago" class="notblock" >

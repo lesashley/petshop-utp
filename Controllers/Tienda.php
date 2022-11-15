@@ -283,6 +283,47 @@ require_once("Models/LoginModel.php");
 			die();
 		}
 
+		public function libroreclamaciones(){
+			if($_POST){
+				$asunto=strClean($_POST['Asunto']);
+				$nombre=ucwords(strtolower(strClean($_POST['nombreLibroReclamaciones'])));
+				$email=strtolower(strClean($_POST['emailLibroReclamaciones']));
+				$telefono=strClean($_POST['telefonoLibroReclamaciones']);
+				$mensaje=strClean($_POST['mensaje']);
+				$useragent=$_SERVER['HTTP_USER_AGENT'];
+				$ip=$_SERVER['REMOTE_ADDR'];
+				$dispositivo="PC";
+
+				if(preg_match("/Android/i",$useragent)){
+					$dispositivo="Móvil";
+				}else if(preg_match("/tablet/i",$useragent)){
+					$dispositivo="Tablet";
+				}else if(preg_match("/iPhone/i",$useragent)){
+					$dispositivo="Iphone";
+				}else if(preg_match("/IPad/i",$useragent)){
+					$dispositivo="Ipad";
+				}
+
+				$userContact=$this->setLibroReclamaciones($nombre,$email,$mensaje,$ip,$dispositivo,$useragent,$telefono,$asunto);
+				if($userContact>0){
+					$arrResponse=array("status"=>true,"msg"=>"¡Mensaje enviado a la administracion de Oh my Pet!");
+					//enviar correo
+					$dataUsuario=array('asunto'=>'Contacto desde la tienda en línea',
+										'email'=> EMAIL_EMPRESA,
+										'nombreContacto'=>$nombre,
+										'emailContacto'=>$email,
+										'mensaje'=>$mensaje);
+					//sendEmail($dataUsuario,'email_contacto');			
+
+				}else{
+					$arrResponse=array("status"=>false,"msg"=>"No es posible enviar el mensaje.");
+				}
+				
+				sleep(2);
+				echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+			}
+			die();
+		}
 		public function procesarVenta(){
 			if($_POST){
 				$idtransaccionpaypal = '';

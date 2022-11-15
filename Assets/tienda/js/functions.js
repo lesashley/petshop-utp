@@ -25,10 +25,10 @@ $('.js-addwish-b2').on('click', function(e) {
 $('.js-addwish-b2').each(function() {
     var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
     $(this).on('click', function() {
-        swal(nameProduct, "is added to wishlist !", "success");
+        swal(nameProduct, "¡Se agrego al carrito!", "success");
 
-        $(this).addClass('js-addedwish-b2');
-        $(this).off('click');
+        // $(this).addClass('js-addedwish-b2');
+        // $(this).off('click');
     });
 });
 
@@ -36,7 +36,7 @@ $('.js-addwish-detail').each(function() {
     var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
     $(this).on('click', function() {
-        swal(nameProduct, "is added to wishlist !", "success");
+        swal(nameProduct, "¡Se agrego al carrito!", "success");
 
         $(this).addClass('js-addedwish-detail');
         $(this).off('click');
@@ -46,10 +46,16 @@ $('.js-addwish-detail').each(function() {
 /*---------------------------------------------*/
 
 $('.js-addcart-detail').each(function() {
-    var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+    let nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+    let cant = 1;
     $(this).on('click', function() {
         let id = this.getAttribute('id');
-        let cant = document.querySelector('#cant-product').value;
+        if (document.querySelector('#cant-product')) {
+            cant = document.querySelector('#cant-product').value;
+        }
+        if (this.getAttribute('pr')) {
+            cant = this.getAttribute('pr');
+        }
 
         if (isNaN(cant) || cant < 1) {
             swal("", "La cantidad debe ser mayor o igual que 1", "error");
@@ -219,7 +225,7 @@ function fntdelItem(element) {
                     if (option == 1) {
                         if (objData.cantCarrito == 0) {
                             let $base_url = base_url + '/tienda';
-                            document.querySelector("#productosCarrito").innerHTML = '<div class="text-empty-cart"><div class="text-empty-cart">Agrega productos y da el primer paso para iniciar tu compra.</div><div class="img-empty-cart"><img src="/petshop-utp/Assets/tienda/images/img/EmptyCart.svg" alt="Oh my pet-Petshop"></div><div class="box-empty-cart"><h2>Carrito vacío</h2><button class="btn-ver-productos"><a href="'+$base_url+'">Ver productos</a></button></div></div>';
+                            document.querySelector("#productosCarrito").innerHTML = '<div class="text-empty-cart"><div class="text-empty-cart">Agrega productos y da el primer paso para iniciar tu compra.</div><div class="img-empty-cart"><img src="/petshop-utp/Assets/tienda/images/img/EmptyCart.svg" alt="Oh my pet-Petshop"></div><div class="box-empty-cart"><h2>Carrito vacío</h2><button class="btn-ver-productos"><a href="' + $base_url + '">Ver productos</a></button></div></div>';
                         } else {
                             document.querySelector("#productosCarrito").innerHTML = objData.htmlCarrito;
                         }
@@ -327,96 +333,144 @@ if (document.querySelector("#frmContacto")) {
     }, false);
 
 }
+if (document.querySelector("#frmLibroReclamaciones")) {
 
-if(document.querySelector("#btnComprar")){
-	let btnPago = document.querySelector("#btnComprar");
-	btnPago.addEventListener('click',function() { 
-		let dir = document.querySelector("#txtDireccion").value;
-	    let ciudad = document.querySelector("#txtCiudad").value;
-	    let inttipopago = document.querySelector("#listtipopago").value;
-        let idcupon = document.querySelector("#hdIdCupon").value;
-        if (inttipopago == "") {
-            swal("", "Seleccione tipo de pago" , "info");
-			return;
+    let frmLibroReclamaciones = document.querySelector("#frmLibroReclamaciones");
+
+    frmLibroReclamaciones.addEventListener('submit', function(e) {
+        e.preventDefault();
+        let asunto = document.querySelector("#Asunto").value;
+        let nombre = document.querySelector("#nombreLibroReclamaciones").value;
+        let email = document.querySelector("#emailLibroReclamaciones").value;
+        let telefono = document.querySelector("#telefonoLibroReclamaciones").value;
+        let mensaje = document.querySelector("#mensaje").value;
+        if (nombre == "" || email == "" || telefono == "" || asunto == "") {
+            swal("", "Por favor rellene todos los campos", "error");
+            return false;
         }
-	    else if(dir == "" || ciudad == "" ){
-			swal("", "Complete datos de envío" , "info");
-			return;
-		}else{
-			divLoading.style.display = "flex";
-			let request = (window.XMLHttpRequest) ? 
-	                    new XMLHttpRequest() : 
-	                    new ActiveXObject('Microsoft.XMLHTTP');
-			let ajaxUrl = base_url+'/Tienda/procesarVenta';
-			let formData = new FormData();
-		    formData.append('direccion', dir);    
-		   	formData.append('ciudad', ciudad);
-			formData.append('inttipopago', inttipopago);
-            formData.append('total', total);
-            formData.append('idCupon', idcupon);
-		   	request.open("POST",ajaxUrl,true);
-		    request.send(formData);
-		    request.onreadystatechange = function(){
-		    	if(request.readyState != 4) return;
-		    	if(request.status == 200){
-		    		let objData = JSON.parse(request.responseText);
-		    		if(objData.status){
-		    			window.location = base_url+"/Tienda/confirmarpedido/";
-		    		}else{
-		    			swal("", objData.msg , "error");
-		    		}
-		    	}
-		    	divLoading.style.display = "none";
-            	return false;
-		    }
-		}
-	},false);
+        if (!fntEmailValidate(email)) {
+            swal("", "El email no es válido.", "error");
+            return false;
+        }
+        if (mensaje == "") {
+            swal("", "Por favor escribe el mensaje", "error");
+            return false;
+        }
+        divLoading.style.display = "flex";
+        let request = (window.XMLHttpRequest) ?
+            new XMLHttpRequest() :
+            new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url + '/Tienda/libroreclamaciones';
+        let formData = new FormData(frmLibroReclamaciones);
+        request.open("POST", ajaxUrl, true);
+        request.send(formData);
+        request.onreadystatechange = function() {
+            if (request.readyState != 4) return;
+            if (request.status == 200) {
+                console.log(request.responseText);
+                let objData = JSON.parse(request.responseText);
+                if (objData.status) {
+                    swal("", objData.msg, "success");
+                    document.querySelector("#frmLibroReclamaciones").reset();
+                } else {
+                    swal("", objData.msg, "error");
+                }
+            }
+            divLoading.style.display = "none";
+            return false;
+        }
+    }, false);
+
 }
 
-if(document.querySelector("#condiciones")){
-	let opt = document.querySelector("#condiciones");
-	opt.addEventListener('click', function(){
-		let opcion = this.checked;
-		if(opcion){
-			document.querySelector('#optMetodoPago').classList.remove("notblock");
-		}else{
-			document.querySelector('#optMetodoPago').classList.add("notblock");
-		}
-	});
+if (document.querySelector("#btnComprar")) {
+    let btnPago = document.querySelector("#btnComprar");
+    btnPago.addEventListener('click', function() {
+        let dir = document.querySelector("#txtDireccion").value;
+        let ciudad = document.querySelector("#txtCiudad").value;
+        let inttipopago = document.querySelector("#listtipopago").value;
+        let idcupon = document.querySelector("#hdIdCupon").value;
+        if (inttipopago == "") {
+            swal("", "Seleccione tipo de pago", "info");
+            return;
+        } else if (dir == "" || ciudad == "") {
+            swal("", "Complete datos de envío", "info");
+            return;
+        } else {
+            divLoading.style.display = "flex";
+            let request = (window.XMLHttpRequest) ?
+                new XMLHttpRequest() :
+                new ActiveXObject('Microsoft.XMLHTTP');
+            let ajaxUrl = base_url + '/Tienda/procesarVenta';
+            let formData = new FormData();
+            formData.append('direccion', dir);
+            formData.append('ciudad', ciudad);
+            formData.append('inttipopago', inttipopago);
+            formData.append('total', total);
+            formData.append('idCupon', idcupon);
+            request.open("POST", ajaxUrl, true);
+            request.send(formData);
+            request.onreadystatechange = function() {
+                if (request.readyState != 4) return;
+                if (request.status == 200) {
+                    let objData = JSON.parse(request.responseText);
+                    if (objData.status) {
+                        window.location = base_url + "/Tienda/confirmarpedido/";
+                    } else {
+                        swal("", objData.msg, "error");
+                    }
+                }
+                divLoading.style.display = "none";
+                return false;
+            }
+        }
+    }, false);
+}
+
+if (document.querySelector("#condiciones")) {
+    let opt = document.querySelector("#condiciones");
+    opt.addEventListener('click', function() {
+        let opcion = this.checked;
+        if (opcion) {
+            document.querySelector('#optMetodoPago').classList.remove("notblock");
+        } else {
+            document.querySelector('#optMetodoPago').classList.add("notblock");
+        }
+    });
 }
 
 if (document.querySelector("#btnValidarCupon")) {
 
     let btnValidarCupon = document.querySelector("#btnValidarCupon");
-    btnValidarCupon.addEventListener('click', function () {
+    btnValidarCupon.addEventListener('click', function() {
 
         let cupon = document.getElementById("txtCupon").value;
         let spanTotal = document.getElementById("totalCompra");
         let spanTotalCupon = document.getElementById("totalCupon");
         let dsctoCupon = 0;
-        
+
         if (cupon.trim() == '') {
             swal("Advertencia!", 'Ingresar cupón', "info");
             return;
         }
-        
+
         let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         let ajaxUrl = base_url + '/Cupon/validar/' + cupon;
         request.open("GET", ajaxUrl, true);
         request.send();
-        request.onreadystatechange = function () {
+        request.onreadystatechange = function() {
 
             if (request.readyState == 4 && request.status == 200) {
 
                 let objData = JSON.parse(request.responseText);
-                
+
                 if (objData.status) {
-                    
-                    if(document.querySelector("#hdIdCupon").value == objData.data.id_cupon){
+
+                    if (document.querySelector("#hdIdCupon").value == objData.data.id_cupon) {
                         swal("Advertencia!", 'Cupón ingresado ya se encuentra aplicado en su pedido', "info");
                         return;
                     }
-                    
+
                     dsctoCupon = (total * (objData.data.porcentaje_dscto / 100)).toFixed(2);
                     total = (total - dsctoCupon).toFixed(2);
 
@@ -449,7 +503,7 @@ if (document.querySelector("#btnRetirarCupon")) {
     let spanTotalCupon = document.getElementById("totalCupon");
     let btnValidarCupon = document.querySelector("#btnRetirarCupon");
 
-    btnValidarCupon.addEventListener('click', function () {
+    btnValidarCupon.addEventListener('click', function() {
 
         document.querySelector("#txtCupon").value = '';
         document.querySelector("#hdIdCupon").value = '0';
@@ -459,6 +513,6 @@ if (document.querySelector("#btnRetirarCupon")) {
         spanTotalCupon.style.display = "none";
         swal("Correcto!", "Cupón retirado correctamente", "success");
 
-    }, false);  
+    }, false);
 
 }

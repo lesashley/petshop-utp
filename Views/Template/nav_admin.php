@@ -8,6 +8,13 @@
         </div>
       </div>
       <ul class="app-menu">
+      <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>" target="blank">
+                <i class="app-menu__icon fa fa-globe" aria-hidden="true"></i>
+                <span class="app-menu__label">Ver sitio web</span>
+            </a>
+        </li>
+
       <?php if(!empty($_SESSION['permisos'][1]['r'])){ ?>
         <li>
             <a class="app-menu__item" href="<?= base_url(); ?>/dashboard">
@@ -52,6 +59,9 @@
                 <?php if(!empty($_SESSION['permisos'][6]['r'])){ ?>
                 <li><a class="treeview-item" href="<?= base_url(); ?>/categorias"><i class="icon fa fa-circle-o"></i> Categorias</a></li>
                 <?php } ?>
+                <?php if(!empty($_SESSION['permisos'][6]['r'])){ ?>
+                <li><a class="treeview-item" href="<?= base_url(); ?>/cupon"><i class="icon fa fa-circle-o"></i> Cupones</a></li>
+                <?php } ?>
             </ul>
         </li>
         <?php } ?>
@@ -73,6 +83,15 @@
         </li>
         <?php } ?>
 
+        <?php if(!empty($_SESSION['permisos'][MDLIBRORECLAMACIONES]['r'])){ ?>
+        <li>
+            <a class="app-menu__item" href="<?= base_url(); ?>/LibroReclamacionesGestion">
+                <i class="app-menu__icon fa fa-book" aria-hidden="true"></i>
+                <span class="app-menu__label">Libro de Reclamaciones</span>
+            </a>
+        </li>
+        <?php } ?>
+
         
         <?php if(!empty($_SESSION['permisos'][MDPAGINAS]['r'])){ ?>
         <li>
@@ -83,6 +102,7 @@
         </li>
         <?php } ?>
 
+        
         <li>
             <a class="app-menu__item" href="<?= base_url(); ?>/logout">
                 <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>

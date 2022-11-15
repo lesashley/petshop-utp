@@ -110,6 +110,33 @@ trait TCliente{
 		return $request_insert;
 
 	}
+	public function setLibroReclamaciones(string $nombre, string $email,string $mensaje,string $ip, string $dispositivo,string $useragent, int $telefono, string $asunto){
+		$this->con =new Mysql();
+
+		$nombre = $nombre =! "" ? $nombre : "";
+		$email = $email =! "" ? $email : "";
+		$mensaje = $mensaje =! "" ? $mensaje : "";
+		$ip = $ip =! "" ? $ip : "";
+		$dispositivo = $dispositivo =! "" ? $dispositivo : "";
+		$useragent = $useragent =! "" ? $useragent : "";
+		$telefono = $telefono =! "" ? $telefono : "";
+		$asunto = $asunto =! "" ? $asunto : "";
+
+		$query_insert  = "INSERT INTO libroreclamaciones(nombre,email,mensaje,ip,dispositivo,useragent,telefono,asunto)
+						  VALUES(?,?,?,?,?,?,?,?)";
+		$arrData = array($nombre,
+						$email,
+						$mensaje,
+						$ip,
+						$dispositivo,
+						$useragent,
+						$telefono,
+						$asunto
+					);
+		$request_insert = $this->con->insert($query_insert,$arrData);
+		return $request_insert;
+
+	}
 
 	public function insertPedido(string $idtransaccionpaypal = NULL, int $idcupon, string $datospaypal = NULL, int $personaid, float $costo_envio, string $monto, int $tipopagoid, string $direccionenvio, string $status){
 		$this->con = new Mysql();
