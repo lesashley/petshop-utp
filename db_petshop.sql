@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2022 a las 05:26:36
+-- Tiempo de generación: 17-11-2022 a las 03:53:55
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -70,6 +70,43 @@ CREATE TABLE `contacto` (
 
 INSERT INTO `contacto` (`id`, `nombre`, `email`, `mensaje`, `ip`, `dispositivo`, `useragent`, `datecreated`) VALUES
 (1, 'Asdasd', 'sergius16ht@gmail.com', 'sadasd', '::1', 'PC', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', '2022-10-28 06:21:40');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cupon`
+--
+
+CREATE TABLE `cupon` (
+  `id_cupon` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `porcentaje_dscto` decimal(3,1) DEFAULT NULL,
+  `fecha_inicio` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `cantidad_uso` int(11) DEFAULT 0,
+  `total` int(11) DEFAULT 0,
+  `personaid` bigint(20) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT current_timestamp(),
+  `personaid_mod` bigint(20) DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `estado` char(1) COLLATE utf8mb4_swedish_ci DEFAULT NULL COMMENT 'A:ACTIVO, I:INACTIVO'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `cupon`
+--
+
+INSERT INTO `cupon` (`id_cupon`, `descripcion`, `porcentaje_dscto`, `fecha_inicio`, `fecha_fin`, `cantidad_uso`, `total`, `personaid`, `fecha_reg`, `personaid_mod`, `fecha_mod`, `estado`) VALUES
+(1, 'OHMYPET10', '5.0', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 3, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(2, 'OHMYPET11', '2.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 2, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(3, 'OHMYPET12', '4.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 4, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(4, 'OHMYPET13', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 10, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(5, 'OHMYPET14', '3.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 15, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(6, 'OHMYPET15', '5.0', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 6, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(7, 'OHMYPET16', '2.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 8, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(8, 'OHMYPET17', '4.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 17, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(9, 'OHMYPET18', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 25, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
+(10, 'OHMYPET19', '3.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 10, 1, '2022-11-16 21:28:36', NULL, NULL, 'A');
 
 -- --------------------------------------------------------
 
@@ -202,6 +239,32 @@ INSERT INTO `imagen` (`id`, `productoid`, `img`) VALUES
 (66, 19, 'pro_857734b0c68468d11d4863d35826a51d.jpg'),
 (67, 20, 'pro_d9dbabbfc2bbda2d0c2d4bb703dda5e0.jpg'),
 (68, 21, 'pro_2034e96fdde66bbeb32a6baf21026772.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libroreclamaciones`
+--
+
+CREATE TABLE `libroreclamaciones` (
+  `id` bigint(20) NOT NULL,
+  `nombre` varchar(200) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `mensaje` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `ip` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `dispositivo` varchar(25) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `useragent` text COLLATE utf8mb4_swedish_ci NOT NULL,
+  `datecreated` timestamp NOT NULL DEFAULT current_timestamp(),
+  `telefono` int(11) NOT NULL,
+  `asunto` text COLLATE utf8mb4_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `libroreclamaciones`
+--
+
+INSERT INTO `libroreclamaciones` (`id`, `nombre`, `email`, `mensaje`, `ip`, `dispositivo`, `useragent`, `datecreated`, `telefono`, `asunto`) VALUES
+(1, 'Sergio Alexander', 'sergius16ht@gmail.com', 'asdasdasd', '::1', 'PC', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36', '2022-11-17 02:47:25', 902216601, 'Reclamo 1');
 
 -- --------------------------------------------------------
 
@@ -543,6 +606,12 @@ ALTER TABLE `contacto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cupon`
+--
+ALTER TABLE `cupon`
+  ADD PRIMARY KEY (`id_cupon`);
+
+--
 -- Indices de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
@@ -564,6 +633,12 @@ ALTER TABLE `detalle_temp`
 ALTER TABLE `imagen`
   ADD PRIMARY KEY (`id`),
   ADD KEY `productoid` (`productoid`);
+
+--
+-- Indices de la tabla `libroreclamaciones`
+--
+ALTER TABLE `libroreclamaciones`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `modulo`
@@ -662,6 +737,12 @@ ALTER TABLE `imagen`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
+-- AUTO_INCREMENT de la tabla `libroreclamaciones`
+--
+ALTER TABLE `libroreclamaciones`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `modulo`
 --
 ALTER TABLE `modulo`
@@ -678,7 +759,11 @@ ALTER TABLE `pedido`
 --
 ALTER TABLE `permisos`
   MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
-
+--
+-- AUTO_INCREMENT de la tabla `cupon`
+--
+ALTER TABLE `cupon`
+ MODIFY `id_cupon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
@@ -752,24 +837,6 @@ ALTER TABLE `pedido`
 ALTER TABLE `permisos`
   ADD CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`rolid`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `permisos_ibfk_2` FOREIGN KEY (`moduloid`) REFERENCES `modulo` (`idmodulo`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `persona`
---
-ALTER TABLE `persona`
-  ADD CONSTRAINT `persona_ibfk_1` FOREIGN KEY (`rolid`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`categoriaid`) REFERENCES `categoria` (`idcategoria`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `reembolso`
---
-ALTER TABLE `reembolso`
-  ADD CONSTRAINT `reembolso_ibfk_1` FOREIGN KEY (`pedidoid`) REFERENCES `pedido` (`idpedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

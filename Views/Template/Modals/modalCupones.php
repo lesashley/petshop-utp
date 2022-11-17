@@ -3,16 +3,14 @@
   <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header headerRegister">
-        <h5 class="modal-title" id="titleModal">Nueva Categoría</h5>
+        <h5 class="modal-title" id="titleModal">Nueva Cupon</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-            <form id="formCategoria" name="formCategoria" class="form-horizontal">
-              <input type="hidden" id="idCategoria" name="idCategoria" value="">
-              <input type="hidden" id="foto_actual" name="foto_actual" value="">
-              <input type="hidden" id="foto_remove" name="foto_remove" value="0">
+            <form id="formCupones" name="formCupones" class="formCupones">
+              <input type="hidden" id="idCupones" name="idCupones" value="">
               <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
               <div class="row">
                 <div class="col-md-12">
@@ -28,7 +26,7 @@
                     
                     <div class="form-group">
                       <label class="control-label">Fecha Fin <span class="required">*</span></label>
-                      <input class="form-control" id="txtFechaInicio" name="txtFechaInicio" type="date" placeholder="Fecha Inicio" required="">
+                      <input class="form-control" id="txtFechaFin" name="txtFechaFin" type="date" placeholder="Fecha Fin" required="">
                     </div>
                     
                     <div class="form-group">
@@ -43,8 +41,8 @@
                     <div class="form-group">
                         <label for="exampleSelect1">Estado <span class="required">*</span></label>
                         <select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
-                          <option value="1">Activo</option>
-                          <option value="2">Inactivo</option>
+                          <option value="A">Activo</option>
+                          <option value="I">Inactivo</option>
                         </select>
                     </div>  
                 </div>
@@ -78,11 +76,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalViewCategoria" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="modalViewCupon" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" >
     <div class="modal-content">
       <div class="modal-header header-primary">
-        <h5 class="modal-title" id="titleModal">Datos de la categoría</h5>
+        <h5 class="modal-title" id="titleModal">Detalle del cupón</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -95,21 +93,32 @@
               <td id="celId"></td>
             </tr>
             <tr>
-              <td>Nombres:</td>
-              <td id="celNombre"></td>
-            </tr>
-            <tr>
-              <td>Descripción:</td>
+              <td>Descripcion:</td>
               <td id="celDescripcion"></td>
             </tr>
             <tr>
-              <td>Estado:</td>
-              <td id="celEstado"></td>
+              <td>% Descuento:</td>
+              <td id="celDescuento"></td>
             </tr>
             <tr>
-              <td>Foto:</td>
-              <td id="imgCategoria"></td>
+              <td>Fecha Inicio</td>
+              <td id="celFechaInicio"></td>
             </tr>
+            <tr>
+              <td>Fecha Fin</td>
+              <td id="celFechaFin"></td>
+            </tr>
+            <tr>
+              <td>Cantidad Usado</td>
+              <td id="celCantidadUsado"></td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td id="celTotal"></td>
+            </tr>
+            <tr>
+              <td>Estado</td>
+              <td id="celEstado"></td>
           </tbody>
         </table>
       </div>
