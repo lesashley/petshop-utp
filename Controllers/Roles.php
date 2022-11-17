@@ -3,9 +3,10 @@
 	class Roles extends Controllers{
 		public function __construct()
 		{
-			parent::__construct();
 			session_start();
-			session_regenerate_id(true); //para que no se repita el id de sesion
+			parent::__construct();
+			// session_start();
+			// session_regenerate_id(true); //para que no se repita el id de sesion
 			if(empty($_SESSION['login'])){
 				header('Location: '.base_url().'/login');
 			}

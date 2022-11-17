@@ -128,6 +128,8 @@
 			return $request;
 		
 		}
+
+
 		public function deleteUsuario(int $intIdpersona)
 		{
 			$this->intIdUsuario = $intIdpersona;
@@ -182,4 +184,3 @@
 
 
 	}
- ?>

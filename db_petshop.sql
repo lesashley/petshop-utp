@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2022 a las 03:53:55
+-- Tiempo de generación: 17-11-2022 a las 19:08:09
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -105,8 +105,7 @@ INSERT INTO `cupon` (`id_cupon`, `descripcion`, `porcentaje_dscto`, `fecha_inici
 (6, 'OHMYPET15', '5.0', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 6, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
 (7, 'OHMYPET16', '2.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 8, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
 (8, 'OHMYPET17', '4.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 17, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
-(9, 'OHMYPET18', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 25, 1, '2022-11-16 21:28:36', NULL, NULL, 'A'),
-(10, 'OHMYPET19', '3.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 10, 1, '2022-11-16 21:28:36', NULL, NULL, 'A');
+(9, 'OHMYPET18', '1.5', '2022-11-01 16:34:53', '2022-11-06 16:34:53', 0, 25, 1, '2022-11-16 21:28:36', NULL, NULL, 'A');
 
 -- --------------------------------------------------------
 
@@ -329,7 +328,6 @@ INSERT INTO `pedido` (`idpedido`, `id_cupon`, `referenciacobro`, `idtransaccionp
 (5, NULL, 'hgjhgjk', '', NULL, 1, '2022-10-28 22:54:07', '50.00', '120.00', 5, 'LIMA, LIMA', 'Completo'),
 (6, NULL, 'OHMYPET002', '', NULL, 1, '2022-10-30 12:52:05', '50.00', '250.00', 2, 'VES, VES', 'Completo'),
 (8, NULL, 'OHMYPET003', '', NULL, 23, '2022-10-30 13:09:14', '50.00', '85.00', 5, 'LIMA, LIMA', 'Completo'),
-(9, 10, NULL, '0V6766519J552793N', '{\"id\":\"70K04367UT6790929\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"235.06\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"0V6766519J552793N\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"235.06\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-11-06T18:41:54Z\",\"update_time\":\"2022-11-06T18:41:54Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-11-06T18:41:35Z\",\"update_time\":\"2022-11-06T18:41:54Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/70K04367UT6790929\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-11-06 13:41:56', '50.00', '916.75', 1, 'LIMA, LIMA', 'Aprobado'),
 (10, 1, 'OHMYPET005', '', NULL, 1, '2022-11-07 21:49:37', '50.00', '80.75', 5, 'LIMA, LIMA', 'Completo'),
 (11, NULL, NULL, '9B222996GM103173F', '{\"id\":\"9TY27712HS677161L\",\"intent\":\"CAPTURE\",\"status\":\"COMPLETED\",\"purchase_units\":[{\"reference_id\":\"default\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"21.79\"},\"payee\":{\"email_address\":\"sb-lmuua21551784@business.example.com\",\"merchant_id\":\"ZDEDWCG3M4NXC\"},\"soft_descriptor\":\"PAYPAL *TEST STORE\",\"shipping\":{\"name\":{\"full_name\":\"John Doe\"},\"address\":{\"address_line_1\":\"Free Trade Zone\",\"admin_area_2\":\"Lima\",\"admin_area_1\":\"Lima\",\"postal_code\":\"07001\",\"country_code\":\"PE\"}},\"payments\":{\"captures\":[{\"id\":\"9B222996GM103173F\",\"status\":\"COMPLETED\",\"amount\":{\"currency_code\":\"USD\",\"value\":\"21.79\"},\"final_capture\":true,\"seller_protection\":{\"status\":\"ELIGIBLE\",\"dispute_categories\":[\"ITEM_NOT_RECEIVED\",\"UNAUTHORIZED_TRANSACTION\"]},\"create_time\":\"2022-11-08T04:22:55Z\",\"update_time\":\"2022-11-08T04:22:55Z\"}]}}],\"payer\":{\"name\":{\"given_name\":\"John\",\"surname\":\"Doe\"},\"email_address\":\"sb-yofmr21494532@personal.example.com\",\"payer_id\":\"B9M4NVYJ3PMUY\",\"address\":{\"country_code\":\"PE\"}},\"create_time\":\"2022-11-08T04:22:00Z\",\"update_time\":\"2022-11-08T04:22:55Z\",\"links\":[{\"href\":\"https://api.sandbox.paypal.com/v2/checkout/orders/9TY27712HS677161L\",\"rel\":\"self\",\"method\":\"GET\"}]}', 1, '2022-11-07 23:22:57', '50.00', '85.00', 1, ', ', 'Completo'),
 (12, NULL, 'OHMYPET006', '', NULL, 1, '2022-11-13 22:57:48', '50.00', '85.00', 5, 'LIMA, LIMA', 'Completo'),
@@ -435,7 +433,7 @@ INSERT INTO `persona` (`idpersona`, `identificacion`, `nombres`, `apellidos`, `t
 (23, '88888888', 'Ocho', 'Ocho', 854745574, 'ocholl@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '45454545454545', 'ocho', 'ocho', '', 7, '2022-10-12 00:16:25', 1),
 (24, '', 'Lol', 'Lol', 456465645, 'lol@gmail.com', '491906f44fa5b12a891e4663353a893a37604783f101757bee46f81d6d9fa253', '', '', '', '', 7, '2022-10-12 02:32:02', 1),
 (25, '', 'Xd', 'Xd', 569874456, 'xd@gmail.com', '686c75c1073846e498145bfaa61ecc712c7f33d9f669b1f6312942e85a4f83a1', '', '', '', '', 7, '2022-10-12 02:37:47', 1),
-(26, '565645', 'Javier', 'Sanchez Corro', 123456789, 'sanchez.jsebastian99@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '', '', '', '', 7, '2022-10-26 02:51:10', 1);
+(26, '66666', 'Sergio', 'Ht', 123456789, 'sergius16ht@gmail.com', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '45454545454545', 'Cliente enterprise', '01', '', 7, '2022-10-26 02:51:10', 1);
 
 -- --------------------------------------------------------
 
@@ -719,6 +717,12 @@ ALTER TABLE `contacto`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `cupon`
+--
+ALTER TABLE `cupon`
+  MODIFY `id_cupon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
@@ -759,11 +763,7 @@ ALTER TABLE `pedido`
 --
 ALTER TABLE `permisos`
   MODIFY `idpermiso` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
---
--- AUTO_INCREMENT de la tabla `cupon`
---
-ALTER TABLE `cupon`
- MODIFY `id_cupon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --

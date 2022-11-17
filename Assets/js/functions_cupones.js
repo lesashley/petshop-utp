@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let formData = new FormData(formCupones);
         request.open("POST", ajaxUrl, true);
         request.send(formData);
-
         request.onreadystatechange = function() {
             if (request.readyState == 4 && request.status == 200) {
                 let objData = JSON.parse(request.responseText);
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     $('#modalFormCupones').modal("hide");
                     formCupones.reset();
                     swal("Cupones", objData.msg, "success");
-                    tableCupones.ajax.reload(function() {
+                    tableCupones.api().ajax.reload(function() {
                         fntEditCupon();
                         fntDelCupones();
                     });
@@ -133,8 +132,6 @@ function fntEditCupon(idcupon) {
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
     document.querySelector('#btnText').innerHTML = "Actualizar";
-
-
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     let ajaxUrl = base_url + '/Cupon/getCupon/' + idcupon;
     request.open("GET", ajaxUrl, true);
