@@ -87,26 +87,33 @@
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
 						<!-- <b>¡Aprovecha!</b> Envíos gratis por compras mayores a S/200 -->
-                        Bienvenido usuario : Ejemplo Nombre
+						<?php if(isset($_SESSION['login'])){ ?>
+                        Bienvenido: <?= $_SESSION['userData']['nombres'].''.$_SESSION['userData']['apellidos'] ?>
+						<?php } ?>
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
 						<a href="#" class="flex-c-m trans-04 p-lr-25" data-toggle="modal" data-target="#modalAyuda" >
 							Help & FAQs
 						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<?php if(isset($_SESSION['login'])){ ?>
+						<a href="<?= base_url()?>/dashboard" class="flex-c-m trans-04 p-lr-25">
 							Mi cuenta
 						</a>
+						<?php } 
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						if(isset($_SESSION['login'])){ ?>
+						
+						<a href="<?= base_url(); ?>/logout" class="flex-c-m trans-04 p-lr-25">
 							Salir 
 						</a>
+						<?php }else{ ?>
+
 
 						<a href="<?= base_url(); ?>/login" class="flex-c-m trans-04 p-lr-25">
 							Iniciar Sesion 
 						</a>
-
+						<?php } ?>
 					</div>
 				</div>
 			</div>

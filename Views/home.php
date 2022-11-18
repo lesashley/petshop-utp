@@ -10,14 +10,6 @@ $contentPage = "";
 if (!empty($data['page'])) {
 	$contentPage = $data['page']['contenido'];
 }
-
-
-
-
-
-
-
-
 ?>
 <!-- El carrito esta en views/templates/modals/ -->
 <!-- Slider -->
@@ -179,9 +171,15 @@ if (!empty($data['page'])) {
 <section class="bg0 p-t-23 p-b-140">
 	<div class="container">
 		<div class="p-b-10">
-			<h3 class="ltext-103 cl5">
+		<h3 class="ltext-103 cl5" data-section="pagina-inicio" data-value="txt-cupon">
 				Productos para tus mascotas
+				
 			</h3>
+		</div >
+		
+		<div > 
+		<button class="button-24" role="button"><?= $contentPage ?></button>
+		
 		</div>
 		<hr>
 
@@ -277,9 +275,11 @@ if (!empty($data['page'])) {
 							</div>
 
 							<div class="block2-txt-child2 flex-r p-t-3">
-								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-									<img class="icon-heart1 dis-block trans-04" src="<?= media() ?>/tienda/images/icons/icon-heart-01.png" alt="ICON">
-									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="<?= media() ?>/tienda/images/icons/icon-heart-02.png" alt="ICON">
+								<a href="#" id="<?= openssl_encrypt($arrProductos[$p]['idproducto'],METHODENCRIPT,KEY);?>" 
+								class="btn-addwish-b2 dis-block pos-relative js-addwish-b2 js-addcart-detail
+								icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
+									<i class="zmdi zmdi-shopping-cart"></i>
+									
 								</a>
 							</div>
 						</div>

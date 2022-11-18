@@ -57,6 +57,7 @@
 	const RADMINISTRADOR = 1;
 	const RCLIENTES = 7;
 	const STATUS = array('Completo','Aprobado','Cancelado','Reembolsado','Pendiente');
+	const MDLIBRORECLAMACIONES =13;
 
 
 	//paginas, id de la bd
@@ -68,6 +69,7 @@
 	const PPREGUNTAS=6;
 	const PTERMINOS=7;
 	const PERROR=8;
+	const PLIBRORECLAMACIONES=10;
 
 
 

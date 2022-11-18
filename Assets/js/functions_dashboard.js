@@ -10,6 +10,7 @@ $('.date-picker').datepicker({
     showButtonPanel: true,
     dateFormat: 'MM yy',
     showDays: false,
+
     onClose: function(dateText, inst) {
         $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
     }
