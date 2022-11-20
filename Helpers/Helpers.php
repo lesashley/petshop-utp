@@ -103,7 +103,7 @@
 
     function sessionStart(){
         session_start();
-        $inactive= 3600; //tiempo para qeu este activa la sesion en segundos// 1hora
+        $inactive= 86400; //tiempo para qeu este activa la sesion en segundos// 1 dia
         if(isset($_SESSION['timeout'])){
             $session_in= time() - $_SESSION['inicio'];
             if($session_in > $inactive){

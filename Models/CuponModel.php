@@ -31,7 +31,7 @@ class CuponModel extends Mysql
     public function selectCupones()
 	{
 		$sql = "SELECT id_cupon as id, descripcion as cupon, porcentaje_dscto as porcentaje, cantidad_uso as cantidad, total, 
-                DATE_FORMAT(fecha_inicio, '%d/%m/%Y') as fecha_inicio, DATE_FORMAT(fecha_fin, '%d/%m/%Y') as fecha_fin, estado 
+                DATE_FORMAT(fecha_inicio, '%d-%m-%Y') as fecha_inicio, DATE_FORMAT(fecha_fin, '%d-%m-%Y') as fecha_fin, estado 
                 FROM cupon ORDER BY id DESC";
 			
 		$request = $this->select_all($sql);
@@ -42,7 +42,7 @@ class CuponModel extends Mysql
     {
         $this->intId = $id;
         $sql = "SELECT id_cupon as id, descripcion as cupon, porcentaje_dscto as porcentaje, cantidad_uso as cantidad, total, 
-                DATE_FORMAT(fecha_inicio, '%d/%m/%Y') as fecha_inicio, DATE_FORMAT(fecha_fin, '%d/%m/%Y') as fecha_fin, estado 
+                DATE_FORMAT(fecha_inicio, '%Y-%m-%d') as fecha_inicio, DATE_FORMAT(fecha_fin, '%Y-%m-%d') as fecha_fin, estado 
                 FROM cupon WHERE id_cupon = $this->intId";
         $request = $this->select($sql);
         return $request;

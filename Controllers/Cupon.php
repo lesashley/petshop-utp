@@ -85,11 +85,15 @@ public function getCupon( int $idcupon){
 
 public function setCupones(){
     if($_POST){
-        if(empty($_POST['txtNombre'])|| empty($_POST['txtDescuento']) || empty($_POST['txtFechaInicio']) || empty($_POST['txtFechaFin']) || empty($_POST['listStatus']))
+        if(empty($_POST['txtNombre'])|| empty($_POST['txtDescuento']) || empty($_POST['txtFechaInicio']) || empty($_POST['txtFechaFin']) || empty($_POST['listStatus']) )
         {
             $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
+            
+    }else{// que la fecha de inicio sea mayor que la fecha final
+            if(strtotime($_POST['txtFechaInicio']) > strtotime($_POST['txtFechaFin'])){
+                $arrResponse = array("status" => false, "msg" => 'La fecha de inicio debe ser mayor que la fecha final.');
+            }else{
 
-    }else{
         $idcupon = intval($_POST['idCupones']);
         $strNombre= strClean($_POST['txtNombre']);
         $strFechaInicio= strClean($_POST['txtFechaInicio']);
@@ -124,6 +128,7 @@ public function setCupones(){
     echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 }
 die();
+}
 }
 
 
