@@ -93,10 +93,19 @@ headerAdmin($data);
                       <th colspan="3" class="text-right">Sub-Total:</th>
                       <td class="text-right"><?= SMONEY.' '.formatMoney($subtotal)?></td>
                     </tr>
+                    <?php if($orden['costoenvio'] > 0){ ?>
                     <tr>
                       <th colspan="3" class="text-right">Envio:</th>
                       <td class="text-right"><?= SMONEY.' '.formatMoney($orden['costoenvio'])?></td>
                     </tr>
+                    <?php } ?>
+
+                    <?php if($orden['id_cupon'] != 0){ ?>
+                    <tr>
+                      <th colspan="3" class="text-right">Descuento:</th>
+                      <td class="text-right"><?= SMONEY.' '.formatMoney($orden['id_cupon'])?></td>
+                    </tr>
+                    <?php } ?>
                     <tr>
                       <th colspan="3" class="text-right">Total:</th>
                       <td class="text-right"><?= SMONEY.' '.formatMoney($orden['monto'])?></td>

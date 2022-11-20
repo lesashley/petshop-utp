@@ -21,7 +21,7 @@
                     
                     <div class="form-group">
                       <label class="control-label">Fecha Inicio <span class="required">*</span></label>
-                      <input class="form-control" id="txtFechaInicio" name="txtFechaInicio" type="date" placeholder="Fecha Inicio" required="">
+                      <input class="form-control" id="txtFechaInicio" name="txtFechaInicio" type="date" placeholder="Fecha Inicio" required="" value="">
                     </div>
                     
                     <div class="form-group">
@@ -31,11 +31,11 @@
                     
                     <div class="form-group">
                       <label class="control-label">Descuento <span class="required">*</span></label>
-                      <input class="form-control" id="txtDescuento" name="txtDescuento" type="number" placeholder="Descuento" required="">
+                      <input class="form-control" id="txtDescuento" name="txtDescuento" type="text" placeholder="Descuento" required="">
                     </div>
                     <div class="form-group">
                       <label class="control-label">Total <span class="required">*</span></label>
-                      <input class="form-control" id="txtTotal" name="txtTotal" type="number" placeholder="Total" required="">
+                      <input class="form-control" id="txtTotal" name="txtTotal" type="text" placeholder="Total" required="">
                     </div>
 
                     <div class="form-group">
