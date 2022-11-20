@@ -81,8 +81,7 @@ $detalle = $data['detalle'];
         <tbody>
             <tr>
                 <td class="wd33">
-                    <!-- PONER EL LOGO DE LA EMPRESA EN ESE TAMAÑO ME DA FLOJERA HACERLO  -->
-                    <img src="<?= media(); ?>/images/img-paypal.jpg" width="111" height="30" alt="Logo">
+                    <img src="https://i.ibb.co/1m1Pkw9/logo-1-1.jpg" width="111" height="30" alt="Logo">
                 </td>
                 <td class="text-center wd33">
                     <h4><strong><?= NOMBRE_EMPRESA ?></strong></h4>
