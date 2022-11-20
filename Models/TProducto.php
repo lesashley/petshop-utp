@@ -20,7 +20,8 @@ public function getProductosT(){
                     c.nombre as categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria
@@ -61,7 +62,8 @@ public function getProductosCategoriaT(int $idcategoria, string $ruta){
                         c.nombre as categoria,
                         p.precio,
                         p.ruta,
-                        p.stock
+                        p.stock,
+                        p.status
                 FROM producto p 
                 INNER JOIN categoria c
                 ON p.categoriaid = c.idcategoria
@@ -105,7 +107,8 @@ public function getProductoT(int $idproducto, string $ruta){
                     c.ruta as ruta_categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria
@@ -150,7 +153,8 @@ public function getProductosRandom(int $idcategoria, int $cant, string $option){
                     c.nombre as categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria
@@ -186,7 +190,8 @@ public function getProductoIDT(int $idproducto){
                     c.nombre as categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria

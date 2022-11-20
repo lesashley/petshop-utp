@@ -14,7 +14,8 @@ class PromocionModel extends Mysql
                         c.nombre as categoria,
                         p.precio,
                         p.ruta,
-                        p.stock
+                        p.stock,
+                        p.status
                 FROM producto p 
                 INNER JOIN categoria c
                 ON p.categoriaid = c.idcategoria

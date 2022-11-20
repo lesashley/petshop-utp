@@ -3902,6 +3902,10 @@ input.num-product::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+.wrap-header-mobile #flags {
+    display: none;
+}
+
 #flags{
     cursor: pointer;
     position: relative;
@@ -3998,3 +4002,26 @@ input.num-product::-webkit-inner-spin-button {
     margin: 5px;
 }
 
+.tag-sale {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.tag-sale img {
+    width: 116px;
+}
+
+@media screen and (max-width: 640px){
+    .wrap-header-mobile #flags {
+        display: flex;
+    }
+
+    .wrap-menu-desktop #flags {
+        display: none;
+    }
+
+    .tooltip-language {
+        left: 17px;
+    }
+}
