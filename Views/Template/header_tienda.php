@@ -5,8 +5,11 @@ if (isset($_SESSION['arrCarrito']) and count($_SESSION['arrCarrito']) > 0) {
 		$cantCarrito += $product['cantidad'];
 	}
 }
-
+if( empty($arrProductos) ){
+	$arrProductos = array();
+}else{
 $arrProductos = $data['productos'];
+} 
 
 $tituloPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['titulo'] : "";
 $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['contenido'] : "";

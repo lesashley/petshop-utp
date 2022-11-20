@@ -111,7 +111,7 @@ $detalle = $data['detalle'];
     <table class="tbl-cliente">
         <tbody>
             <tr>
-                <td class="wd10">NIT</td>
+                <td class="wd10">DNI</td>
                 <td class="wd40"><?= $cliente['nit'] ?></td>
                 <td class="wd10">Telefono</td>
                 <td class="wd40"><?= $cliente['telefono'] ?></td>
@@ -154,10 +154,18 @@ $detalle = $data['detalle'];
                 <td colspan="3" class="text-right">Subtotal:</td>
                 <td class="text-right"><?= SMONEY.' '.formatMoney($subtotal) ?></td>
             </tr>
-            <tr>
-                <td colspan="3" class="text-right">Envio:</td>
-                <td class="text-right"><?= SMONEY.' '.formatMoney($orden['costoenvio']) ?></td>
-            </tr>
+                <?php if($orden['costoenvio'] > 0){ ?>
+                    <tr>
+                      <th colspan="3" class="text-right">Envio:</th>
+                      <td class="text-right"><?= SMONEY.' '.formatMoney($orden['costoenvio'])?></td>
+                    </tr>
+                    <?php } ?>
+                     <?php if($orden['id_cupon'] != 0){ ?>
+                    <tr>
+                      <th colspan="3" class="text-right">Descuento:</th>
+                      <td class="text-right"><?= SMONEY.' '.($orden['id_cupon'])?></td>
+                    </tr>
+                    <?php } ?>
             <tr>
                 <td colspan="3" class="text-right">Total:</td>
                 <td class="text-right"><?= SMONEY.' '.formatMoney($orden['monto']) ?></td>

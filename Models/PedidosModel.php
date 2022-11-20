@@ -37,6 +37,7 @@ class PedidosModel extends Mysql
         }
         $request = array();
         $sql = "SELECT p.idpedido,
+                                p.id_cupon,
                                 p.referenciacobro,
                                 p.idtransaccionpaypal,
                                 p.personaid,

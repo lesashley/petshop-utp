@@ -19,8 +19,9 @@
     <div class="cover"></div>
   </section>
   <section class="login-content">
-    <div class="logo">
-      <img src="<?=media() ?>/tienda/images/img/logo-svg1.svg" class="login_logo" alt="Oh my pet-Petshop">
+    <div class="logo">      
+     <a href=" <?php echo base_url(); ?> ">
+      <img  src="<?=media() ?>/tienda/images/img/logo-svg1.svg" class="login_logo" alt="Oh my pet-Petshop"></a>
     </div>
     <div class="login-box">
       <div id="divLoading">
