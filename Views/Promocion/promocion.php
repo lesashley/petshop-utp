@@ -3,7 +3,7 @@ headerTienda($data);
 $arrProductos = $data['productos'];
 ?>
 
-<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
+<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg" style="padding-bottom: 60vh;">
     <div class="container">
         <div class="flex-w flex-sb-m p-b-52">
         <div class="flex-w flex-l-m filter-tope-group m-tb-10">

@@ -6,11 +6,8 @@ $arrProductos = $data['productos'];
 // dep($arrProductos);
 
 ?>
-<!-- <hr> 
-<div class="bg0 m-t-23 p-b-140 p-t-80">-->
-<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
+<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg" style="padding-bottom: 20vh;">
     <div class="container">
-        <div class="flex-w flex-sb-m p-b-52">
         <div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 				<button id="Cattodos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
@@ -127,5 +124,6 @@ $arrProductos = $data['productos'];
             </a>
         </div>
     </div>
+</div>
 </div>
 <?php footerTienda($data); ?>

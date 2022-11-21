@@ -125,7 +125,7 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop" style="top: 40px;">
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
