@@ -92,10 +92,10 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
+					<div class="left-top-bar flex-w" >
 						<!-- <b>¡Aprovecha!</b> Envíos gratis por compras mayores a S/200 -->
 						<?php if (isset($_SESSION['login'])) { ?>
-							Bienvenido: <?= $_SESSION['userData']['nombres'] . '' . $_SESSION['userData']['apellidos'] ?>
+						    <?= "<p style='margin-right: 5px;' data-section='header_tienda' data-value='navbar-negro-bienvenido'>". "Bienvenido: " ."</p>".$_SESSION['userData']['nombres'] . '' . $_SESSION['userData']['apellidos'] ?>
 						<?php } ?>
 					</div>
 
@@ -104,14 +104,14 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 							Help & FAQs
 						</a>
 						<?php if (isset($_SESSION['login'])) { ?>
-							<a href="<?= base_url() ?>/dashboard" class="flex-c-m trans-04 p-lr-25">
+							<a href="<?= base_url() ?>/dashboard" class="flex-c-m trans-04 p-lr-25" data-section='header_tienda' data-value='navbar-negro-mi-cuenta'>
 								Mi cuenta
 							</a>
 						<?php }
 
 						if (isset($_SESSION['login'])) { ?>
 
-							<a href="<?= base_url(); ?>/logout" class="flex-c-m trans-04 p-lr-25">
+							<a href="<?= base_url(); ?>/logout" class="flex-c-m trans-04 p-lr-25" data-section='header_tienda' data-value='navbar-negro-salir'>
 								Salir
 							</a>
 						<?php } else { ?>
@@ -302,7 +302,7 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 				<li>
 					<div class="left-top-bar">
 						<!-- <b>¡Aprovecha!</b> Envíos gratis por compras mayores a S/200 -->
-						Bienvenido usuario : Ejemplo Nombre
+						Bienvenido usuario :
 					</div>
 				</li>
 
@@ -447,7 +447,7 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 		<div class="s-full js-hide-cart"></div>
 		<div class="header-cart flex-col-l p-l-25 p-r-25">
 			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
+				<span class="mtext-103 cl2" data-section="pagina-inicio" data-value="carrito-titulo">
 					Tu carrito
 				</span>
 
@@ -458,15 +458,15 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 			<div id="productosCarrito" class="header-cart-content flex-w js-pscroll">
 				<?php if ($cantCarrito == 0) { ?>
 					<div class="empty-cart-content">
-						<div class="text-empty-cart">
+						<div class="text-empty-cart" data-section="pagina-inicio" data-value="carrito-instrucciones">
 							Agrega productos y da el primer paso para iniciar tu compra.
 						</div>
 						<div class="img-empty-cart">
 							<img src="<?= media() ?>/tienda/images/img/EmptyCart.svg" alt="Oh my pet-Petshop">
 						</div>
 						<div class="box-empty-cart">
-							<h2>Carrito vacío</h2>
-							<button class="btn-ver-productos"><a href="<?= base_url() ?>/tienda">Ver productos</a></button>
+							<h2 data-section="pagina-inicio" data-value="carrito-vacio">Carrito vacío</h2>
+							<button class="btn-ver-productos"><a href="<?= base_url() ?>/tienda" data-section="pagina-inicio" data-value="carrito-boton">Ver productos</a></button>
 						</div>
 					</div>
 				<?php } else { ?>

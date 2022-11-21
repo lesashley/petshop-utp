@@ -1,5 +1,10 @@
 {
     "header_tienda": {
+        "navbar-negro-bienvenido":"Welcome User: ",
+        "navbar-negro-iniciar-sesion":"Log in",
+        "navbar-negro-registrarse":"Sign in",
+        "navbar-negro-mi-cuenta":"My account",
+        "navbar-negro-salir":"Exit",
         "navbar-inicio": "Home",
         "navbar-tienda": "Shop",
         "navbar-carrito": "Cart",
@@ -23,7 +28,32 @@
         "filtrado-4": "Other productos",
         "filtrado-5": "On sale",
         "boton-ver-mas": "See more",
-        "boton-buscar":"Search"
+        "boton-buscar":"Search",
+        "carrito-titulo":"Your cart",
+        "carrito-instrucciones":"Add products and take the first step to start your purchase.",
+        "carrito-vacio":"Empty cart",
+        "carrito-boton":"See product(s)",
+        "agregar-carrito":"Add to cart",
+        "mirar-carrito":"See cart",
+        "pago-carrito":"Process payment",
+        "relacionado":"Related product",
+        "carrito-direccion": "Shipping Address",
+        "carrito-resumen":"Summary",
+        "carrito-envio":"Shipment",
+        "carrito-cupon":"Discount coupon:",
+        "carrito-aceptar":"OK",
+        "carrito-clic" :"By clicking you agree to the terms and conditions",
+        "carrito-metodo":"Payment method",
+        "carrito-recoger":"Store Pickup",
+        "carrito-paypal":"To complete the transaction, we will send you to PayPal's secure servers.",
+        "carrito-pagar":"Pay",
+        "carrito-tipo":"Payment type",
+        "carrito-validar":"Validate",
+        "carrito-nombre":"Name",
+       "carrito-apellido":"Surname",
+       "carrito-usuario":"Username",
+       "carrito-contraseña":"Password",
+       "libro-reclamacion-titulo":"Book of reclamation"
     },
 
     "footer_tienda": {
@@ -36,7 +66,7 @@
         "soporte-politicas": "Policies",
         "soporte-envios": "Shipments",
         "soporte-como": "How to buy",
-        "contacto-titulo": "Contact",
+        "contacto-titulo": "Contact us",
         "contacto-pregunta": "Do you have a problem with your purchase? Contact us via email at Ohmypetshop@mail.com or call us at (+51) 966 716 687",
         "ofertas-titulo": "Receive incredible offers",
         "suscribete-boton": "Suscribe",
@@ -71,6 +101,8 @@
     },
 
     "terminos-condiciones":{
+        "h1": "Terms and Conditions",
+        "titulo": "DETAILED INFORMATION ON TERMS AND CONDITIONS",
         "parte-1":"<span>The terms and conditions of the Virtual Store are described below!</span></p>",
         "parte-2":"<ol><li><p>Thank you for visiting this website. Please read carefully the TERMS AND CONDITIONS of the content in this document since any use of this website constitutes your tacit and/or express acceptance of them. In other words, every time this website is used, the Terms and Conditions set out here are fully accepted.</p><ol><li><strong> User Creation</strong></li></ol>",
         "parte-3":"<p>In order to make purchases online, it is essential that the person who in this case we will call 'client' must have created a user account to be able to access it.</p><p>In case the client does not have a user account, it can be created without problem by entering a username (email) and a password. And it is that the client has problems creating these, they have the possibility of approaching one of the establishments of our closest Stores in person and requesting help from one of our collaborators to create an account.</p><p>Once registered, you will receive a notification to your email with the confirmation of the user creation and resending the data that was entered.</p><p>In the event that the client forgets the password, they can go to Forgot the password to enter their email and a link will be sent to them to modify it.</p>",
@@ -79,8 +111,17 @@
         "parte-6":"<p><strong>4.Delivery</strong></p><p>When selecting that you want your order to come home, you would be selecting delivery which has a standard cost of S/ 50 or $12.99.</p><p>The cost is valid for up to 3 trips in case the order cannot be delivered on the established day or if the client wishes to reschedule the delivery date. In case, the delivery of the order could not be specified in the 3 opportunities, the client must pick it up in person at one of our closest stores.</p><p>Our delivery shipment only applies to Metropolitan Lima and Callao.</p>",
         "parte-7":"<li><strong> Return</strong></li></ol><p>Returns are made in case the client requires it, which must return the product in good condition if the reason for return is by mistake.</p><p>The amount will be returned to the same payment method.</p><p>The return time for Visa, Mastercard, American Express cards is 30 days.</p><p>The return time for Paypal is 60 days.</p><p>In case you want a return due to poor condition of a product, you must contact our WhatsApp number, attaching videos and / or images and proof of payment and after that they would be communicating with the customer to coordinate the collection of the products and return of the same value.</p>",
         "parte-8":"<li><strong> Claims/ Complaints</strong></li></ol><p>Claims/complaints can be made by anyone without the need to have a user</p><p>created.</p><p>The client must complete all the requested changes in detail to</p><p>to be able to respond to them in the fastest way by the means indicated.</p><p>The claim and/or Complaint response time is 30 business days and the response can be sent by email or letter.</p><p>&nbsp;</p><p>If you have any further questions or something that is not clear, you can leave your message in the contact us form or send a WhatsApp message or corporate email and one of our collaborators will respond.</p></li></ol>"
+    },
+
+    "faq":{
+        "asd":"<ol><li><strong>What is Oh My Pet! Petshop? </strong>Oh My Pet! is a Peruvian company dedicated to the sale of domestic pet products.</li><li><strong>Where is Oh My Pet! Petshop located?</strong> Oh My Pet! Petshop is located at: Av. Petit. Thouars 385 / Av. Arequipa 265</li><li> <strong>Why buy at Oh My Pet! Petshop?</strong>&nbsp;In Oh My Pet!, you will find the best products at the best prices.In addition, we always have promotions and offers for our most frequent customers.</li></ol><p>&nbsp;</p><p>Other questions</p><ul><li><strong>What payment methods do we accept? </strong><span style='color: #666666; font-family: Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant- caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space : normal; windows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;'>In Oh My Pet! We accept all cards (VISA and Mastercard), cash, PayPal, etc. </span></li></ul>",
+        "error":"Error 404: Page not found",
+        "encontrar":"The page you requested cannot be found.",
+        "atras":"Return"
     }
 
+        
+ 
 
    
 }

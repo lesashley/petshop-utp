@@ -11,7 +11,7 @@
           <img src="<?=media() ?>/tienda/images/img/error.svg" style="min-height:5%; min-width:5%; height:auto; width:auto; max-height:300px; max-width:300px;" alt="Oh my pet-Petshop">
         </div>
         <?= $data['page']['contenido']; ?>
-        <p><a class="btn btn-warning" href="javascript:window.history.back();" style="margin-top: 10px;">Regresar</a></p>
+        <p><a class="btn btn-warning" href="javascript:window.history.back();" style="margin-top: 10px;"data-section="faq" data-value="atras">Regresar</a></p>
       </div>
   </div>
 </div>

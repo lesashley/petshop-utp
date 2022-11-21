@@ -103,7 +103,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 										</div>
 									</div>
 
-									<button id="<?= openssl_encrypt($arrProducto['idproducto'],METHODENCRIPT,KEY); ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+									<button id="<?= openssl_encrypt($arrProducto['idproducto'],METHODENCRIPT,KEY); ?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" data-section="pagina-inicio" data-value="agregar-carrito">
 										Agregar al carrito
 									</button>
 								</div>
@@ -139,7 +139,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	<!-- Related Products -->
 	<section class="sec-relate-product bg0 p-t-30 p-b-105">
 	<div class="bg6 flex-c-m flex-w size-302 m-t-10 m-b-30 p-tb-15">
-				<h3 class="ltext-106 cl5 txt-center">
+				<h3 class="ltext-106 cl5 txt-center" data-section="pagina-inicio" data-value="relacionado">
 					Productos relacionados
 				</h3>
 			</div>
@@ -164,7 +164,7 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 							<div class="block2-pic hov-img0">
 								<img src="<?= $portada ?>" alt="<?= $arrProductos[$p]['nombre'] ?>">
 
-								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+								<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04"  data-section="pagina-inicio" data-value="carrito-boton">
 									Ver producto
 								</a>
 								<div class="tag-sale">

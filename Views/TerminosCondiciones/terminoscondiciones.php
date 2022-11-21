@@ -4,7 +4,7 @@ $banner = $data['page']['portada'];
 $idpagina = $data['page']['idpost'];
 ?>
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('Assets/images/uploads/img_7fc2fe8dfa8a355f53ca5bf4a74ad663.jpg');">
-    <h2 class="ltext-105 cl0 txt-center">
+    <h2 class="ltext-105 cl0 txt-center" data-section="terminos-condiciones" data-value= "h1">
         Términos y Condiciones
     </h2>
 </section>
