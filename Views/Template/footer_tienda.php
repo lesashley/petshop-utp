@@ -62,6 +62,11 @@
 							Libro de Reclamaciones
 						</a>
 					</li>
+					<li class="p-b-10">
+						<a href="<?= base_url(); ?>/terminoscondiciones" class="stext-107 cl7 hov-cl1 trans-04">
+							Términos y Condiciones
+						</a>
+					</li>
 				</ul>
 			</div>
 

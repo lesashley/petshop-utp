@@ -64,9 +64,27 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 							SKU:
 							<?= $arrProducto['codigo']; ?>
 						</span>
-						<span class="mtext-106 cl2">
-							<?= SMONEY.formatMoney($arrProducto['precio']); ?>
-						</span>
+
+						<?php
+							if($arrProducto['status'] === 3){
+						?>
+							<span class="mtext-106 cl2">
+								Antes <del> <?= SMONEY.formatMoney($arrProducto['precio']); ?> </del>
+							</span>
+							<br>
+							<span class="mtext-106 cl2">
+								Ahora <?= SMONEY.formatMoney($arrProducto['precio_promocion']); ?>
+							</span>
+						<?php
+							}
+							else{
+						?>
+							<span class="mtext-106 cl2">
+								<?= SMONEY.formatMoney($arrProducto['precio']); ?>
+							</span>
+						<?php
+							}
+						?>
 						<!-- <p class="stext-102 cl3 p-t-23"></p> -->
 						<?= $arrProducto['descripcion']; ?>
 						<!--  -->
@@ -156,9 +174,25 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 									<a href="<?= base_url().'/tienda/producto/'.$arrProductos[$p]['idproducto'].'/'.$ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										<?= $arrProductos[$p]['nombre'] ?>
 									</a>
-									<span class="stext-105 cl3">
-										<?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?>
-									</span>
+									<?php
+										if($arrProductos[$p]['status'] === 3){
+									?>
+										<span class="mtext-106 cl2">
+											Antes <del> <?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?> </del>
+										</span>
+										<span class="mtext-106 cl2">
+											Ahora <?= SMONEY.formatMoney($arrProductos[$p]['precio_promocion']); ?>
+										</span>
+									<?php
+										}
+										else{
+									?>
+										<span class="mtext-106 cl2">
+											<?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?>
+										</span>
+									<?php
+										}
+									?>
 								</div>
 								<div class="block2-txt-child2 flex-r p-t-3">
 								<a href="#" id="<?= openssl_encrypt($arrProductos[$p]['idproducto'],METHODENCRIPT,KEY);?>" 

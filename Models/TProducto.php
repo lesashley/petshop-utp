@@ -24,7 +24,7 @@ public function getProductosT(){
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria
-            WHERE p.status != 0 ORDER BY p.idproducto DESC ";
+            WHERE p.status not in (0,3) ORDER BY p.idproducto DESC ";
             $request = $this->con->select_all($sql);
             if(count($request) > 0){
                 for ($c=0; $c < count($request) ; $c++) { 
@@ -105,10 +105,12 @@ public function getProductoT(int $idproducto, string $ruta){
                     c.ruta as ruta_categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status,
+                    pm.precio_promocion
             FROM producto p 
-            INNER JOIN categoria c
-            ON p.categoriaid = c.idcategoria
+            INNER JOIN categoria c ON p.categoriaid = c.idcategoria
+            LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
             WHERE p.status != 0 AND p.idproducto = '{$this->intIdProducto}' AND p.ruta = '{$this->strRuta}' ";
             $request = $this->con->select($sql);
             if(!empty($request)){
@@ -150,10 +152,12 @@ public function getProductosRandom(int $idcategoria, int $cant, string $option){
                     c.nombre as categoria,
                     p.precio,
                     p.ruta,
-                    p.stock
+                    p.stock,
+                    p.status,
+                    pm.precio_promocion
             FROM producto p 
-            INNER JOIN categoria c
-            ON p.categoriaid = c.idcategoria
+            INNER JOIN categoria c ON p.categoriaid = c.idcategoria
+            LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
             WHERE p.status != 0 AND p.categoriaid = $this->intIdcategoria
             ORDER BY $this->option LIMIT  $this->cant ";
             $request = $this->con->select_all($sql);
@@ -184,12 +188,12 @@ public function getProductoIDT(int $idproducto){
                     p.descripcion,
                     p.categoriaid,
                     c.nombre as categoria,
-                    p.precio,
+                    (CASE p.status WHEN 3 THEN pm.precio_promocion ELSE p.precio END) AS precio,
                     p.ruta,
                     p.stock
             FROM producto p 
-            INNER JOIN categoria c
-            ON p.categoriaid = c.idcategoria
+            INNER JOIN categoria c ON p.categoriaid = c.idcategoria
+            LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
             WHERE p.status != 0 AND p.idproducto = '{$this->intIdProducto}' ";
             $request = $this->con->select($sql);
             if(!empty($request)){

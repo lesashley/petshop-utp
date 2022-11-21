@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `promocion`
+--
+
+CREATE TABLE `promocion` (
+  `id_promocion` bigint(20) NOT NULL,
+  `id_producto` bigint(20) NOT NULL,
+  `porcentaje_dscto` decimal(3,1) DEFAULT NULL,
+  `precio_promocion` decimal(11,2) NOT NULL,
+  `fecha_inicio` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `id_persona` bigint(20) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_persona_mod` bigint(20) DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `estado` char(1) COLLATE utf8mb4_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `categoria`
 --
 
@@ -311,7 +331,7 @@ CREATE TABLE `pedido` (
   `fecha` datetime NOT NULL DEFAULT current_timestamp(),
   `costoenvio` decimal(10,2) NOT NULL DEFAULT 0.00,
   `monto` decimal(11,2) NOT NULL,
-  `tipopagoid` bigint(20) NOT NULL,
+  `tipopagoid` bigint(20) NOT NULL COMMENT '1:PAYPAL, 2:TARJETA, 5:EFECTIVO',
   `direccionenvio` text COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `status` varchar(110) COLLATE utf8mb4_swedish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -484,7 +504,7 @@ CREATE TABLE `producto` (
   `imagen` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
   `datecreated` datetime NOT NULL DEFAULT current_timestamp(),
   `ruta` varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1
+  `status` int(11) NOT NULL DEFAULT 1 COMMENT '1:ACTIVO, 2:INACTIVO, 3:PROMOCION'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
@@ -590,6 +610,13 @@ INSERT INTO `tipopago` (`idtipopago`, `tipopago`, `status`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `promocion`
+--
+ALTER TABLE `promocion`
+  ADD PRIMARY KEY (`id_promocion`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `categoria`
@@ -705,6 +732,12 @@ ALTER TABLE `tipopago`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `promocion`
+--
+ALTER TABLE `promocion`
+  MODIFY `id_promocion` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
+--
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
@@ -803,6 +836,12 @@ ALTER TABLE `tipopago`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `detalle_pedido`
+--
+ALTER TABLE `promocion`
+  ADD CONSTRAINT `promocion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`idproducto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_pedido`

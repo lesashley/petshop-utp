@@ -95,6 +95,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 									</div>
 						 		</div>
 								<button type="submit" class="btn btn-primary">Regístrate</button>
+								<p><span class="required">*</span>Al registrarse usted acepta los términos y condiciones</p>
 						 	</form>
 						  </div>
 						</div>
@@ -130,7 +131,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 						</div>
 
 						<div class="size-209">
-							<span class="mtext-110 cl2">
+							<span id="costoEnvio" class="mtext-110 cl2">
 								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney(COSTOENVIO) ?>
 							</span>
 						</div>
@@ -145,6 +146,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 							<span id="dsctoCupon" class="mtext-110 cl2">
 							    - S/. 0.00
 							</span>
+							<input type="hidden" value="0" id="hdCupon">
 						</div>
 					</div>
 					<div class="flex-w flex-t p-t-27 p-b-33">
@@ -157,9 +159,6 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 						<div class="size-209 p-t-1">
 							<span id="totalCompra" class="mtext-110 cl2">
 								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney($total) ?>
-							</span>
-
-							<span id="totalCupon" class="mtext-110 cl2">
 							</span>
 						</div>
 <?php 
@@ -227,6 +226,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 									<script>
 										var total = <?= $total ?>;
 										var totalPedido = <?= $total ?>;
+										var costoEnvio = <?= COSTOENVIO ?>;
 									</script>
 								</div>
 							</div>

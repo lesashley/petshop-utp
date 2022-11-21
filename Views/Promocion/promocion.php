@@ -92,9 +92,11 @@ $arrProductos = $data['productos'];
                                 <a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['idproducto'] . '/' . $ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     <?= $arrProductos[$p]['nombre'] ?>
                                 </a>
-
                                 <span class="stext-105 cl3">
-                                    <?= SMONEY . formatMoney($arrProductos[$p]['precio']); ?>
+                                    Antes <del><?= SMONEY . formatMoney($arrProductos[$p]['precio']); ?></del>
+                                </span>
+                                <span class="stext-105 cl3">
+                                    Ahora <?= SMONEY . formatMoney($arrProductos[$p]['precio_promocion']); ?>
                                 </span>
                             </div>
 

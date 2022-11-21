@@ -13,12 +13,13 @@ class PromocionModel extends Mysql
                         p.categoriaid,
                         c.nombre as categoria,
                         p.precio,
+                        pm.precio_promocion,
                         p.ruta,
                         p.stock
                 FROM producto p 
-                INNER JOIN categoria c
-                ON p.categoriaid = c.idcategoria
-                WHERE p.status != 0 AND p.stock >= 60
+                INNER JOIN categoria c ON p.categoriaid = c.idcategoria
+                LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
+                WHERE p.status != 0 AND p.status = 3
                 ORDER BY p.idproducto DESC ";
         $request = $this->con->select_all($sql);
         if (count($request) > 0) {
