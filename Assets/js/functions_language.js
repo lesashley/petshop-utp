@@ -3,9 +3,11 @@ const textsToChange = document.querySelectorAll("[data-section]");
 const flagsElements = document.querySelectorAll(".flags__item");
 const tooltipFlagElement = document.querySelectorAll(".item-tooltip");
 
-const changeLanguage = async(language) => {
-    const requestJson = await fetch(`Assets/json/${language}.json`);
-    const texts = await requestJson.json();
+const changeLanguage = (language) => {
+    // const requestJson = await fetch(`Assets/json/${language}.json`);
+    // const texts = await requestJson.json();
+    // const json = getCookie(language);
+    const texts = JSON.parse(localStorage.getItem(language));
 
     for(const element of flagsElements){
         if (element.dataset.language == language) {
@@ -32,12 +34,21 @@ flagElement.addEventListener("click",(e)=>{
 
 tooltipFlagElement.forEach(flag => {
     flag.addEventListener('click', (e) => {
-        // Luego que guarde en cookie
         changeLanguage(e.target.closest(".item-tooltip").dataset.language);
         e.target.closest('.tooltip-language').classList.remove("active");
     });
-  })
+});
+
+const getJson = async(language) => {
+    const requestJsonEN = await fetch(`Assets/json/en.json`);
+    const requestJsonES = await fetch(`Assets/json/es.json`);
+    const textsEN = await requestJsonEN.json();
+    const textsES = await requestJsonES.json();
+    localStorage.setItem("en", JSON.stringify(textsEN));
+    localStorage.setItem("es", JSON.stringify(textsES));
+}
 
 window.addEventListener('load', function() {
+    getJson();
     changeLanguage("es");
 }, false);
