@@ -25,6 +25,8 @@ headerAdmin($data);
           $orden = $data['arrPedido']['orden'];
           $detalle = $data['arrPedido']['detalle'];
           $transaccion = $orden['idtransaccionpaypal'] != "" ? $orden['idtransaccionpaypal'] : $orden['referenciacobro'];
+        
+          
         ?>
           <section id="sPedido" class="invoice">
             <div class="row mb-4">
@@ -100,10 +102,15 @@ headerAdmin($data);
                     </tr>
                     <?php } ?>
 
-                    <?php if($orden['id_cupon'] != 0){ ?>
+                    <?php if($orden['id_cupon'] != 0 ){ ?>
                     <tr>
                       <th colspan="3" class="text-right">Descuento:</th>
-                      <td class="text-right"><?= SMONEY.' '.formatMoney($orden['id_cupon'])?></td>
+                      <td class="text-right"><?= SMONEY.' '.$data['arrCupon']['porcentaje_dscto']?></td>
+                    </tr>
+                    <?php }else{ ?>
+                      <tr>
+                      <th colspan="3" class="text-right">Descuento:</th>
+                      <td class="text-right">Sin descuentos</td>
                     </tr>
                     <?php } ?>
                     <tr>
