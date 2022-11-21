@@ -95,6 +95,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 									</div>
 						 		</div>
 								<button type="submit" class="btn btn-primary">Regístrate</button>
+								<p><span class="required">*</span>Al registrarse usted acepta los términos y condiciones</p>
 						 	</form>
 						  </div>
 						</div>
@@ -130,7 +131,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 						</div>
 
 						<div class="size-209">
-							<span class="mtext-110 cl2">
+							<span id="costoEnvio" class="mtext-110 cl2">
 								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney(COSTOENVIO) ?>
 							</span>
 						</div>
@@ -145,6 +146,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 							<span id="dsctoCupon" class="mtext-110 cl2">
 							    - S/. 0.00
 							</span>
+							<input type="hidden" value="0" id="hdCupon">
 						</div>
 					</div>
 					<div class="flex-w flex-t p-t-27 p-b-33">
@@ -157,9 +159,6 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 						<div class="size-209 p-t-1">
 							<span id="totalCompra" class="mtext-110 cl2">
 								&nbsp;&nbsp;&nbsp;<?= SMONEY.formatMoney($total) ?>
-							</span>
-
-							<span id="totalCupon" class="mtext-110 cl2">
 							</span>
 						</div>
 <?php 
@@ -184,7 +183,9 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 							<input type="checkbox" id="condiciones">
 							<label for="condiciones"> Aceptar </label>
 							<a href="#" data-toggle="modal" data-target="#modalTerminos" data-backdrop="static" data-keyboard="false"> Términos y Condiciones </a>
+							<br>
 						</div>
+						<p><span class="required">*</span>Al hacer clic usted acepta los términos y condiciones</p>
 						<div id="optMetodoPago" class="notblock">
 							<hr>
 							<h4 class="mtext-109 cl2 p-b-30">
@@ -227,6 +228,7 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 									<script>
 										var total = <?= $total ?>;
 										var totalPedido = <?= $total ?>;
+										var costoEnvio = <?= COSTOENVIO ?>;
 									</script>
 								</div>
 							</div>

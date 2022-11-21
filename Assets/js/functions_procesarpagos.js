@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData.append('idCupon', idcupon);
                 formData.append('datapay', JSON.stringify(details));
                 formData.append('total', total);
+                formData.append('costo_envio', document.getElementById("paypal").checked ? costoEnvio : 0);
                 request.open("POST", ajaxUrl, true);
                 request.send(formData);
                 request.onreadystatechange = function () {

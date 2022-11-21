@@ -125,7 +125,7 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 				</div>
 			</div>
 
-			<div class="wrap-menu-desktop">
+			<div class="wrap-menu-desktop" style="top: 40px;">
 				<nav class="limiter-menu-desktop container">
 
 					<!-- Logo desktop -->
@@ -206,11 +206,26 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 							</div>
 						<?php } ?>
 						<div id="flags" class="flex-w flex-r-m">
-							<div class="cl2  trans-04 p-l-22 p-r-11 flags__item" data-language="en">
-								English <img src="<?= media() ?>/images/us.svg" alt="usa">
+							<div class="cl2 trans-04 p-l-20 p-r-5 flags__item" data-language="es">
+								<img src="<?= media() ?>/images/es.svg" alt="españa">
+								<span class="text-language">ES</span>
 							</div>
-							<div class="cl2 trans-04 p-l-22 p-r-11 flags__item" data-language="es">
-								Español <img src="<?= media() ?>/images/es.svg" alt="españa">
+							<div class="cl2  trans-04 p-l-20 p-r-5 flags__item" data-language="en">
+								<img src="<?= media() ?>/images/us.svg" alt="usa">
+								<span class="text-language">EN</span>
+							</div>
+							<span class="nav-icon"></span>							
+							<div class="tooltip tooltip-language">
+								<div id="flags" class="flex-w flex-r-m">
+									<div class="cl2 trans-04 flags__item item-tooltip" data-language="es">
+										<input type="radio" checked="true">ES</input>
+										<img src="<?= media() ?>/images/es.svg" alt="españa">
+									</div>
+									<div class="cl2  trans-04 flags__item item-tooltip" data-language="en">
+										<input type="radio" checked="true">EN</input>
+										<img src="<?= media() ?>/images/us.svg" alt="usa">
+									</div>							
+								</div>
 							</div>
 						</div>
 
@@ -218,10 +233,6 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a> -->
-
-
-
-
 
 					</div>
 				</nav>
@@ -246,6 +257,30 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 				<?php } ?>
+
+				<div id="flags" class="flex-w flex-r-m">
+					<div class="cl2 trans-04 p-l-20 p-r-5 flags__item" data-language="es">
+						<img src="<?= media() ?>/images/es.svg" alt="españa">
+						<span class="text-language">ES</span>
+					</div>
+					<div class="cl2  trans-04 p-l-20 p-r-5 flags__item" data-language="en">
+						<img src="<?= media() ?>/images/us.svg" alt="usa">
+						<span class="text-language">EN</span>
+					</div>
+					<span class="nav-icon"></span>							
+					<div class="tooltip tooltip-language">
+						<div id="flags" class="flex-w flex-r-m">
+							<div class="cl2 trans-04 flags__item item-tooltip" data-language="es">
+								<input type="radio" checked="true">ES</input>
+								<img src="<?= media() ?>/images/es.svg" alt="españa">
+							</div>
+							<div class="cl2  trans-04 flags__item item-tooltip" data-language="en">
+								<input type="radio" checked="true">EN</input>
+								<img src="<?= media() ?>/images/us.svg" alt="usa">
+							</div>							
+						</div>
+					</div>
+				</div>
 				<!-- icono de favoritos
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>

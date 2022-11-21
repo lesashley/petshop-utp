@@ -37,8 +37,12 @@
 					if($arrData[$i]['status'] == 1)
 					{
 						$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
-					}else{
+					}else if ($arrData[$i]['status'] == 2)
+					{
 						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+					}
+					else{
+						$arrData[$i]['status'] = '<span class="badge badge-pet">En Promoción</span>';
 					}
 
 					$arrData[$i]['precio'] = SMONEY.' '.formatMoney($arrData[$i]['precio']);
@@ -73,8 +77,15 @@
 					$strPrecio = strClean($_POST['txtPrecio']);
 					$intStock = intval($_POST['txtStock']);
 					$intStatus = intval($_POST['listStatus']);
+					
+					$strPorcentajeDscto = strClean($_POST['txtPorcentajeDscto']);
+					$strPrecioPromocion = strClean($_POST['txtPrecioPromocion']);
+					$intFechaInicio = strClean($_POST['txtFechaInicio']);
+					$intFechaFin = strClean($_POST['txtFechaFin']);
+					$intIdPersona = $_SESSION['idUser'];
+					$intIdPromocion = intval($_POST['hdIdPromocion']);
 					$request_producto = "";
-
+					
 					$ruta=strtolower(clear_cadena($strNombre)); //rutas amigables,limpia la cadena
 					$ruta=str_replace(" ","-",$ruta); //rutas amigables, añde guiones
 
@@ -89,7 +100,13 @@
 																		$strPrecio, 
 																		$intStock, 
 																		$ruta,
-																		$intStatus );
+																		$intStatus,
+																		$strPorcentajeDscto,
+																		$strPrecioPromocion,
+																		$intFechaInicio,
+																		$intFechaFin,
+																		$intIdPersona
+																		);
 						}
 					}else{
 						$option = 2;
@@ -102,7 +119,14 @@
 																		$strPrecio, 
 																		$intStock, 
 																		$ruta,
-																		$intStatus);
+																		$intStatus,
+																		$intIdPromocion,
+																		$strPorcentajeDscto,
+																		$strPrecioPromocion, 
+																		$intFechaInicio, 
+																		$intFechaFin,
+																		$intIdPersona
+																		);
 						}
 					}
 					if($request_producto > 0 )

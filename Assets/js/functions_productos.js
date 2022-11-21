@@ -42,7 +42,7 @@ tableProductos = $('#tableProductos').dataTable({
     }, {
         "extend": "excelHtml5",
         "text": "<i class='fas fa-file-excel'></i> Excel",
-        "titleAttr": "Esportar a Excel",
+        "titleAttr": "Exportar a Excel",
         "className": "btn btn-success",
         "exportOptions": {
             "columns": [0, 1, 2, 3, 4, 5]
@@ -50,7 +50,7 @@ tableProductos = $('#tableProductos').dataTable({
     }, {
         "extend": "pdfHtml5",
         "text": "<i class='fas fa-file-pdf'></i> PDF",
-        "titleAttr": "Esportar a PDF",
+        "titleAttr": "Exportar a PDF",
         "className": "btn btn-danger",
         "exportOptions": {
             "columns": [0, 1, 2, 3, 4, 5]
@@ -58,7 +58,7 @@ tableProductos = $('#tableProductos').dataTable({
     }, {
         "extend": "csvHtml5",
         "text": "<i class='fas fa-file-csv'></i> CSV",
-        "titleAttr": "Esportar a CSV",
+        "titleAttr": "Exportar a CSV",
         "className": "btn btn-info",
         "exportOptions": {
             "columns": [0, 1, 2, 3, 4, 5]
@@ -81,6 +81,7 @@ window.addEventListener('load', function() {
             let strPrecio = document.querySelector('#txtPrecio').value;
             let intStock = document.querySelector('#txtStock').value;
             let intStatus = document.querySelector('#listStatus').value;
+
             if (strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '') {
                 swal("Atención", "Todos los campos son obligatorios.", "error");
                 return false;
@@ -89,6 +90,40 @@ window.addEventListener('load', function() {
                 swal("Atención", "El código debe ser mayor que 5 dígitos.", "error");
                 return false;
             }
+
+            if(intStatus === "3")
+            {
+                let txtPrecioPromocion = document.querySelector('#txtPrecioPromocion').value;
+                let txtPorcentajeDscto = document.querySelector('#txtPorcentajeDscto').value;
+                let txtFechaInicio = document.querySelector('#txtFechaInicio').value;
+                let txtFechaFin = document.querySelector('#txtFechaFin').value;
+                
+                if (txtPrecioPromocion == '' || txtPorcentajeDscto == '' || txtFechaInicio == '' || txtFechaFin == '') {
+                    swal("Atención", "Todos los campos son obligatorios.", "info");
+                    return false;
+                }   
+
+                if(parseInt(txtPorcentajeDscto) > 100 || parseInt(txtPorcentajeDscto) === 0) {
+                    swal("Atención", "Verificar porcentaje descuento.", "info");
+                    return false; 
+                }
+            
+                const fechaInicio = addDays(1, new Date(txtFechaInicio));
+                const fechaFin = addDays(1, new Date(txtFechaFin));
+                const fechaActual = new Date();
+
+                if(fechaFin < fechaInicio) {
+                    swal("Atención", "Fecha fin es menor a la fecha inicio.", "info");
+                    return false; 
+                }
+
+                // if(fechaInicio < fechaActual) {
+                //     swal("Atención", "Fecha inicio es menor a la fecha actual.", "info");
+                //     return false; 
+                // }
+                
+            }
+
             divLoading.style.display = "flex";
             tinyMCE.triggerSave();
             let request = (window.XMLHttpRequest) ?
@@ -110,12 +145,14 @@ window.addEventListener('load', function() {
                             tableProductos.api().ajax.reload();
                         } else {
                             htmlStatus = intStatus == 1 ?
-                                '<span class="badge badge-success">Activo</span>' :
-                                '<span class="badge badge-danger">Inactivo</span>';
+                                        '<span class="badge badge-success">Activo</span>' :
+                                         intStatus == 2 ?
+                                        '<span class="badge badge-danger">Inactivo</span>' :
+                                        '<span class="badge badge-pet">Promoción</span>';
                             rowTable.cells[1].textContent = intCodigo;
                             rowTable.cells[2].textContent = strNombre;
                             rowTable.cells[3].textContent = intStock;
-                            rowTable.cells[4].textContent = smony + strPrecio;
+                            rowTable.cells[4].textContent = "S/. " + strPrecio;
                             rowTable.cells[5].innerHTML = htmlStatus;
                             rowTable = "";
                         }
@@ -174,6 +211,13 @@ tinymce.init({
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
 });
+
+function addDays(numOfDays, date = new Date()) {
+
+    date.setDate(date.getDate() + numOfDays);
+    return date;
+
+}
 
 function fntInputFile() {
     let inputUploadfile = document.querySelectorAll(".inputUploadfile");
@@ -266,8 +310,9 @@ function fntViewInfo(idProducto) {
                 let objProducto = objData.data;
                 let estadoProducto = objProducto.status == 1 ?
                     '<span class="badge badge-success">Activo</span>' :
-                    '<span class="badge badge-danger">Inactivo</span>';
-
+                    objProducto.status == 2 ?
+                    '<span class="badge badge-danger">Inactivo</span>' :
+                    '<span class="badge badge-pet">Promoción</span>';
                 document.querySelector("#celCodigo").innerHTML = objProducto.codigo;
                 document.querySelector("#celNombre").innerHTML = objProducto.nombre;
                 document.querySelector("#celPrecio").innerHTML = objProducto.precio;
@@ -318,6 +363,12 @@ function fntEditInfo(element, idProducto) {
                 document.querySelector("#txtStock").value = objProducto.stock;
                 document.querySelector("#listCategoria").value = objProducto.categoriaid;
                 document.querySelector("#listStatus").value = objProducto.status;
+                document.querySelector("#hdIdPromocion").value = objProducto.id_promocion ?? '0';
+                document.querySelector("#txtPorcentajeDscto").value = objProducto.porcentaje_dscto ?? '';
+                document.querySelector("#txtPrecioPromocion").value = objProducto.precio_promocion ?? '';                
+                document.querySelector("#txtFechaInicio").value = objProducto.fecha_inicio ? formatDate(new Date(objProducto.fecha_inicio)) : '';
+                document.querySelector("#txtFechaFin").value = objProducto.fecha_fin ? formatDate(new Date(objProducto.fecha_fin)) : '';
+                document.querySelector("#hdIdPromocion").value === '0' ? document.querySelector("#containPromocion").classList.add("notblock") : document.querySelector("#containPromocion").classList.remove("notblock");
                 tinymce.activeEditor.setContent(objProducto.descripcion);
                 $('#listCategoria').selectpicker('render');
                 $('#listStatus').selectpicker('render');
@@ -426,6 +477,62 @@ function openModal() {
     document.querySelector("#divBarCode").classList.add("notblock");
     document.querySelector("#containerGallery").classList.add("notblock");
     document.querySelector("#containerImages").innerHTML = "";
+    document.querySelector("#containPromocion").classList.add("notblock");
+    document.querySelector("#listStatus").value = "1";
+    $('#listStatus').selectpicker('render');
     $('#modalFormProductos').modal('show');
 
 }
+
+if (document.querySelector("#listStatus")) {
+    
+    const selectElement = document.querySelector('#listStatus');
+
+    selectElement.addEventListener('change', (event) => {
+        
+        if(event.target.value === "3")
+        {
+            document.querySelector("#containPromocion").classList.remove("notblock");
+
+            if(document.querySelector("#hdIdPromocion").value === '0'){
+
+            }
+            else{
+
+            }
+        }
+        else{
+            document.querySelector("#containPromocion").classList.add("notblock");
+        }
+    });
+}
+
+if (document.querySelector("#txtPorcentajeDscto")) {
+
+    let txtPorcentajeDscto = document.querySelector("#txtPorcentajeDscto");
+
+    txtPorcentajeDscto.addEventListener('keyup', (event) => {
+        
+        let txtPrecio = document.querySelector("#txtPrecio").value;
+        let dsctoPrecio = (0).toFixed(2);
+
+        dsctoPrecio = (txtPrecio * ( (txtPorcentajeDscto.value === "" ? (0).toFixed(2) : txtPorcentajeDscto.value) / 100)).toFixed(2);
+        document.querySelector("#txtPrecioPromocion").value = (txtPrecio - dsctoPrecio).toFixed(2);
+
+    });
+
+}
+
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+    return (
+      [
+        date.getFullYear(),
+        padTo2Digits(date.getMonth() + 1),
+        padTo2Digits(date.getDate()),
+      ].join('-')
+    );
+  }
