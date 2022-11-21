@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2022 a las 16:12:15
+-- Tiempo de generación: 21-11-2022 a las 12:01:16
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 7.4.30
 
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_petshop`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `promocion`
---
-
-CREATE TABLE `promocion` (
-  `id_promocion` bigint(20) NOT NULL,
-  `id_producto` bigint(20) NOT NULL,
-  `porcentaje_dscto` decimal(3,1) DEFAULT NULL,
-  `precio_promocion` decimal(11,2) NOT NULL,
-  `fecha_inicio` datetime DEFAULT NULL,
-  `fecha_fin` datetime DEFAULT NULL,
-  `id_persona` bigint(20) NOT NULL,
-  `fecha_reg` datetime NOT NULL DEFAULT current_timestamp(),
-  `id_persona_mod` bigint(20) DEFAULT NULL,
-  `fecha_mod` datetime DEFAULT NULL,
-  `estado` char(1) COLLATE utf8mb4_swedish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -203,7 +183,8 @@ INSERT INTO `detalle_temp` (`id`, `personaid`, `productoid`, `precio`, `cantidad
 (49, 1, 10, '15.00', 1, '8vn4ads4uakbgu3g253ab3ke0k'),
 (50, 1, 10, '15.00', 1, '0c7phn0rn74g7ftq29nh3d7uaj'),
 (51, 1, 10, '15.00', 1, 't933rg4bkl8brd3n2ho4s1a3ea'),
-(52, 1, 20, '175.00', 1, 'ej8k73k3o5da5ca41iavoqv2l3');
+(52, 1, 20, '175.00', 1, 'ej8k73k3o5da5ca41iavoqv2l3'),
+(143, 1, 17, '40.00', 1, 'a431e5pjt4rpm0odmjj0qg42j5');
 
 -- --------------------------------------------------------
 
@@ -481,9 +462,9 @@ INSERT INTO `post` (`idpost`, `titulo`, `contenido`, `portada`, `datecreate`, `r
 (3, 'Carrito', '<p>Contenido</p>', '', '2022-10-28 01:13:21', 'carrito', 1),
 (4, 'Nosotros', '<div data-section=\"nosotros\" data-value=\"nosotros-introduccion\"> <p>En Oh My Pet! nosotros creemos que para cumplir con las expectativas de nuestros clientes contamos con los siguientes valores:</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-servicio-subtitulo\"> <p>SERVICIO</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-servicio-contenido\"> <p>La&nbsp;calidad del servicio al cliente es&nbsp;el principal valor&nbsp;que nos&nbsp;diferencia&nbsp;de&nbsp;nuestros competidores&nbsp;y&nbsp;es el&nbsp;factor&nbsp;de&nbsp;&eacute;xito de&nbsp;nuestra empresa.&nbsp;La calidad&nbsp;del&nbsp;servicio se mide en&nbsp;todas las interacciones con&nbsp;los&nbsp;clientes.</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-cumplimiento-subtitulo\"> <p>CUMPLIMIENTO</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-cumplimiento-contenido\"> <p>Es la&nbsp;ejecuci&oacute;n&nbsp;de&nbsp;nuestra obra, negociada y declarada seg&uacute;n&nbsp;las caracter&iacute;sticas de calidad, cantidad y&nbsp;posibilidad.&nbsp;En nuestra&nbsp;operaci&oacute;n,&nbsp;este valor se&nbsp;manifiesta especialmente&nbsp;en el servicio al cliente.</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-calidad-subtitulo\"> <p>CALIDAD</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-calidad-contenido\"> <p>Representa&nbsp;el amor, la&nbsp;misi&oacute;n&nbsp;y el respeto&nbsp;por&nbsp;los dem&aacute;s. Es&nbsp;cari&ntilde;o, amabilidad&nbsp;y&nbsp;bondad&nbsp;en&nbsp;las relaciones&nbsp;con nuestros compa&ntilde;eros, clientes, socios comerciales y dem&aacute;s interlocutores. Es&nbsp;una se&ntilde;al&nbsp;de atenci&oacute;n que&nbsp;queremos&nbsp;recibir y&nbsp;ofrecer a los dem&aacute;s.</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-compromiso-subtitulo\"> <p>COMPROMISO</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-compromiso-contenido\"> <p>Se deriva&nbsp;de&nbsp;una creencia&nbsp;personal en los beneficios de&nbsp;realizar&nbsp;tareas&nbsp;responsables. Este compromiso nos&nbsp;permite pasar de las promesas a&nbsp;las acciones que producen&nbsp;resultados y beneficios tangibles.</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-innovacion-subtitulo\"> <p>INNOVACI&Oacute;N</p> </div> <div data-section=\"nosotros\" data-value=\"nosotros-innovacion-contenido\"> <p>Es&nbsp;un uso eficaz&nbsp;de la creatividad.&nbsp;Esto se&nbsp;refleja en la redefinici&oacute;n y/o reinvenci&oacute;n de productos, estrategias, actividades y funciones&nbsp;para mejorarlos. Las innovaciones pueden&nbsp;encontrar mayores beneficios que&nbsp;las existentes.</p> <p>&nbsp;</p> </div> <div class=\"row\"> <div class=\"order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30\"> <div class=\"how-bor2\"> <div class=\"hov-img0\"><img src=\"https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849822_1280.jpg\" alt=\"IMG\" width=\"500\" height=\"333\" /></div> </div> </div> </div>', 'img_86c655c520abc81f7238d0f61fa855ed.jpg', '2022-10-28 01:13:45', 'nosotros', 1),
 (5, 'Contacto', '<div class=\"map\"><iframe style=\"border: 0;\" src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.6509201177596!2d-77.03783328455768!3d12.067522145574099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8eb73a4c50f%3A0x61219792de12a71c!2sUniversidad%20Tecnol%C3%B3gica%20Del%20Per%C3%BA%20-%20Informes!5e0!3m2!1ses!2sgt!4v1667874861998!5m2!1ses!2sgt\" width=\"100%\" height=\"600\" allowfullscreen=\"allowfullscreen\" loading=\"lazy\"></iframe></div>', '', '2022-10-28 01:14:32', 'contacto', 1),
-(6, 'Preguntas frecuentes', '<ol> <li><strong>&iquest;Cu&aacute;l es el tiempo de entrega de los producto? </strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</li> <li><strong>&iquest;C&oacute;mo es la forma de env&iacute;o de los productos?</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur.</li> <li><strong>&iquest;Cu&aacute;l es el tiempo m&aacute;ximo para solicitar un reembolso?</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt!</li> </ol> <p>&nbsp;</p> <p>Otras preguntas</p> <ul> <li><strong>&iquest;Qu&eacute; formas de pago aceptan? </strong><span style=\"color: #666666; font-family: Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">Corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</span></li> </ul>', '', '2022-10-28 01:15:21', 'preguntas-frecuentes', 1),
-(7, 'Terminos y condiciones', '<p>A continuaci&oacute;n se describen los t&eacute;rmino y condiciones de la Tienda Virtual!</p> <ol> <li>Pol&iacute;tica uno</li> <li>Termino dos</li> <li>Condici&oacute;n tres</li> </ol> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sunt, corrupti hic aspernatur cumque alias, ipsam omnis iure ipsum, nostrum labore obcaecati natus repellendus consequatur est nemo sapiente dolorem dicta. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi, voluptas, consectetur iusto delectus quaerat ullam nesciunt! Quae doloribus deserunt qui fugit illo nobis ipsum, accusamus eius perferendis beatae culpa molestias!</p>', '', '2022-10-28 01:16:42', 'terminos-y-condiciones', 1),
-(8, 'Not Found', '<h1>Error 404: P&aacute;gina no encontrada</h1> <p>No se encuentra la p&aacute;gina que ha solicitado.</p>', '', '2022-10-28 01:17:36', 'not-found', 1),
+(6, 'Preguntas frecuentes', '<div data-section=\"faq\" data-value=\"asd\"> <ol> <li><strong>&iquest;Qu&eacute; es Oh My Pet! Petshop? </strong>Oh My Pet! es una empresa peruana dedicada a la venta de productos de mascotas dom&eacute;sticas.</li> <li><strong>&iquest;D&oacute;nde se encuentra ubicado Oh My Pet! Petshop?</strong> Oh My Pet! Petshop se encuentra en: Av. Petit. Thouars 385 / Av. Arequipa 265</li> <li><strong>&iquest;Por qu&eacute; comprar en Oh My Pet! Petshop?</strong>&nbsp; En Oh My Pet! encontrar&aacute;s los mejores productos a los mejores precios. Adem&aacute;s, siempre contamos con promociones y ofertas para nuestros clientes m&aacute;s frecuentes.</li> </ol> <p>&nbsp;</p> <p>Otras preguntas</p> <ul> <li><strong>&iquest;Qu&eacute; m&eacute;todos de pago aceptamos? </strong><span style=\"color: #666666; font-family: Arial, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">En Oh My Pet! aceptamos todas las tarjetas (VISA y Mastercard), efectivo, paypal, etc. </span></li> </ul> </div>', '', '2022-10-28 01:15:21', 'preguntas-frecuentes', 1),
+(7, 'Terminos y condiciones', '<p><u data-section=\"terminos-condiciones\" data-value=\"titulo\">INFORMACI&Oacute;N DETALLADA DE T&Eacute;RMINOS Y CONDICIONES&lt;/u &gt; </u></p> <div> <div data-section=\"terminos-condiciones\" data-value=\"parte-1\">A continuaci&oacute;n se describen los t&eacute;rminos y condiciones de la Tienda Virtual!</div> </div> <p><u>&nbsp;</u></p> <div data-section=\"terminos-condiciones\" data-value=\"parte-2\"> <p>Gracias por visitar este sitio web. Por favor lea con cuidado los T&Eacute;RMINOS Y CONDICIONES del contenido en este documento ya que cualquier uso de este sitio web constituye su aceptaci&oacute;n t&aacute;cita y/o expresa a los mismos. En otras palabras, cada vez que se usa esta p&aacute;gina web se est&aacute;n aceptando &iacute;ntegramente los T&eacute;rminos y Condiciones que aqu&iacute; se exponen.</p> <ol> <li><strong>Creaci&oacute;n de Usuario</strong></li> </ol> </div> <div data-section=\"terminos-condiciones\" data-value=\"parte-3\"> <p>Para poder hacer compras de manera online es indispensable que la persona que en este caso denominaremos &ldquo;cliente&rdquo; debe tener creada una cuenta de usuario para poder acceder a esta misma.</p> <p>En caso el cliente no cuente con una cuenta de usuario, podr&aacute; crearse sin problema colocando un usuario (correo) y una contrase&ntilde;a. Y es que el cliente tiene problemas para la creaci&oacute;n de estos, tiene la posibilidad de acercarse de manera presencial a uno de los establecimientos de nuestras Tiendas m&aacute;s cercanas y solicitar ayuda a uno de nuestros colaboradores para la creaci&oacute;n de cuenta.</p> <p>Una vez registrado, le llegar&aacute; una notificaci&oacute;n a su correo con la confirmaci&oacute;n de la creaci&oacute;n de usuario y reenviando los datos que se ingres&oacute;.</p> <p>En caso de que el cliente olvide la contrase&ntilde;a, podr&aacute; dirigirse a Olvide la contrase&ntilde;a para ingresar su correo y se le envi&eacute; un enlace para la modificaci&oacute;n de esta misma.</p> </div> <p>&nbsp;</p> <div data-section=\"terminos-condiciones\" data-value=\"parte-4\"> <ul> <li><strong> </strong><strong>Compras Online</strong></li> </ul> </div> <p>Una vez registrada una cuenta en la Tienda Online &ldquo;Oh My Pet&rdquo;, el cliente podr&aacute; comprar sin problema los productos que ofrecemos.</p> <p>El cliente podr&aacute; seleccionar los productos y estos se ir&aacute;n a&ntilde;adiendo en el carrito de compras, el cual al querer pagar tendr&aacute; la opci&oacute;n de elegir si desea que los productos lleguen a casa por delivery (lo cual tendr&aacute; un costo extra) o desee recogerlo en tienda.</p> <p>El cliente podr&aacute; elegir el d&iacute;a que desee que llegue el delivery, posterior a ello, se estar&iacute;an comunicando los de programaci&oacute;n por WhatsApp para coordinar el rango de hora a llegar el motorizado.</p> <p>Los m&eacute;todos de pago pueden ser con tarjetas Visa, Mastercard, American Express y Paypal tanto d&oacute;lares como soles.</p> <p>Una vez cancelado el pago de manera online, le llegar&aacute; una constancia a su correo de la confirmaci&oacute;n del pago y los datos de la compra.&nbsp;</p> <p>En caso el cliente opte por recoger los productos en Tienda tendr&aacute; la opci&oacute;n de elegir el tipo de pago si es en tarjeta o efectivo y una vez que llegue al establecimiento los colaboradores ya tendr&aacute;n en cuenta el m&eacute;todo de pago.</p> <p>De la misma manera le llegar&aacute; una constancia con los datos de los productos y tipo de pago y orden de compra para que cuando se acerque a Tienda, los colaboradores puedan solicitar DNI y el n&uacute;mero de orden.</p> <p>&nbsp;</p> <div data-section=\"terminos-condiciones\" data-value=\"parte-5\"> <ul> <li><strong> </strong><strong>Cup&oacute;n</strong></li> </ul> </div> <p>Los cupones son publicados mensualmente en el inicio de la p&aacute;gina, con un stock para las primeras 100 personas que lo utilicen, el cual tiene vigencia los primeros 15 d&iacute;as de cada mes y/o hasta agotar stock.</p> <p>Para hacer uso del cup&oacute;n tendr&iacute;a que realizar compras mayores de S/ 200 o $69. Y este descuento se realiza sobre el total del pago.</p> <p>El valor del cup&oacute;n puede ser dado en porcentajes y estos pueden variar desde 10% hasta 50%.</p> <p>Los cupones se actualizan cada mes, podr&aacute; ser usado 1 vez por cada cuenta de usuario y solo v&aacute;lido para compras online.</p> <p>Los cupones son v&aacute;lidos para cualquier tipo de producto que se muestra en nuestra p&aacute;gina web.</p> <p>En su constancia de compra se ver&aacute; reflejado el descuento del cup&oacute;n o monto del cup&oacute;n.</p> <p>&nbsp;</p> <div data-section=\"terminos-condiciones\" data-value=\"parte-6\"> <ul> <li><strong> </strong><strong>Delivery</strong></li> </ul> </div> <p>Al seleccionar que desee que su pedido llegue a casa, estar&iacute;a seleccionando delivery el cual tiene un costo est&aacute;ndar S/ 50 o $12.99.</p> <p>El costo es v&aacute;lido hasta en 3 viajes en caso no pueda ser entregado el pedido en el d&iacute;a establecido o si el cliente desea reprogramar la fecha de env&iacute;o. En caso, no se logr&eacute; concretar en las 3 oportunidades la entrega del pedido, el cliente deber&aacute; recogerlo de manera presencial en una de nuestras tiendas m&aacute;s cercanas.</p> <p>Nuestro env&iacute;o de delivery solo aplica para Lima Metropolitana y Callao.</p> <p>&nbsp;</p> <div data-section=\"terminos-condiciones\" data-value=\"parte-7\"> <ul> <li><strong> </strong><strong>Devoluci&oacute;n</strong></li> </ul> <p>Se realizan devoluciones en caso el cliente lo requiera el cual deber&aacute; devolver el producto en buen estado si el motivo de devoluci&oacute;n es por equivocaci&oacute;n.</p> <p>El monto ser&aacute; devuelto al mismo m&eacute;todo de pago.</p> <p>El tiempo de devoluci&oacute;n para tarjetas Visa, Mastercard, American Express es de 30 d&iacute;as.</p> <p>El tiempo de devoluci&oacute;n para Paypal&nbsp;es de 60 d&iacute;as.</p> <p>En caso desea devoluci&oacute;n por mal estado de alg&uacute;n producto, deber&aacute; comunicarse al n&uacute;mero de nuestro WhatsApp, adjuntando videos y/o im&aacute;genes y la constancia de pago y posterior a ello se estar&iacute;an comunicando con el cliente para coordinar el recojo de los productos y devoluci&oacute;n del mismo valor.</p> </div> <div data-section=\"terminos-condiciones\" data-value=\"parte-8\"> <ul> <li><strong> </strong><strong>Reclamos/ Quejas</strong></li> </ul> <p>Los reclamos/quejas lo pueden realizar cualquier persona sin necesidad de tener un usuario</p> <p>creado.</p> <p>El cliente deber&aacute; complementar todos los cambios solicitados de manera detallada para</p> <p>poder responderles de la manera m&aacute;s r&aacute;pida por el medio que indica.</p> <p>El tiempo de respuesta de reclamo y/o Queja es de 30 d&iacute;as h&aacute;biles y la respuesta puede ser enviada por correo electr&oacute;nico o carta.</p> <p>&nbsp;</p> <p>En caso tenga alguna duda m&aacute;s o algo que no haya quedado claro, podr&iacute;a dejar su mensaje en el formulario de cont&aacute;ctenos o enviar un mensaje de WhatsApp o al correo corporativo y uno de nuestros colaboradores le responder&aacute;.</p> </div> <p>&nbsp;</p>', '', '2022-10-28 01:16:42', 'terminos-y-condiciones', 1),
+(8, 'Not Found', '<h1 data-section=\"faq\" data-value=\"error\">Error 404: P&aacute;gina no encontrada</h1> <p data-section=\"faq\" data-value=\"encontrar\">No se encuentra la p&aacute;gina que ha solicitado.</p>', '', '2022-10-28 01:17:36', 'not-found', 1),
 (9, 'Promocion', '<p>Contenido</p>', '', '2022-10-28 01:13:21', 'promocion', 1),
 (10, 'Libroreclamaciones', '<p>Contenido</p>', '', '2022-11-14 01:53:21', 'libroreclamaciones', 1);
 
@@ -529,7 +510,34 @@ INSERT INTO `producto` (`idproducto`, `categoriaid`, `codigo`, `nombre`, `descri
 (18, 1, '10101010122', 'BEAPHAR XTRAVITAL PERIQUITO 500 GR', '<h1 id=\"evProductTitle\" class=\"h3-Style\">BEAPHAR XTRAVITAL PERIQUITO</h1> <p>La mixtura XtraVital para Periquitos es un alimento completo con una composici&oacute;n muy variada y sabrosa ya que aporta frutas, 26 variedades de semillas y un 19% de pasta de huevo para satisfacer todas las necesidades nutricionales.</p>', '40.00', 10, '', '2022-11-14 23:18:29', 'beaphar-xtravital-periquito-500-gr', 1),
 (19, 2, '66554401554', 'Hills Sd Feline Indoor Adult7 1.6 Kg', '<div class=\"productAwareRichText richText component section default-style first odd col-xs-12 initialized\"> <div class=\"component-content\"> <div class=\"richText-content\"> <p>El alimento seco para gatos&nbsp;<span class=\"nowrap\">Hill&rsquo;s&trade; Science Diet&trade;</span>&nbsp;Indoor Adult 7+ est&aacute; especialmente formulado para abastecer las necesidades de energ&iacute;a para gatos con un estilo de vida de interiores a medida que envejecen dignamente.</p> <ul> <li>La fibra natural favorece la salud digestiva y los ingredientes de alta calidad hacen m&aacute;s f&aacute;cil la limpieza de la caja de arena</li> <li>Prote&iacute;na de alta calidad para m&uacute;sculos magros</li> <li>Ingredientes naturales de alta calidad, f&aacute;ciles de digerir para una comida nutritiva y llena de sabor</li> </ul> </div> </div> </div> <div class=\"conditionalBox box component section default-style even col-xs-12\"> <div id=\"1566975598\" class=\"component-content\"> <div class=\"paragraphSystem content\"> <div class=\"productAwareRichText richText component section col-xs-12 productawarerichtext default-style initialized\"> <div class=\"component-content\"> <div class=\"richText-content\"> <h4>Se recomienda para:</h4> <p>Gatos Adultos de 7+ a&ntilde;os con un estilo de vida de interiores.</p> </div> </div> </div> </div> </div> </div> <div class=\"conditionalBox box component section default-style odd col-xs-12\"> <div id=\"374782943\" class=\"component-content\"> <div class=\"paragraphSystem content\"> <div class=\"productAwareRichText richText component section default-style first odd last col-xs-12 initialized\"> <div class=\"component-content\"> <div class=\"richText-content\"> <h4>No se recomienda para:</h4> <p>Gatitos y gatas gestantes o lactantes. Durante la gestaci&oacute;n o lactancia, las gatas deben cambiar al alimento seco para gatos Hill&rsquo;s&reg;&nbsp;<span class=\"nowrap\">Science Diet&reg;</span>&nbsp;Kitten o&nbsp;<span class=\"nowrap\">Hill&rsquo;s&reg; Science Diet&reg;</span>&nbsp;Kitten Indoor.</p> </div> </div> </div> </div> </div> </div>', '78.00', 30, '', '2022-11-14 23:20:45', 'hills-sd-feline-indoor-adult7-16-kg', 1),
 (20, 2, '10514444555', 'Hills Sd Feline Adult Multiple Benefit 3.2 Kg', '<ul> <li>La L-carnitina ayuda a transformar la grasa en energ&iacute;a y la prote&iacute;na de alta calidad ayuda a mantener los m&uacute;sculos magros</li> <li>Fibra natural que reduce c&oacute;modamente las bolas de pelo</li> <li>Ingredientes de alta calidad que facilitan la limpieza de la caja de arena y fibra natural que promueve la salud digestiva</li> <li>Se recomienda para Gatos adultos de 1-6 a&ntilde;os que comparten su hogar</li> </ul>', '175.00', 65, '', '2022-11-14 23:21:51', 'hills-sd-feline-adult-multiple-benefit-32-kg', 1),
-(21, 2, '203050101010', 'Brit Care Cat Grain-Free Sterilized 2 Kg', '<p><strong>BRIT CARE CAT GRAIN-FREE STERILIZED SENSITIVE</strong></p> <p><strong>Alimento completo para gatos adultos y esterilizados con digesti&oacute;n sensible.</strong></p> <p>F&oacute;rmula hipoalerg&eacute;nica no m&oacute;vil para la salud de los ri&ntilde;ones y el tracto urinario, contiene frutas y hierbas, ricas en antioxidantes naturales y vitamina E, que protegen al organismo de los radicales libres y mantienen fuerte el sistema inmunol&oacute;gico durante toda la vida de tu gato. La carne diet&eacute;tica, de conejo fresco, favorece la salud del coraz&oacute;n y el sistema circulatorio y ayuda a mantener una condici&oacute;n f&iacute;sica &oacute;ptima.</p> <ul> <li>CONEJO FRESCO &ndash; carne diet&eacute;tica con excelente digestibilidad y bajo contenido en colesterol.</li> <li>ESPINO CERVAL Y CAPUCHINA contribuye a la salud de los ri&ntilde;ones y el tracto urinario. El bajo contenido de magnesio y L-metionina ayuda a mantener un pH urinario &oacute;ptimo de 6,0 a 6,5.</li> <li>Los PROBI&Oacute;TICOS Y LOS PREBI&Oacute;TICOS ayudan a mantener los intestinos y un sistema inmunol&oacute;gico normales y saludables.</li> <li>SIN cereales &ndash; SIN colorantes &ndash; SIN conservantes &ndash; SIN OMG &ndash; SIN soja</li> </ul>', '85.00', 10, '', '2022-11-14 23:24:15', 'brit-care-cat-grain-free-sterilized-2-kg', 1);
+(21, 2, '203050101010', 'Brit Care Cat Grain-Free Sterilized 2 Kg', '<p><strong>BRIT CARE CAT GRAIN-FREE STERILIZED SENSITIVE</strong></p> <p><strong>Alimento completo para gatos adultos y esterilizados con digesti&oacute;n sensible.</strong></p> <p>F&oacute;rmula hipoalerg&eacute;nica no m&oacute;vil para la salud de los ri&ntilde;ones y el tracto urinario, contiene frutas y hierbas, ricas en antioxidantes naturales y vitamina E, que protegen al organismo de los radicales libres y mantienen fuerte el sistema inmunol&oacute;gico durante toda la vida de tu gato. La carne diet&eacute;tica, de conejo fresco, favorece la salud del coraz&oacute;n y el sistema circulatorio y ayuda a mantener una condici&oacute;n f&iacute;sica &oacute;ptima.</p> <ul> <li>CONEJO FRESCO &ndash; carne diet&eacute;tica con excelente digestibilidad y bajo contenido en colesterol.</li> <li>ESPINO CERVAL Y CAPUCHINA contribuye a la salud de los ri&ntilde;ones y el tracto urinario. El bajo contenido de magnesio y L-metionina ayuda a mantener un pH urinario &oacute;ptimo de 6,0 a 6,5.</li> <li>Los PROBI&Oacute;TICOS Y LOS PREBI&Oacute;TICOS ayudan a mantener los intestinos y un sistema inmunol&oacute;gico normales y saludables.</li> <li>SIN cereales &ndash; SIN colorantes &ndash; SIN conservantes &ndash; SIN OMG &ndash; SIN soja</li> </ul>', '85.00', 10, '', '2022-11-14 23:24:15', 'brit-care-cat-grain-free-sterilized-2-kg', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `promocion`
+--
+
+CREATE TABLE `promocion` (
+  `id_promocion` bigint(20) NOT NULL,
+  `id_producto` bigint(20) NOT NULL,
+  `porcentaje_dscto` decimal(3,1) DEFAULT NULL,
+  `precio_promocion` decimal(11,2) NOT NULL,
+  `fecha_inicio` datetime DEFAULT NULL,
+  `fecha_fin` datetime DEFAULT NULL,
+  `id_persona` bigint(20) NOT NULL,
+  `fecha_reg` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_persona_mod` bigint(20) DEFAULT NULL,
+  `fecha_mod` datetime DEFAULT NULL,
+  `estado` char(1) COLLATE utf8mb4_swedish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `promocion`
+--
+
+INSERT INTO `promocion` (`id_promocion`, `id_producto`, `porcentaje_dscto`, `precio_promocion`, `fecha_inicio`, `fecha_fin`, `id_persona`, `fecha_reg`, `id_persona_mod`, `fecha_mod`, `estado`) VALUES
+(1, 21, '50.0', '42.50', '2022-11-10 00:00:00', '2022-11-30 00:00:00', 1, '2022-11-21 03:41:18', 1, '2022-11-21 03:46:39', 'A');
 
 -- --------------------------------------------------------
 
@@ -610,13 +618,6 @@ INSERT INTO `tipopago` (`idtipopago`, `tipopago`, `status`) VALUES
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `promocion`
---
-ALTER TABLE `promocion`
-  ADD PRIMARY KEY (`id_promocion`),
-  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `categoria`
@@ -709,6 +710,13 @@ ALTER TABLE `producto`
   ADD KEY `categoriaid` (`categoriaid`);
 
 --
+-- Indices de la tabla `promocion`
+--
+ALTER TABLE `promocion`
+  ADD PRIMARY KEY (`id_promocion`),
+  ADD KEY `id_producto` (`id_producto`);
+
+--
 -- Indices de la tabla `reembolso`
 --
 ALTER TABLE `reembolso`
@@ -730,12 +738,6 @@ ALTER TABLE `tipopago`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `promocion`
---
-ALTER TABLE `promocion`
-  MODIFY `id_promocion` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -765,7 +767,7 @@ ALTER TABLE `detalle_pedido`
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT de la tabla `imagen`
@@ -816,6 +818,12 @@ ALTER TABLE `producto`
   MODIFY `idproducto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
+-- AUTO_INCREMENT de la tabla `promocion`
+--
+ALTER TABLE `promocion`
+  MODIFY `id_promocion` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `reembolso`
 --
 ALTER TABLE `reembolso`
@@ -836,12 +844,6 @@ ALTER TABLE `tipopago`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `detalle_pedido`
---
-ALTER TABLE `promocion`
-  ADD CONSTRAINT `promocion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`idproducto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_pedido`
@@ -876,6 +878,12 @@ ALTER TABLE `pedido`
 ALTER TABLE `permisos`
   ADD CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`rolid`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `permisos_ibfk_2` FOREIGN KEY (`moduloid`) REFERENCES `modulo` (`idmodulo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `promocion`
+--
+ALTER TABLE `promocion`
+  ADD CONSTRAINT `promocion_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`idproducto`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
