@@ -37,7 +37,7 @@
 					FROM producto p 
 					INNER JOIN categoria c
 					ON p.categoriaid = c.idcategoria
-					WHERE p.status not in (0,3)";
+					WHERE p.status != 0";
 					$request = $this->select_all($sql);
 			return $request;
 		}	

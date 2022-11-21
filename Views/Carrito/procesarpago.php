@@ -183,7 +183,9 @@ $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo
 							<input type="checkbox" id="condiciones">
 							<label for="condiciones"> Aceptar </label>
 							<a href="#" data-toggle="modal" data-target="#modalTerminos" data-backdrop="static" data-keyboard="false"> Términos y Condiciones </a>
+							<br>
 						</div>
+						<p><span class="required">*</span>Al hacer clic usted acepta los términos y condiciones</p>
 						<div id="optMetodoPago" class="notblock">
 							<hr>
 							<h4 class="mtext-109 cl2 p-b-30">
