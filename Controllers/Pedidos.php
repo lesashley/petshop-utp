@@ -183,7 +183,7 @@ class Pedidos extends Controllers
                 $transaccion = !empty($_POST['txtTransaccion']) ? strClean($_POST['txtTransaccion']) : "";
 
                 if ($idpedido == "") {
-                    $arrResponse = array("status" => false, "msg" => 'Datos incorrectos1.');
+                    $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
                 } else {
                     if ($idtipopago == "") {
                         if ($estado == "") {

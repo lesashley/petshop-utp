@@ -6,11 +6,8 @@ $arrProductos = $data['productos'];
 // dep($arrProductos);
 
 ?>
-<!-- <hr> 
-<div class="bg0 m-t-23 p-b-140 p-t-80">-->
-<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
+<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg" style="padding-bottom: 20vh;">
     <div class="container">
-        <div class="flex-w flex-sb-m p-b-52">
         <div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 				<button id="Cattodos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
@@ -89,6 +86,11 @@ $arrProductos = $data['productos'];
 							<a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['idproducto'] . '/' . $ruta; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 								Ver producto
 							</a>
+							<div class="tag-sale">
+								<?php if($arrProductos[$p]['status'] == 3){ ?>
+									<img src="<?= media() ?>/tienda/images/tag-sale.png" alt="tag-oferta">
+								<?php } ?>
+							</div>
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">
@@ -122,5 +124,6 @@ $arrProductos = $data['productos'];
             </a>
         </div>
     </div>
+</div>
 </div>
 <?php footerTienda($data); ?>

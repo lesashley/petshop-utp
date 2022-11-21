@@ -37,7 +37,7 @@
 					FROM producto p 
 					INNER JOIN categoria c
 					ON p.categoriaid = c.idcategoria
-					WHERE p.status != 0";
+					WHERE p.status != 2";
 					$request = $this->select_all($sql);
 			return $request;
 		}	
@@ -254,7 +254,7 @@
 					FROM producto p 
 					INNER JOIN categoria c ON p.categoriaid = c.idcategoria
 					LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
-					WHERE p.status != 0 and idproducto = $this->intIdProducto";
+					WHERE p.status != 2 and idproducto = $this->intIdProducto";
 			$request = $this->select($sql);
 			return $request;
 

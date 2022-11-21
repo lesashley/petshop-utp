@@ -15,6 +15,7 @@
         //El pedido debe listar por el id pedido
         $request = array();
         $sql = "SELECT p.idpedido,
+                                p.id_cupon,
                                 p.referenciacobro,
                                 p.idtransaccionpaypal,
                                 p.personaid,

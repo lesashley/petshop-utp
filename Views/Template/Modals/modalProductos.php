@@ -78,7 +78,7 @@
                             <label for="listStatus">Estado <span class="required">*</span></label>
                             <select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
                               <option value="1">Activo</option>
-                              <option value="0">Inactivo</option>
+                              <option value="2">Inactivo</option>
                               <option value="3">Promoción</option>
                             </select>
                         </div>

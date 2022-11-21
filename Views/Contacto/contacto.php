@@ -5,7 +5,7 @@
 ?>
     <!-- Title page -->
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('Assets/images/uploads/img_7fc2fe8dfa8a355f53ca5bf4a74ad663.jpg');">
-		<h2 class="ltext-105 cl0 txt-center">
+		<h2 class="ltext-105 cl0 txt-center" data-section="contacto" data-value="contacto-titulo">
 			Contacto
 		</h2>
 	</section>	
@@ -20,7 +20,7 @@
 			<div class="flex-w flex-tr">
 				<div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
 					<form id="frmContacto">
-						<h4 class="mtext-105 cl2 txt-center p-b-30">
+						<h4 class="mtext-105 cl2 txt-center p-b-30" data-section="contacto" data-value="enviar-mensaje">
 							Enviar un Mensaje
 						</h4>
                         <div class="bor8 m-b-20 how-pos4-parent">
@@ -37,7 +37,7 @@
 							<textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" id="mensaje" name="mensaje" placeholder="Deja tu consulta o mensaje"></textarea>
 						</div>
 
-						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+						<button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" data-section="contacto" data-value="btn-enviar">
 							Enviar
 						</button>
 					</form>
@@ -50,7 +50,7 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
+							<span class="mtext-110 cl2" data-section="contacto" data-value="direccion-titulo">
 								Direccion
 							</span>
 
@@ -66,7 +66,7 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
+							<span class="mtext-110 cl2" data-section="contacto" data-value="telefono-titulo">
 								Telefono
 							</span>
 
@@ -81,7 +81,7 @@
 						</span>
 
 						<div class="size-212 p-t-2">
-							<span class="mtext-110 cl2">
+							<span class="mtext-110 cl2" data-section="contacto" data-value="email">
 								EMAIL
 							</span>
 
@@ -97,7 +97,7 @@
 						</span>
                         <div class="size-212 p-t-2">
                          
-							<span class="mtext-110 cl2">
+							<span class="mtext-110 cl2" data-section="contacto" data-value="whatsapp">
 								Si lo prefiere puede contactarnos por WhatsApp
 							</span>
 

@@ -1,9 +1,9 @@
 <?php 
 	
 	//define("BASE_URL", "http://localhost/petshop/");
-	 const BASE_URL = "http://localhost:8090/petshop-utp";
-	// const BASE_URL = "http://localhost:8080/petshop-utp/";
-	//const BASE_URL = "http://localhost/petshop-utp";
+	//const BASE_URL = "http://localhost:8090/petshop-utp";
+	// const BASE_URL = "http://localhost:8080/petshop-utp";
+	const BASE_URL = "http://localhost/petshop-utp";
 
 	//Zona horaria
 	date_default_timezone_set('America/Lima');

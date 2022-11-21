@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     swal("Cupones", objData.msg, "success");
                     tableCupones.api().ajax.reload(function() {
                         fntEditCupon();
-                        fntDelCupones();
+
                     });
                 } else {
                     swal("Error", objData.msg, "error");
@@ -147,7 +147,6 @@ function fntEditCupon(idcupon) {
                 document.querySelector("#txtFechaFin").value = objData.data.fecha_fin;
                 document.querySelector("#txtTotal").value = objData.data.total;
                 document.querySelector("#listStatus").value = objData.data.estado;
-
                 if (objData.data.estado == "A") {
                     document.querySelector("#listStatus").value == "ACTIVO";
                 } else {
