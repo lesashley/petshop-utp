@@ -3,7 +3,7 @@ headerTienda($data);
 $arrProductos = $data['productos'];
 ?>
 
-<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg">
+<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-90 p-lr-0-lg" style="padding-bottom: 60vh;">
     <div class="container">
         <div class="flex-w flex-sb-m p-b-52">
             <div class="flex-w flex-l-m filter-tope-group m-tb-10">
@@ -92,17 +92,32 @@ $arrProductos = $data['productos'];
                             <a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['idproducto'] . '/' . $ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                 <?= $arrProductos[$p]['nombre'] ?>
                             </a>
-
-                            <span class="stext-105 cl3">
-                                <?= SMONEY . formatMoney($arrProductos[$p]['precio']); ?>
-                            </span>
+                            <div class="tag-sale">
+                                <?php if($arrProductos[$p]['status'] == 3){ ?>
+                                    <img src="<?= media() ?>/tienda/images/tag-sale.png" alt="tag-oferta">
+                                <?php } ?>
+                            </div>
                         </div>
 
-                        <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['nombre']; ?>" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                <img class="icon-heart1 dis-block trans-04" src="<?= media() ?>/tienda/images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="<?= media() ?>/tienda/images/icons/icon-heart-02.png" alt="ICON">
-                            </a>
+                        <div class="block2-txt flex-w flex-t p-t-14">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['idproducto'] . '/' . $ruta; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                    <?= $arrProductos[$p]['nombre'] ?>
+                                </a>
+                                <span class="stext-105 cl3">
+                                    Antes <del><?= SMONEY . formatMoney($arrProductos[$p]['precio']); ?></del>
+                                </span>
+                                <span class="stext-105 cl3">
+                                    Ahora <?= SMONEY . formatMoney($arrProductos[$p]['precio_promocion']); ?>
+                                </span>
+                            </div>
+
+                            <div class="block2-txt-child2 flex-r p-t-3">
+                                <a href="<?= base_url() . '/tienda/producto/' . $arrProductos[$p]['nombre']; ?>" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                    <img class="icon-heart1 dis-block trans-04" src="<?= media() ?>/tienda/images/icons/icon-heart-01.png" alt="ICON">
+                                    <img class="icon-heart2 dis-block trans-04 ab-t-l" src="<?= media() ?>/tienda/images/icons/icon-heart-02.png" alt="ICON">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -188,16 +188,26 @@ if (document.querySelector(".methodpago")) {
     let optmetodo = document.querySelectorAll(".methodpago");
     optmetodo.forEach(function(optmetodo) {
         optmetodo.addEventListener('click', function() {
+            let idcupon = document.querySelector("#hdIdCupon").value;
+            let dsctoCupon = document.querySelector("#hdCupon").value;
             if (this.value == "Paypal") {
+                costoEnvio = 50;
                 document.querySelector("#msgpaypal").classList.remove("notblock");
                 document.querySelector("#divtipopago").classList.add("notblock");
                 document.querySelector("#btnComprar").classList.add("notblock");
                 document.querySelector("#hrComprar").classList.add("notblock");
+                document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
+                document.querySelector("#totalCompra").innerHTML = idcupon == "0" ? '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido).toFixed(2) : '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - dsctoCupon).toFixed(2);
+                total = idcupon == "0" ? (totalPedido).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
             } else {
                 document.querySelector("#msgpaypal").classList.add("notblock");
                 document.querySelector("#divtipopago").classList.remove("notblock");
                 document.querySelector("#btnComprar").classList.remove("notblock");
                 document.querySelector("#hrComprar").classList.remove("notblock");
+                document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. 0.00';
+                document.querySelector("#totalCompra").innerHTML = idcupon == "0" ? '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - costoEnvio).toFixed(2) : '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - costoEnvio - dsctoCupon).toFixed(2);
+                total = idcupon == "0" ? (totalPedido - costoEnvio).toFixed(2) : (totalPedido - costoEnvio - dsctoCupon).toFixed(2);
+                costoEnvio = 0;
             }
         });
     });
@@ -393,10 +403,7 @@ if (document.querySelector("#btnComprar")) {
         if (inttipopago == "") {
             swal("", "Seleccione tipo de pago", "info");
             return;
-        } else if (dir == "" || ciudad == "") {
-            swal("", "Complete datos de envío", "info");
-            return;
-        } else {
+        }
             divLoading.style.display = "flex";
             let request = (window.XMLHttpRequest) ?
                 new XMLHttpRequest() :
@@ -408,6 +415,7 @@ if (document.querySelector("#btnComprar")) {
             formData.append('inttipopago', inttipopago);
             formData.append('total', total);
             formData.append('idCupon', idcupon);
+            formData.append('costo_envio', document.getElementById("paypal").checked ? costoEnvio : 0);
             request.open("POST", ajaxUrl, true);
             request.send(formData);
             request.onreadystatechange = function() {
@@ -423,7 +431,6 @@ if (document.querySelector("#btnComprar")) {
                 divLoading.style.display = "none";
                 return false;
             }
-        }
     }, false);
 }
 
@@ -445,8 +452,6 @@ if (document.querySelector("#btnValidarCupon")) {
     btnValidarCupon.addEventListener('click', function() {
 
         let cupon = document.getElementById("txtCupon").value;
-        let spanTotal = document.getElementById("totalCompra");
-        let spanTotalCupon = document.getElementById("totalCupon");
         let dsctoCupon = 0;
 
         if (cupon.trim() == '') {
@@ -472,23 +477,19 @@ if (document.querySelector("#btnValidarCupon")) {
                     }
 
                     dsctoCupon = (total * (objData.data.porcentaje_dscto / 100)).toFixed(2);
-                    total = (total - dsctoCupon).toFixed(2);
-
+                    document.querySelector("#hdCupon").value = dsctoCupon;
+                    total = document.getElementById("contraentrega").checked ?  (totalPedido - 50 - dsctoCupon).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
                     document.querySelector("#hdIdCupon").value = objData.data.id_cupon;
                     document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon;
-                    document.querySelector("#totalCupon").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
-
-                    spanTotal.style.display = "none";
-                    spanTotalCupon.style.display = "block";
+                    document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
                     swal("Correcto!", objData.msg, "success");
 
                 } else {
 
+                    document.querySelector("#hdCupon").value = "0";
                     total = totalPedido;
                     document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
                     document.querySelector("#hdIdCupon").value = "0";
-                    spanTotal.style.display = "block";
-                    spanTotalCupon.style.display = "none";
                     swal("Advertencia!", objData.msg, "info");
 
                 }
@@ -499,18 +500,40 @@ if (document.querySelector("#btnValidarCupon")) {
 
 if (document.querySelector("#btnRetirarCupon")) {
 
-    let spanTotal = document.getElementById("totalCompra");
-    let spanTotalCupon = document.getElementById("totalCupon");
     let btnValidarCupon = document.querySelector("#btnRetirarCupon");
 
     btnValidarCupon.addEventListener('click', function() {
 
+        let cupon = document.getElementById("txtCupon").value;
+        let idcupon = document.querySelector("#hdIdCupon").value;
+        
+        if (cupon.trim() == '') {
+            swal("Advertencia!", 'Ingresar cupón', "info");
+            return;
+        }
+
+        if (idcupon.trim() == '0') {
+            swal("Advertencia!", 'Aún no ha validado ningún cupón', "info");
+            return;
+        }
+
         document.querySelector("#txtCupon").value = '';
         document.querySelector("#hdIdCupon").value = '0';
         document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
-        total = totalPedido;
-        spanTotal.style.display = "block";
-        spanTotalCupon.style.display = "none";
+
+        if(document.getElementById("paypal").checked){
+            costoEnvio = 50;
+            total = (totalPedido).toFixed(2);
+            document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
+        }
+        else{
+            total =  (totalPedido - 50).toFixed(2);
+            document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. 0.00';
+            costoEnvio = 0;
+        }
+
+        document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
+        document.querySelector("#hdCupon").value = "0";
         swal("Correcto!", "Cupón retirado correctamente", "success");
 
     }, false);

@@ -91,6 +91,7 @@ class Pedidos extends Controllers
         $data['page_title'] = "PEDIDOS <small>Oh my Pet</small>";
         $data['page_name'] = "pedido";
         $data['arrPedido'] = $this->model->selectPedido($idpedido, $idpersona);
+        $data['arrCupon']= $this->model->selectCupon($data['arrPedido']['orden']['id_cupon']);
         $this->views->getView($this, "orden", $data);
     }
 
@@ -183,7 +184,7 @@ class Pedidos extends Controllers
                 $transaccion = !empty($_POST['txtTransaccion']) ? strClean($_POST['txtTransaccion']) : "";
 
                 if ($idpedido == "") {
-                    $arrResponse = array("status" => false, "msg" => 'Datos incorrectos1.');
+                    $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
                 } else {
                     if ($idtipopago == "") {
                         if ($estado == "") {
@@ -210,6 +211,22 @@ class Pedidos extends Controllers
                     }
                 }
                 echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            }
+        }
+        die();
+    }
+
+    public function getCupon(){
+        if($_POST){
+            if($_SESSION['permisosMod']['r'] and $_SESSION['userData']['idrol'] != RCLIENTES){
+                $idcupon = intval($_POST['idcupon']);
+                $requestCupon = $this->model->selectCupon($idcupon);
+                if(empty($requestCupon)){
+                    $arrResponse = array('status' => false, 'msg' => 'Datos no disponibles.');
+                }else{
+                    $arrResponse = array('status' => true, 'data' => $requestCupon);
+                }
+                echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
             }
         }
         die();

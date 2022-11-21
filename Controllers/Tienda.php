@@ -334,14 +334,10 @@ require_once("Models/LoginModel.php");
 				$direccionenvio = strClean($_POST['direccion']).', '.strClean($_POST['ciudad']);
 				$status = "Pendiente";
 				//$subtotal = 0;
-				$costo_envio = COSTOENVIO;
+				$costo_envio = intval($_POST['costo_envio']);
 				$id_cupon = intval($_POST['idCupon']);
 
 				if(!empty($_SESSION['arrCarrito'])){
-					// foreach ($_SESSION['arrCarrito'] as $pro) {
-					// 	$subtotal += $pro['cantidad'] * $pro['precio']; 
-					// }
-					// $monto = $subtotal + COSTOENVIO;
 					
 					if(empty($_POST['datapay'])){
 						

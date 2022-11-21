@@ -46,7 +46,29 @@
                             <input class="form-control" id="txtStock" name="txtStock" type="text" required="">
                         </div>
                     </div>
-
+                    <div id="containPromocion" class="notblock">
+                      <input type="hidden" id="hdIdPromocion" name="hdIdPromocion" value="0">
+                      <div class="row">
+                          <div class="form-group col-md-6">
+                              <label class="control-label">Precio Promoción<span class="required">*</span></label>
+                              <input class="form-control" id="txtPrecioPromocion" name="txtPrecioPromocion" type="text" readonly value="0">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label class="control-label">Porcentaje Dscto<span class="required">*</span></label>
+                              <input class="form-control" id="txtPorcentajeDscto" name="txtPorcentajeDscto" type="text" maxlength="3">
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="form-group col-md-6">
+                              <label class="control-label">Fecha Inicio<span class="required">*</span></label>
+                              <input class="form-control" id="txtFechaInicio" name="txtFechaInicio" type="date" placeholder="Fecha Inicio">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label class="control-label">Fecha Fin<span class="required">*</span></label>
+                              <input class="form-control" id="txtFechaFin" name="txtFechaFin" type="date" placeholder="Fecha Fin">
+                          </div>
+                      </div>
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="listCategoria">Categoría <span class="required">*</span></label>
@@ -57,6 +79,7 @@
                             <select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
                               <option value="1">Activo</option>
                               <option value="2">Inactivo</option>
+                              <option value="3">Promoción</option>
                             </select>
                         </div>
                     </div>

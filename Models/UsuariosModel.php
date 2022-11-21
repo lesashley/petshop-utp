@@ -65,7 +65,7 @@
 					FROM persona p 
 					INNER JOIN rol r
 					ON p.rolid = r.idrol
-					WHERE p.status != 0 ".$whereAdmin;
+					WHERE p.status != 2 ".$whereAdmin;
 					$request = $this->select_all($sql);
 					return $request;
 		}

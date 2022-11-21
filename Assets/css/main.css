@@ -5569,6 +5569,24 @@ a.badge:focus {
     border-radius: 10rem;
 }
 
+.badge-pet {
+    color: #FFF;
+    background-color: #735db2;
+}
+
+a.badge-pet:hover,
+a.badge-pet:focus {
+    color: #FFF;
+    background-color: #735db2;
+}
+
+a.badge-pet:focus,
+a.badge-pet.focus {
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 0 #735db2;
+    box-shadow: 0 0 0 0 #735db2;
+}
+
 .badge-primary {
     color: #FFF;
     background-color: #009688;

@@ -37,6 +37,7 @@ class PedidosModel extends Mysql
         }
         $request = array();
         $sql = "SELECT p.idpedido,
+                                p.id_cupon,
                                 p.referenciacobro,
                                 p.idtransaccionpaypal,
                                 p.personaid,
@@ -150,5 +151,12 @@ class PedidosModel extends Mysql
         }
         $request_insert = $this->update($query_insert,$arrData);
         return $request_insert;
+    }
+
+    public function selectCupon(string $codigo= NULL)
+    {
+        $sql = "SELECT * FROM cupon WHERE id_cupon = '{$codigo}' AND estado = 'A'";
+        $request = $this->select($sql);
+        return $request;
     }
 }
