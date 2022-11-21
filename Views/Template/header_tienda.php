@@ -202,14 +202,14 @@ $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['cont
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 						<?php } ?>
-						<div id="flags" class="flex-w flex-r-m">
-							<div class="cl2  trans-04 p-l-22 p-r-11 flags__item" data-language="en">
-								English <img src="<?= media() ?>/images/us.svg" alt="usa">
-							</div>
-							<div class="cl2 trans-04 p-l-22 p-r-11 flags__item" data-language="es">
-								Español <img src="<?= media() ?>/images/es.svg" alt="españa">
-							</div>
-						</div>
+						
+						<div type="hidden" id="google_element"></div>
+						<script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+						<script>
+							function loadGoogleTranslate() {
+								new google.translate.TranslateElement("google_element");
+							}
+						</script>
 
 						<!-- icono de corzon/favoritos -->
 						<!-- <a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">

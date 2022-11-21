@@ -185,26 +185,26 @@ if (!empty($data['page'])) {
 
 		<div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<button id="Cattodos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+				<button id="Cattodos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*" data-section="pagina-inicio" data-value="filtrado-1">
 					Todos los productos
 				</button>
 
-				<button id="Catperros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria3">
+				<button id="Catperros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria3" data-section="pagina-inicio" data-value="filtrado-2">
 					Productos para perros
 				</button>
 
-				<button id="Catgatos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria2">
+				<button id="Catgatos" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria2" data-section="pagina-inicio" data-value="filtrado-3">
 					Productos para gatos
 				</button>
 
-				<button id="Catotros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria1">
+				<button id="Catotros" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".categoria1" data-section="pagina-inicio" data-value="filtrado-4">
 					Productos para otras mascotas
 				</button>
 			</div>
 
 			<div class="flex-w flex-c-m m-tb-10">
 
-				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search"  data-section="pagina-inicio" data-value="boton-buscar">
 					<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 					<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 					Buscar
@@ -218,7 +218,7 @@ if (!empty($data['page'])) {
 						<i class="zmdi zmdi-search"></i>
 					</button>
 
-					<input class="mtext-107 cl2 size-114 plh2 p-r-15" id="searchP" type="text" name="search-product" placeholder="Search">
+					<input class="mtext-107 cl2 size-114 plh2 p-r-15" id="searchP" type="text" name="search-product" placeholder="Search" >
 				</div>
 			</div>
 
