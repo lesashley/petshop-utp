@@ -67,7 +67,7 @@ public function getProductosCategoriaT(int $idcategoria, string $ruta){
                 FROM producto p 
                 INNER JOIN categoria c
                 ON p.categoriaid = c.idcategoria
-                WHERE p.status != 2 AND p.categoriaid = $this->intIdcategoria AND c.ruta = '{$this->strRuta}' ";
+                WHERE p.status != 0 AND p.categoriaid = $this->intIdcategoria AND c.ruta = '{$this->strRuta}' ";
                 $request = $this->con->select_all($sql);
                 if(count($request) > 0){
                     for ($c=0; $c < count($request) ; $c++) { 
@@ -113,7 +113,7 @@ public function getProductoT(int $idproducto, string $ruta){
             FROM producto p 
             INNER JOIN categoria c ON p.categoriaid = c.idcategoria
             LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
-            WHERE p.status != 2 AND p.idproducto = '{$this->intIdProducto}' AND p.ruta = '{$this->strRuta}' ";
+            WHERE p.status != 0 AND p.idproducto = '{$this->intIdProducto}' AND p.ruta = '{$this->strRuta}' ";
             $request = $this->con->select($sql);
             if(!empty($request)){
                 $intIdProducto = $request['idproducto'];
@@ -160,7 +160,7 @@ public function getProductosRandom(int $idcategoria, int $cant, string $option){
             FROM producto p 
             INNER JOIN categoria c ON p.categoriaid = c.idcategoria
             LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
-            WHERE p.status != 2 AND p.categoriaid = $this->intIdcategoria
+            WHERE p.status != 0 AND p.categoriaid = $this->intIdcategoria
             ORDER BY $this->option LIMIT  $this->cant ";
             $request = $this->con->select_all($sql);
             if(count($request) > 0){
@@ -197,7 +197,7 @@ public function getProductoIDT(int $idproducto){
             FROM producto p 
             INNER JOIN categoria c ON p.categoriaid = c.idcategoria
             LEFT JOIN promocion pm ON pm.id_producto = p.idproducto
-            WHERE p.status != 2 AND p.idproducto = '{$this->intIdProducto}' ";
+            WHERE p.status != 0 AND p.idproducto = '{$this->intIdProducto}' ";
             $request = $this->con->select($sql);
             if(!empty($request)){
                 $intIdProducto = $request['idproducto'];
