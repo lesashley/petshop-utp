@@ -66,7 +66,9 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 						</span>
 
 						<?php
-							if($arrProducto['status'] === 3){
+							if($arrProducto['status'] == 3){
+							echo(gettype($arrProducto['status']));
+							echo(gettype(3));
 						?>
 							<span class="mtext-106 cl2">
 								Antes <del> <?= SMONEY.formatMoney($arrProducto['precio']); ?> </del>
@@ -180,7 +182,8 @@ $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 										<?= $arrProductos[$p]['nombre'] ?>
 									</a>
 									<?php
-										if($arrProductos[$p]['status'] === 3){
+									
+										if($arrProductos[$p]['status'] == 3){
 									?>
 										<span class="mtext-106 cl2">
 											Antes <del> <?= SMONEY.formatMoney($arrProductos[$p]['precio']); ?> </del>

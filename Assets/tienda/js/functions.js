@@ -199,6 +199,7 @@ if (document.querySelector(".methodpago")) {
                 document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
                 document.querySelector("#totalCompra").innerHTML = idcupon == "0" ? '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido).toFixed(2) : '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - dsctoCupon).toFixed(2);
                 total = idcupon == "0" ? (totalPedido).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
+
             } else {
                 document.querySelector("#msgpaypal").classList.add("notblock");
                 document.querySelector("#divtipopago").classList.remove("notblock");
@@ -209,6 +210,12 @@ if (document.querySelector(".methodpago")) {
                 total = idcupon == "0" ? (totalPedido - costoEnvio).toFixed(2) : (totalPedido - costoEnvio - dsctoCupon).toFixed(2);
                 costoEnvio = 0;
             }
+            // let cupon = document.getElementById("txtCupon").value;
+            // document.querySelector("#txtCupon").value = '';
+            // document.querySelector("#hdIdCupon").value = '0';
+            // document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
+            // document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
+            // document.querySelector("#hdCupon").value = "0";
         });
     });
 }
@@ -404,33 +411,33 @@ if (document.querySelector("#btnComprar")) {
             swal("", "Seleccione tipo de pago", "info");
             return;
         }
-            divLoading.style.display = "flex";
-            let request = (window.XMLHttpRequest) ?
-                new XMLHttpRequest() :
-                new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Tienda/procesarVenta';
-            let formData = new FormData();
-            formData.append('direccion', dir);
-            formData.append('ciudad', ciudad);
-            formData.append('inttipopago', inttipopago);
-            formData.append('total', total);
-            formData.append('idCupon', idcupon);
-            formData.append('costo_envio', document.getElementById("paypal").checked ? costoEnvio : 0);
-            request.open("POST", ajaxUrl, true);
-            request.send(formData);
-            request.onreadystatechange = function() {
-                if (request.readyState != 4) return;
-                if (request.status == 200) {
-                    let objData = JSON.parse(request.responseText);
-                    if (objData.status) {
-                        window.location = base_url + "/Tienda/confirmarpedido/";
-                    } else {
-                        swal("", objData.msg, "error");
-                    }
+        divLoading.style.display = "flex";
+        let request = (window.XMLHttpRequest) ?
+            new XMLHttpRequest() :
+            new ActiveXObject('Microsoft.XMLHTTP');
+        let ajaxUrl = base_url + '/Tienda/procesarVenta';
+        let formData = new FormData();
+        formData.append('direccion', dir);
+        formData.append('ciudad', ciudad);
+        formData.append('inttipopago', inttipopago);
+        formData.append('total', total);
+        formData.append('idCupon', idcupon);
+        formData.append('costo_envio', document.getElementById("paypal").checked ? costoEnvio : 0);
+        request.open("POST", ajaxUrl, true);
+        request.send(formData);
+        request.onreadystatechange = function() {
+            if (request.readyState != 4) return;
+            if (request.status == 200) {
+                let objData = JSON.parse(request.responseText);
+                if (objData.status) {
+                    window.location = base_url + "/Tienda/confirmarpedido/";
+                } else {
+                    swal("", objData.msg, "error");
                 }
-                divLoading.style.display = "none";
-                return false;
             }
+            divLoading.style.display = "none";
+            return false;
+        }
     }, false);
 }
 
@@ -478,7 +485,7 @@ if (document.querySelector("#btnValidarCupon")) {
 
                     dsctoCupon = (total * (objData.data.porcentaje_dscto / 100)).toFixed(2);
                     document.querySelector("#hdCupon").value = dsctoCupon;
-                    total = document.getElementById("contraentrega").checked ?  (totalPedido - 50 - dsctoCupon).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
+                    total = document.getElementById("contraentrega").checked ? (totalPedido - 50 - dsctoCupon).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
                     document.querySelector("#hdIdCupon").value = objData.data.id_cupon;
                     document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon;
                     document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
@@ -506,7 +513,7 @@ if (document.querySelector("#btnRetirarCupon")) {
 
         let cupon = document.getElementById("txtCupon").value;
         let idcupon = document.querySelector("#hdIdCupon").value;
-        
+
         if (cupon.trim() == '') {
             swal("Advertencia!", 'Ingresar cupón', "info");
             return;
@@ -521,13 +528,12 @@ if (document.querySelector("#btnRetirarCupon")) {
         document.querySelector("#hdIdCupon").value = '0';
         document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
 
-        if(document.getElementById("paypal").checked){
+        if (document.getElementById("paypal").checked) {
             costoEnvio = 50;
             total = (totalPedido).toFixed(2);
             document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
-        }
-        else{
-            total =  (totalPedido - 50).toFixed(2);
+        } else {
+            total = (totalPedido - 50).toFixed(2);
             document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. 0.00';
             costoEnvio = 0;
         }
