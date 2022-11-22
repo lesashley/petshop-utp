@@ -9,7 +9,7 @@ const changeLanguage = (language) => {
     // const json = getCookie(language);
     const texts = JSON.parse(localStorage.getItem(language));
 
-    for(const element of flagsElements){
+    for (const element of flagsElements) {
         if (element.dataset.language == language) {
             element.classList.add("flag-selected");
         } else {
@@ -17,14 +17,14 @@ const changeLanguage = (language) => {
         }
     }
 
-    for(const textToChange of textsToChange){
-        const section= textToChange.dataset.section;
+    for (const textToChange of textsToChange) {
+        const section = textToChange.dataset.section;
         const value = textToChange.dataset.value;
         textToChange.innerHTML = texts[section][value];
     }
 };
 
-flagElement.addEventListener("click",(e)=>{
+flagElement.addEventListener("click", (e) => {
     if (!e.target.closest(".tooltip-language") && !document.querySelector(".tooltip-language").classList.contains("active")) {
         document.querySelector(".tooltip-language").classList.add("active");
     } else {

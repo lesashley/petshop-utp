@@ -46,16 +46,16 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label>R.U.C <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtNit" name="txtNit" required="">
+                  <input class="form-control" type="text" id="txtNit" name="txtNit" >
                 </div>
                 <div class="form-group col-md-6">
                   <label>Nombre fiscal <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtNombreFiscal" name="txtNombreFiscal" required="">
+                  <input class="form-control" type="text" id="txtNombreFiscal" name="txtNombreFiscal" >
                 </div>
 
                 <div class="form-group col-md-12">
                   <label>Dirección fiscal <span class="required">*</span></label>
-                  <input class="form-control" type="text" id="txtDirFiscal" name="txtDirFiscal" required="">
+                  <input class="form-control" type="text" id="txtDirFiscal" name="txtDirFiscal" >
                 </div>
                 
               </div>

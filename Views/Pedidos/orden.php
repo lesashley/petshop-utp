@@ -102,10 +102,15 @@ headerAdmin($data);
                     </tr>
                     <?php } ?>
 
-                    <?php if($orden['id_cupon'] != 0 ){ ?>
+                    <?php if($orden['id_cupon'] != 0 ){ 
+                      
+                      // print_r(($data['arrCupon']['porcentaje_dscto']*$subtotal)/100);
+
+                      ?>
+                      
                     <tr>
                       <th colspan="3" class="text-right">Descuento:</th>
-                      <td class="text-right"><?= SMONEY.' '.$data['arrCupon']['porcentaje_dscto']?></td>
+                      <td class="text-right"><?= SMONEY.' '.(($data['arrCupon']['porcentaje_dscto']*$subtotal)/100)?></td>
                     </tr>
                     <?php }else{ ?>
                       <tr>

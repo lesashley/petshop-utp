@@ -1,10 +1,11 @@
 <?php 
 	class Productos extends Controllers{
 		public function __construct()
-		{
-			parent::__construct();
+		{	
 			session_start();
-			session_regenerate_id(true);
+			parent::__construct();
+			//session_start();
+			// session_regenerate_id(true);
 			if(empty($_SESSION['login']))
 			{
 				header('Location: '.base_url().'/login');
@@ -41,8 +42,12 @@
 					{
 						$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
 					}
-					else{
+					else if($arrData[$i]['status'] == 3)
+					{
+
 						$arrData[$i]['status'] = '<span class="badge badge-pet">En Promoción</span>';
+					}else if ($arrData[$i]['status'] == 0){
+						$arrData[$i]['status'] = '<span class="badge badge-dark">Eliminado</span>';
 					}
 
 					$arrData[$i]['precio'] = SMONEY.' '.formatMoney($arrData[$i]['precio']);

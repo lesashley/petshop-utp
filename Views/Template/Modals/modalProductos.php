@@ -80,6 +80,7 @@
                               <option value="1">Activo</option>
                               <option value="2">Inactivo</option>
                               <option value="3">Promoción</option>
+                              <option value="0">Eliminado</option>
                             </select>
                         </div>
                     </div>

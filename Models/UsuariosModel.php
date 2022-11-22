@@ -65,7 +65,7 @@
 					FROM persona p 
 					INNER JOIN rol r
 					ON p.rolid = r.idrol
-					WHERE p.status != 2 ".$whereAdmin;
+					 ".$whereAdmin;
 					$request = $this->select_all($sql);
 					return $request;
 		}
@@ -133,6 +133,7 @@
 		public function deleteUsuario(int $intIdpersona)
 		{
 			$this->intIdUsuario = $intIdpersona;
+			//$sql = "DELETE FROM persona WHERE idpersona = $this->intIdUsuario ";
 			$sql = "UPDATE persona SET status = ? WHERE idpersona = $this->intIdUsuario ";
 			$arrData = array(0);
 			$request = $this->update($sql,$arrData);

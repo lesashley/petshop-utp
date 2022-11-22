@@ -25,7 +25,7 @@ public function getProductosT(){
             FROM producto p 
             INNER JOIN categoria c
             ON p.categoriaid = c.idcategoria
-            WHERE p.status not in (2,3) and p.stock >0 ORDER BY p.idproducto DESC ";
+            WHERE p.status not in (2,3,0) and p.stock >0 ORDER BY p.idproducto DESC ";
             $request = $this->con->select_all($sql);
             if(count($request) > 0){
                 for ($c=0; $c < count($request) ; $c++) { 

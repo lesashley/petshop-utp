@@ -18,7 +18,7 @@ class CuponModel extends Mysql
 
         if (empty($request)) {
             $sql = "SELECT id_cupon, porcentaje_dscto FROM cupon
-                WHERE cantidad_uso < total AND fecha_inicio < NOW() AND fecha_fin > NOW() 
+                WHERE cantidad_uso < total AND NOW() >= fecha_inicio AND NOW() <= fecha_fin
                 AND estado = 'A' AND descripcion = '$this->strCupon'";
             $request = $this->select($sql);
         } else {

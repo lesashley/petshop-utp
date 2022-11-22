@@ -112,8 +112,10 @@
 				if($arrData[$i]['status'] == 1)
 				{
 					$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
-				}else{
+				}else if($arrData[$i]['status'] == 2){
 					$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
+				}else if($arrData[$i]['status'] == 0){
+					$arrData[$i]['status'] = '<span class="badge badge-dark">Eliminado</span>';
 				}
 
 				if($_SESSION['permisosMod']['r']) // si la variable r es verdadero o 1
