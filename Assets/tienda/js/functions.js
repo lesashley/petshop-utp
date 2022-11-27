@@ -189,7 +189,9 @@ if (document.querySelector(".methodpago")) {
     optmetodo.forEach(function(optmetodo) {
         optmetodo.addEventListener('click', function() {
             let idcupon = document.querySelector("#hdIdCupon").value;
-            let dsctoCupon = document.querySelector("#hdCupon").value;
+            let porcentajeDsctoCupon = document.querySelector("#hdPorcentajeDsctoCupon").value;
+            let dsctoCupon = 0;
+            
             if (this.value == "Paypal") {
                 costoEnvio = 50;
                 document.querySelector("#msgpaypal").classList.remove("notblock");
@@ -197,16 +199,48 @@ if (document.querySelector(".methodpago")) {
                 document.querySelector("#btnComprar").classList.add("notblock");
                 document.querySelector("#hrComprar").classList.add("notblock");
                 document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
-                document.querySelector("#totalCompra").innerHTML = idcupon == "0" ? '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido).toFixed(2) : '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - dsctoCupon).toFixed(2);
-                total = idcupon == "0" ? (totalPedido).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
+
+                if(idcupon !== "0"){
+                    dsctoCupon = (subtotal + 50) * (porcentajeDsctoCupon / 100);
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon.toFixed(2);
+                    document.querySelector("#hdCupon").value = dsctoCupon;
+                    let a = ((subtotal + 50) - dsctoCupon);
+                    document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + a.toFixed(2);
+                    total = a.toFixed(2);
+                }
+                else{
+                    document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + (subtotal + 50).toFixed(2);
+                    document.querySelector("#hdPorcentajeDsctoCupon").value = "0";
+                    document.querySelector("#hdCupon").value = "0";
+                    total = (subtotal + 50).toFixed(2);
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
+                    document.querySelector("#hdIdCupon").value = "0";
+                }
+
             } else {
                 document.querySelector("#msgpaypal").classList.add("notblock");
                 document.querySelector("#divtipopago").classList.remove("notblock");
                 document.querySelector("#btnComprar").classList.remove("notblock");
                 document.querySelector("#hrComprar").classList.remove("notblock");
                 document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. 0.00';
-                document.querySelector("#totalCompra").innerHTML = idcupon == "0" ? '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - costoEnvio).toFixed(2) : '&nbsp;&nbsp;&nbsp;S/. ' + (totalPedido - costoEnvio - dsctoCupon).toFixed(2);
-                total = idcupon == "0" ? (totalPedido - costoEnvio).toFixed(2) : (totalPedido - costoEnvio - dsctoCupon).toFixed(2);
+
+                if(idcupon !== "0"){
+                    dsctoCupon = (subtotal * (porcentajeDsctoCupon / 100));
+                    document.querySelector("#hdCupon").value = (dsctoCupon).toFixed(2);
+                    let b = (subtotal - dsctoCupon);
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon.toFixed(2);
+                    document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + b.toFixed(2);
+                    total = b.toFixed(2);
+                }
+                else{
+                    document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + (subtotal).toFixed(2);
+                    document.querySelector("#hdPorcentajeDsctoCupon").value = "0";
+                    document.querySelector("#hdCupon").value = "0";
+                    total = (subtotal).toFixed(2);
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
+                    document.querySelector("#hdIdCupon").value = "0";
+                }
+
                 costoEnvio = 0;
             }
         });
@@ -475,19 +509,24 @@ if (document.querySelector("#btnValidarCupon")) {
                         swal("Advertencia!", 'Cupón ingresado ya se encuentra aplicado en su pedido', "info");
                         return;
                     }
-
-                    dsctoCupon = (total * (objData.data.porcentaje_dscto / 100)).toFixed(2);
+                    
+                    dsctoCupon =  document.getElementById("contraentrega").checked ? (subtotal * (objData.data.porcentaje_dscto / 100)) : ((subtotal + 50) * (objData.data.porcentaje_dscto / 100));
                     document.querySelector("#hdCupon").value = dsctoCupon;
-                    total = document.getElementById("contraentrega").checked ?  (totalPedido - 50 - dsctoCupon).toFixed(2) : (totalPedido - dsctoCupon).toFixed(2);
+                    document.querySelector("#hdPorcentajeDsctoCupon").value = objData.data.porcentaje_dscto;
+                    let a = (subtotal - dsctoCupon);
+                    let b = ((subtotal + 50) - dsctoCupon);
+                    let c = dsctoCupon;
+                    total = document.getElementById("contraentrega").checked ?  a.toFixed(2) : b.toFixed(2);
                     document.querySelector("#hdIdCupon").value = objData.data.id_cupon;
-                    document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + dsctoCupon;
+                    document.querySelector("#dsctoCupon").innerHTML = '- S/. ' + c.toFixed(2);
                     document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
                     swal("Correcto!", objData.msg, "success");
 
                 } else {
 
+                    document.querySelector("#hdPorcentajeDsctoCupon").value = "0";
                     document.querySelector("#hdCupon").value = "0";
-                    total = totalPedido;
+                    total =  document.getElementById("contraentrega").checked ?  (subtotal).toFixed(2) : ((subtotal + 50)).toFixed(2);
                     document.querySelector("#dsctoCupon").innerHTML = '- S/. 0.00';
                     document.querySelector("#hdIdCupon").value = "0";
                     swal("Advertencia!", objData.msg, "info");
@@ -523,17 +562,18 @@ if (document.querySelector("#btnRetirarCupon")) {
 
         if(document.getElementById("paypal").checked){
             costoEnvio = 50;
-            total = (totalPedido).toFixed(2);
+            total = (subtotal + costoEnvio).toFixed(2);
             document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + costoEnvio.toFixed(2);
         }
         else{
-            total =  (totalPedido - 50).toFixed(2);
+            total =  (subtotal).toFixed(2);
             document.querySelector("#costoEnvio").innerHTML = '&nbsp;&nbsp;&nbsp;S/. 0.00';
             costoEnvio = 0;
         }
 
         document.querySelector("#totalCompra").innerHTML = '&nbsp;&nbsp;&nbsp;S/. ' + total;
         document.querySelector("#hdCupon").value = "0";
+        document.querySelector("#hdPorcentajeDsctoCupon").value = "0";
         swal("Correcto!", "Cupón retirado correctamente", "success");
 
     }, false);

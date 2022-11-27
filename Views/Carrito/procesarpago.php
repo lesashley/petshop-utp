@@ -6,7 +6,7 @@ $total = 0;
 foreach ($_SESSION['arrCarrito'] as $producto) {
 	$subtotal += $producto['precio'] * $producto['cantidad'];
 }
-$total = $subtotal + COSTOENVIO;
+$total = $subtotal;
 
 $tituloTermino = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo'] : "";
 $infoTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['contenido'] : "";
@@ -147,6 +147,7 @@ $infoTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['conteni
 							- S/. 0.00
 						</span>
 						<input type="hidden" value="0" id="hdCupon">
+						<input type="hidden" value="0" id="hdPorcentajeDsctoCupon">
 					</div>
 				</div>
 				<div class="flex-w flex-t p-t-27 p-b-33">
@@ -158,7 +159,7 @@ $infoTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['conteni
 
 					<div class="size-209 p-t-1">
 						<span id="totalCompra" class="mtext-110 cl2">
-							&nbsp;&nbsp;&nbsp;<?= SMONEY . formatMoney($total) ?>
+							&nbsp;&nbsp;&nbsp;<?= SMONEY . formatMoney($total + COSTOENVIO) ?>
 						</span>
 					</div>
 					<?php
@@ -227,7 +228,7 @@ $infoTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['conteni
 								<div id="paypal-btn-container"></div>
 								<script>
 									var total = <?= $total ?>;
-									var totalPedido = <?= $total ?>;
+									var subtotal = <?= $total ?>;
 									var costoEnvio = <?= COSTOENVIO ?>;
 								</script>
 							</div>

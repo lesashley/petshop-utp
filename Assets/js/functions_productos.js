@@ -148,7 +148,7 @@ window.addEventListener('load', function() {
                                         '<span class="badge badge-success">Activo</span>' :
                                          intStatus == 2 ?
                                         '<span class="badge badge-danger">Inactivo</span>' :
-                                        '<span class="badge badge-pet">Promoción</span>';
+                                        '<span class="badge badge-pet">En Promoción</span>';
                             rowTable.cells[1].textContent = intCodigo;
                             rowTable.cells[2].textContent = strNombre;
                             rowTable.cells[3].textContent = intStock;
@@ -312,7 +312,7 @@ function fntViewInfo(idProducto) {
                     '<span class="badge badge-success">Activo</span>' :
                     objProducto.status == 2 ?
                     '<span class="badge badge-danger">Inactivo</span>' :
-                    '<span class="badge badge-pet">Promoción</span>';
+                    '<span class="badge badge-pet">En Promoción</span>';
                 document.querySelector("#celCodigo").innerHTML = objProducto.codigo;
                 document.querySelector("#celNombre").innerHTML = objProducto.nombre;
                 document.querySelector("#celPrecio").innerHTML = objProducto.precio;
