@@ -366,7 +366,7 @@ require_once("Models/LoginModel.php");
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 
-							//sendEmail($dataEmailOrden,"email_notificacion_orden");
+							sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 							$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 							$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);
@@ -420,7 +420,7 @@ require_once("Models/LoginModel.php");
 													'emailCopia' => EMAIL_PEDIDOS,
 													'pedido' => $infoOrden );
 
-									//sendEmail($dataEmailOrden,"email_notificacion_orden");
+									sendEmail($dataEmailOrden,"email_notificacion_orden");
 
 									$orden = openssl_encrypt($request_pedido, METHODENCRIPT, KEY);
 									$transaccion = openssl_encrypt($idtransaccionpaypal, METHODENCRIPT, KEY);

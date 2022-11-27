@@ -1,8 +1,11 @@
 <?php
 
 class PromocionModel extends Mysql
-{
-
+{   
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function getPromocionProductos()
     {
         $this->con = new Mysql();
