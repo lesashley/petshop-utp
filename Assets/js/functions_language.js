@@ -8,6 +8,7 @@ const changeLanguage = (language) => {
     // const texts = await requestJson.json();
     // const json = getCookie(language);
     const texts = JSON.parse(localStorage.getItem(language));
+    localStorage.setItem("leng", language);
 
     for (const element of flagsElements) {
         if (element.dataset.language == language) {
@@ -48,7 +49,23 @@ const getJson = async(language) => {
     localStorage.setItem("es", JSON.stringify(textsES));
 }
 
+// Para utilizar por search params el idioma seleccionado
+const urlSetLanguage = () => {
+    let leng = localStorage.getItem("leng");
+    const urlParams = new URLSearchParams(window.location.search);
+    if (leng == null) {
+        leng = "es";
+        if (urlParams == "" ) {
+            urlParams.set('language', leng);
+            window.location.search = urlParams;
+        }
+    }
+}
+
 window.addEventListener('load', function() {
     getJson();
-    changeLanguage("es");
+    // Obtenemos del ls el lenguaje seleccionado
+    let leng = localStorage.getItem("leng");
+    ( leng != null) ? changeLanguage(leng) : changeLanguage("es");
+    
 }, false);
